@@ -15,13 +15,13 @@ const Paciente = () => {
     ]
     const linhas =[
         {
-            nome: "Paciente Sobrenome 1", email: "p1@gmail.com", telefone: "32991608320"  
+            coluna1: "Paciente Sobrenome 1", coluna2: "p1@gmail.com", coluna3: "32991608320"  
         },
         {
-            nome: "Paciente Sobrenome 2", email: "p2@gmail.com", telefone: "32991608320"  
+            coluna1: "Paciente Sobrenome 2", coluna2: "p2@gmail.com", coluna3: "32991608320"  
         },
         {
-            nome: "Paciente Sobrenome 3", email: "p3@gmail.com", telefone: "32991608320"  
+            coluna1: "Paciente Sobrenome 3", coluna2: "p3@gmail.com", coluna3: "32991608320"  
         },
     ]
     return(

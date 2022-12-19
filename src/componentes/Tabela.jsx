@@ -9,11 +9,11 @@ const Tabela = ({colunas, linhas}) => {
                     <th className={classe}>{nome}</th>
                 ))}
             </tr>
-            {linhas.map(({nome, email, telefone}) => (
+            {linhas.map(({coluna1, coluna2, coluna3}) => (
                 <tr className="tabela-conteudo">
-                    <td className="borda-lateral">{nome}</td>
-                    <td className="borda-lateral">{email}</td>
-                    <td>{telefone}</td>
+                    <td className="borda-lateral">{coluna1}</td>
+                    <td className="borda-lateral">{coluna2}</td>
+                    <td>{coluna3}</td>
                 </tr>
             ))}
         </table>

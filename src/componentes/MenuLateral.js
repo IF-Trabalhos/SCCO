@@ -27,17 +27,17 @@ const MenuLateral = () => {
 		{
 			texto: "PROCEDIMENTOS",
 			icone: "icones/procedimento.svg",
-			link: "/"
+			link: "/procedimento"
 		},
 		{
 			texto: "ESPECIALIDADES",
 			icone: "icones/especialidade.svg",
-			link: "/"
+			link: "/especialidade"
 		},
 		{
 			texto: "CONVÊNIOS",
 			icone: "icones/convenio.svg",
-			link: "/"
+			link: "/convenio"
 		},
 		{
 			texto: "RECEPCIONISTA",

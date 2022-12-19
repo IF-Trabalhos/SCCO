@@ -15,13 +15,13 @@ const Recepcionista = () => {
     ]
     const linhas =[
         {
-            nome: "Recepcionista 1", email: "rp1@gmail.com", telefone: "32991608320"  
+            coluna1: "Recepcionista 1", coluna2: "rp1@gmail.com", coluna3: "32991608320"  
         },
         {
-            nome: "Recepcionista 2", email: "rp2@gmail.com", telefone: "32991608320"  
+            coluna1: "Recepcionista 2", coluna2: "rp2@gmail.com", coluna3: "32991608320"  
         },
         {
-            nome: "Recepcionista 3", email: "rp3@gmail.com", telefone: "32991608320"  
+            coluna1: "Recepcionista 3", coluna2: "rp3@gmail.com", coluna3: "32991608320"  
         },
     ]
     return(
