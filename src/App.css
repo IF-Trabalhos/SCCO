@@ -1,56 +1,48 @@
 .container{
-  display: flex;
-}
-
-.menu-lateral-container{
-	width: 20%;
-	height: 100vh;
-	position: absolute;
-	background-color: aqua;
-	display: grid;
+    display: flex;
+    align-items: flex-end;
 }
 
 .conteudo-principal{
-  background-color: gray;
-  margin-left: 20%;
-  width: 80%;
-  height: 100vh;
-  display: grid;
-  align-items:stretch;
+    background-color: gray;
+    margin-left: 20%;
+    width: 80%;
+    height: 100vh;
+    display: grid;
+    align-items:stretch;
 }
 
 .cabeçalho-principal{
-  background-color: green;
-  width: 100%;
-  height: 15vh;
+    background-color: green;
+    width: 100%;
+    height: 15vh;
 }
 
 .cabeçalho-principal h1{
-  padding-top: 3vh;
-  padding-left: 10%;
+    padding-top: 3vh;
+    padding-left: 10%;
 }
 
 .container-principal-central{
-  background-color: white;
-  margin-top: 1vh;
-  margin-left: 5%;
-  border: 2px solid;
-  border-radius: 10px;
-  width: 90%;
-  height: 80vh;
-  display: grid;
-  align-items:stretch;
+    background-color: white;
+    margin-top: 1vh;
+    margin-left: 5%;
+    border: 2px solid;
+    border-radius: 10px;
+    width: 90%;
+    height: 80vh;
+    display: grid;
+    align-items:stretch;
 }
 
 .cabeçalho-central{
-  width: 100%;
-  height: 15vh;
-  display: flex;
-  justify-content: space-around;
-  border-bottom: 1px solid gray;
+    width: 100%;
+    height: 15vh;
+    display: flex;
+    justify-content: space-around;
+    border-bottom: 1px solid gray;
 }
 
 .conteudo-principal-central{
-  background-color: blue;
-  height: 65vh;
+    height: 65vh;
 }

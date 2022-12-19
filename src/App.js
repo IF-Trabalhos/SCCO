@@ -1,27 +1,29 @@
-import React from "react";
+import AddBotão from './componentes/AddBotão';
 import './App.css'
+import BarraDePesquisa from './componentes/BarraDePesquisa';
+import Tabela from './componentes/Tabela';
+import MenuLateral from './componentes/MenuLateral';
 
 function App() {
-	return(
+	return (
 		<div className="container">
-			<div className="menu-lateral-container">
-				<h1>Menu Lateral</h1>
-			</div>
+			<MenuLateral />
 			<div className="conteudo-principal">
-				<div className="cabeçalho-principal">
-					<h1>Cabeçalho Principal</h1>
+				<div className='cabeçalho-principal' >
+					<h1>Título da Página</h1>
 				</div>
-				<div className="container-principal-central">
-					<div className="cabeçalho-central">
-						<h1>Cabeçalho Central</h1>
+				<div className='container-principal-central'>
+					<div className='cabeçalho-central'>
+						<BarraDePesquisa />
+						<AddBotão />
 					</div>
-					<div className="conteudo-principal-central">
-						<h1>Conteúdo Principal</h1>
+					<div className='conteudo-principal-central'>
+						<Tabela />
 					</div>
 				</div>
 			</div>
 		</div>
-	)
+	);
 }
 
-export default App
+export default App;
