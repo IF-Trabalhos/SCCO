@@ -1,28 +1,22 @@
-import AddBotão from './componentes/AddBotão';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import './App.css'
-import BarraDePesquisa from './componentes/BarraDePesquisa';
-import Tabela from './componentes/Tabela';
 import MenuLateral from './componentes/MenuLateral';
+import Paciente from './paginas/Paciente';
+import Dentista from './paginas/Dentista'
+import Recepcionista from './paginas/Recepcionista'
 
 function App() {
 	return (
-		<div className="container">
-			<MenuLateral />
-			<div className="conteudo-principal">
-				<div className='cabeçalho-principal' >
-					<h1>Título da Página</h1>
-				</div>
-				<div className='container-principal-central'>
-					<div className='cabeçalho-central'>
-						<BarraDePesquisa />
-						<AddBotão />
-					</div>
-					<div className='conteudo-principal-central'>
-						<Tabela />
-					</div>
-				</div>
+		<BrowserRouter>
+			<div className="container">
+				<MenuLateral />
+				<Routes>
+					<Route path='/paciente' element={<Paciente />}/>
+					<Route path='/dentista' element={<Dentista />}/>
+					<Route path='/recepcionista' element={<Recepcionista />}/>
+				</Routes>
 			</div>
-		</div>
+		</BrowserRouter>
 	);
 }
 
