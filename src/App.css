@@ -46,3 +46,8 @@
 .conteudo-principal-central{
     height: 65vh;
 }
+
+a{
+    text-decoration: none;
+    color: black;
+}
