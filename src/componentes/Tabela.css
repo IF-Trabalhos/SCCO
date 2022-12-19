@@ -1,0 +1,20 @@
+.tabela-principal{
+    width: 92%;
+    text-align: center;
+    border-collapse: collapse;
+    margin-top: 2%;
+    margin-right: 10%;
+}
+
+.tabela-principal th, td{
+    padding-top: 0.5%;
+}
+
+.tabela-conteudo:hover{
+    background-color: rgb(223, 223, 223);
+    cursor: pointer;
+}
+
+.borda-lateral{
+    border-right: 2px solid;
+}
