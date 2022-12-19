@@ -1,0 +1,10 @@
+.add-botão{
+    margin-top: 4vh;
+    background-color: green;
+    border: 2px solid;
+    border-radius: 10px;
+    width: 20%;
+    height: 7vh;
+    font-size: 18px;
+    cursor: pointer;
+}
