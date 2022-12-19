@@ -3,7 +3,7 @@ import BarraDePesquisa from "./BarraDePesquisa";
 import Tabela from "./Tabela";
 import AddBotão from "./AddBotão";
 
-const TelaInicialGenerica = ({titulo}) => {
+const TelaInicialGenerica = ({titulo, colunas , linhas}) => {
     return(
         <div className='container-principal-central'>
             <div className='cabeçalho-central'>
@@ -11,7 +11,7 @@ const TelaInicialGenerica = ({titulo}) => {
                 <AddBotão titulo={titulo} />
             </div>
             <div className='conteudo-principal-central'>
-                <Tabela />
+                <Tabela colunas={colunas} linhas={linhas} />
             </div>
         </div>
     )
