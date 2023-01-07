@@ -1,17 +1,18 @@
 import React, {useState} from "react";
 import TelaInicialAgenda from "../componentes/TelaInicialAgenda";
 import './Agenda.css'
+import Agendamento from "./Agendamento";
 
 const Agenda= () => {
     const consultas1 =[
         {
             nome: "Paciente 1",
-            hora_inicial: "8:00",    
-            hora_final: "9:00"   
+            hora_inicial: "08:00",    
+            hora_final: "09:00"   
         },
         {
             nome: "",
-            hora_inicial: "9:00",    
+            hora_inicial: "09:00",    
             hora_final: "10:00"     
         },
         {
@@ -29,12 +30,12 @@ const Agenda= () => {
     const consultas2 =[
         {
             nome: "Paciente 1",
-            hora_inicial: "8:00",    
-            hora_final: "9:00"   
+            hora_inicial: "08:00",    
+            hora_final: "09:00"   
         },
         {
             nome: "Paciente 2",
-            hora_inicial: "9:00",    
+            hora_inicial: "09:00",    
             hora_final: "10:00"     
         },
         {
@@ -75,6 +76,8 @@ const Agenda= () => {
 
     const [agenda, setAgenda] = useState("Dentista 1");
     const [consultas, setConsultas] = useState(consultas1);
+    const [botaoPopup, setBotaoPopup] = useState(false);
+    const [agendamentoInfo, setAgendamentoInfo] = useState([{nome: "", dentista: ""}]);
 
     return(
         <div className="conteudo-principal">
@@ -82,7 +85,8 @@ const Agenda= () => {
                 <h1>Agenda</h1>
             </div>
             <div className='corpo-agenda'>
-                <TelaInicialAgenda nomes={consultas} dentista={agenda} data_atual={"6 de Janeiro"} />
+                <TelaInicialAgenda nomes={consultas} dentista={agenda} data_atual={"6 de Janeiro"} setBotaoTrue={setBotaoPopup}
+                setConsultaValue={setAgendamentoInfo} />
                 <div className="container-lateral-agenda">
                     <div className="calendario">
                     </div>
@@ -103,6 +107,7 @@ const Agenda= () => {
                     </div>
                 </div>
             </div>
+            <Agendamento trigger={botaoPopup} setBotaoFalse={setBotaoPopup} infos={agendamentoInfo} />
         </div>
     )
 }
