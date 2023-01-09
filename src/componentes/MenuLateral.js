@@ -22,7 +22,7 @@ const MenuLateral = () => {
 		{
 			texto: "AGENDAS",
 			icone: "icones/agenda.svg",
-			link: "/"
+			link: "/agenda"
 		},
 		{
 			texto: "PROCEDIMENTOS",

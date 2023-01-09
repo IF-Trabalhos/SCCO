@@ -1,6 +1,7 @@
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import './App.css'
 import MenuLateral from './componentes/MenuLateral';
+import Agenda from './paginas/Agenda'
 import PaginaGenerica from './paginas/PaginaGenerica';
 
 function App() {
@@ -16,6 +17,7 @@ function App() {
 					<Route path='/procedimento' element={<PaginaGenerica titulo="Procedimento" />}/>
 					<Route path='/especialidade' element={<PaginaGenerica titulo="Especialidade" />} />
 					<Route path='/convenio' element={<PaginaGenerica titulo="Convenio" />} />
+          <Route path='/agenda' element={<Agenda />} />
 				</Routes>
 			</div>
 		</BrowserRouter>

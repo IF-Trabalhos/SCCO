@@ -1,0 +1,43 @@
+.corpo-agenda{
+    display: flex;
+}
+
+.container-lateral-agenda{
+    margin-top: 1vh;
+    margin-left: 3%;
+    height: 80vh;
+    width: 40%;
+    display: grid;
+
+}
+
+.calendario{
+    height: 30vh;
+    margin-top: 2vh;    
+}
+
+.agenda-config{
+    background-color: white;
+    height: 46vh;
+    margin-top: 2vh;
+    display: grid;
+    text-align: center; 
+}
+
+.agenda-config-cabeçalho{
+    height: 10vh;
+    border-bottom: 2px solid gray;
+}
+
+.agenda-config-conteudo{
+    height: 36vh;
+}
+
+.agenda-config-conteudo div{
+    padding: 1%;
+    font-size: 20px;
+}
+.agenda-config-conteudo div:hover{
+    background-color: rgb(179, 179, 179);
+    cursor: pointer;
+}
