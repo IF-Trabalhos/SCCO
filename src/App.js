@@ -15,7 +15,8 @@ function App() {
 			<div className="container">
 				<MenuLateral />
 				<Routes>
-					<Route path='/' element={<PaginaGenerica />}/>
+					<Route path='/' element={<PaginaGenerica
+					titulo={"Home"} coluna={colunaPessoa} linha={dados.agendas} />}/>
 					<Route path='/paciente' element={<PaginaGenerica 
 					titulo="Paciente" coluna={colunaPessoa} 
 					linha={dados.pessoas} />}/>
