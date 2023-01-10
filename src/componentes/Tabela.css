@@ -4,6 +4,7 @@
     border-collapse: collapse;
     margin-top: 2%;
     margin-right: 10%;
+    font-size: 1em;
 }
 
 .tabela-principal th, td{
@@ -16,5 +17,5 @@
 }
 
 .borda-lateral{
-    border-right: 2px solid;
+    border-right: 0.2rem solid;
 }
