@@ -47,7 +47,7 @@ const MenuLateral = () => {
 		{
 			texto: "FINANCEIRO",
 			icone: "icones/financeiro.svg",
-			link: "/"
+			link: "/financeiro"
 		},
 		{
 			texto: "RELATÓRIOS",
