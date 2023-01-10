@@ -1,17 +1,8 @@
 import React from "react";
 import TelaInicialGenerica from "../componentes/TelaInicialGenerica";
 import { useState } from "react";
-import Cadastro from "./Cadastro";
-
 
 const PaginaGenerica = ({titulo}) => {
-    const estadosPagina =[
-        {id: 1, nome: "paginaInicial"},
-        {id: 2, nome: "cadastro"}
-    ]
-    const [estado, setEstado] = useState(estadosPagina[0].nome);
-    
-
     const colunas =[
         {
             nome: "Nome", classe:"borda-lateral", sort: true
@@ -40,10 +31,8 @@ const PaginaGenerica = ({titulo}) => {
                 <h1>{titulo}</h1>
             </div>
             <div className="body-principal">
-                {estado === estadosPagina[0].nome &&
-                <TelaInicialGenerica funcao={()=>(setEstado(estadosPagina[1].nome))} titulo={titulo} colunas={colunas} linhas={linhas} />}
-                {estado === estadosPagina[1].nome && <Cadastro titulo = {titulo}/>}
-                
+                <TelaInicialGenerica titulo={titulo} colunas={colunas} 
+                linhas={linhas} />        
             </div>
         </div>
     )
