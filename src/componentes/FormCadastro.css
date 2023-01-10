@@ -1,0 +1,65 @@
+label{
+    font-size: 1.1em;
+}
+.endereco{
+    display: flex;
+    flex-direction: column;
+}
+.linha1-endereco{
+    display: flex;
+    flex-direction: row;
+   
+}
+.cep{
+    width: 70%;
+}
+.uf{
+    width: 15%;
+}
+.cidade{
+    width: auto;
+}
+/* Três primeiros inputs do endereço acima */
+.linha2-endereco{
+    display: flex;
+    flex-direction: row;
+
+
+}
+.logradouro{
+    border: 3px dashed red;
+    margin-right: 1em;
+    margin-left: 0.4em;
+}
+
+.numero{
+    margin-right: 1em;
+    margin-left: 0.4em;
+}
+.linha3-endereco{
+    display: flex;
+    flex-direction: row;
+}
+.bairro{
+    width: 60%;
+    margin-right: 1em;
+    margin-left: 0.4em;
+}
+.complemento{
+    width: auto;
+    margin-right: 1em;
+    margin-left: 0.4em;
+}
+.contato{
+display: flex;
+flex-direction: column;
+}
+.contato div{
+    display: flex;
+    flex-direction: row;
+    margin-left: 5em;
+}
+.contato input{
+    margin-right: 1em;
+
+}
