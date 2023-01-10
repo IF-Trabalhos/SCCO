@@ -58,7 +58,6 @@ const MenuLateral = () => {
 	return (
 		<div className="menu-lateral-container">
 			<div className="menu-lateral-titulo">
-				<img src="icons/Logo.svg" alt="" srcset="" />
 				<h1>Clinica</h1>
 			</div>
 			<div className="menu-lateral-conteudo">

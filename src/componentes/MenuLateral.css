@@ -11,8 +11,10 @@
 	height: 15vh;
 	background-color: white;
 	display: flex;
+	align-items: center;
+	justify-content: center;
 	position: absolute;
-	border-bottom: 2px solid;
+	border-bottom: 0.2em solid;
 }
 
 .menu-lateralr-titulo h1, img{
@@ -20,8 +22,7 @@
 }
 
 .menu-lateral-titulo h1{
-	margin-top: 4vh;
-	font-size: 40px;
+	font-size: 2.5em;
 	text-align: center;
 }
 
@@ -38,9 +39,10 @@
 
 .menu-item{
 	display: flex;
-	border-bottom: 1px solid;
+	border-bottom: 0.15em solid;
 	cursor: pointer;
 	height: 8.3vh;
+	align-items: center;
 }
 
 .menu-item:hover{
@@ -53,11 +55,35 @@
 
 .menu-item-img img{
 	width: 25%;
-	padding-top: 2vh;
 	padding-left: 50%;
 }
 
 .menu-item-texto{
 	width: 60%;
-	font-size: 18px;
+	font-size: 1em;
+}
+
+@media screen and (max-width: 800px){
+	.menu-item-texto{
+		display: none;
+	}
+	.menu-item img{
+		width: 50%;
+		padding-left: 90%;
+	}
+	:root{
+		font-size: 8px;
+	}
+}
+
+@media screen and (max-width: 1200px){
+	:root{
+		font-size: 12px;
+	}
+}
+
+@media screen and (max-width: 600px){
+	:root{
+		font-size: 6px;
+	}
 }
