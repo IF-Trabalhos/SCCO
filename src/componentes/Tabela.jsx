@@ -1,21 +1,39 @@
 import React from "react";
 import './Tabela.css'
 
-const Tabela = ({colunas, linhas}) => {
-    return(
+const Tabela = ({pessoa, colunas, linhas}) => {
+    return(pessoa) ? (
         <table className="tabela-principal">
             <tr>
-                {colunas.map(({nome, classe}) => (
-                    <th className={classe}>{nome}</th>
+                {colunas.map(({id, nome, classe}) => (
+                    <th key={id} className={classe}>{nome}</th>
                 ))}
             </tr>
-            {linhas.map(({coluna1, coluna2, coluna3}) => (
-                <tr className="tabela-conteudo">
-                    <td className="borda-lateral">{coluna1}</td>
-                    <td className="borda-lateral">{coluna2}</td>
-                    <td>{coluna3}</td>
+            {linhas.map(({id, nome, email, telefone}) => (
+                <tr key={id} className="tabela-conteudo">
+                    <td className="borda-lateral">{nome}</td>
+                    <td className="borda-lateral">{email}</td>
+                    <td>{telefone}</td>
                 </tr>
             ))}
+        </table>
+    ) : 
+    (
+        <table className="tabela-principal">
+        <tr>
+            {colunas.map(({id, nome, classe}) => (
+                <th key={id} className={classe}>{nome}</th>
+            ))}
+        </tr>
+        {linhas.map(({id, nome, especialidade, status}) => (
+            <tr key={id} className="tabela-conteudo">
+                <td className="borda-lateral">{nome}</td>
+                <td className="borda-lateral">{especialidade}</td>
+                {status === true ?  
+                <td>Ativo</td> :
+                <td>Inativo</td>}
+            </tr>
+        ))}
         </table>
     )
 }

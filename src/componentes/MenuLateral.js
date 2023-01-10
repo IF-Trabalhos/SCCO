@@ -5,51 +5,61 @@ import "./MenuLateral.css";
 const MenuLateral = () => {
 	const menuItems = [
 		{
+			id: "1",
 			texto: "INICIO",
 			icone: "icones/inicio.svg",
 			link: "/"
 		},
 		{
+			id: "2",
 			texto: "PACIENTES",
 			icone: "icones/paciente.svg",
 			link: "/paciente"
 		},
 		{
+			id: "3",
 			texto: "DENTISTAS",
 			icone: "icones/dentista.svg",
 			link: "/dentista"
 		},
 		{
+			id: "4",
 			texto: "AGENDAS",
 			icone: "icones/agenda.svg",
 			link: "/agenda"
 		},
 		{
+			id: "5",
 			texto: "PROCEDIMENTOS",
 			icone: "icones/procedimento.svg",
 			link: "/procedimento"
 		},
 		{
+			id: "6",
 			texto: "ESPECIALIDADES",
 			icone: "icones/especialidade.svg",
 			link: "/especialidade"
 		},
 		{
+			id: "7",
 			texto: "CONVÊNIOS",
 			icone: "icones/convenio.svg",
 			link: "/convenio"
 		},
 		{
+			id: "8",
 			texto: "RECEPCIONISTA",
 			icone: "icones/recepcionista.svg",
 			link: "/recepcionista"
 		},
 		{
+			id: "9",
 			texto: "FINANCEIRO",
 			icone: "icones/financeiro.svg",
 			link: "/"
 		},
 		{
+			id: "10",
 			texto: "RELATÓRIOS",
 			icone: "icones/relatorio.svg",
 			link: "/"
@@ -62,8 +72,8 @@ const MenuLateral = () => {
 				<h1>Clinica</h1>
 			</div>
 			<div className="menu-lateral-conteudo">
-				{menuItems.map(({ texto, icone, link }) => (
-					<Link to={link}>
+				{menuItems.map(({id, texto, icone, link }) => (
+					<Link key={id} to={link}>
 						<div className="menu-item">
 							<div className="menu-item-img">
 								<img className="menu-item-icone" src={icone} alt="" srcset="" />

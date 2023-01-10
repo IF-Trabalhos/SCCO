@@ -1,19 +1,153 @@
 {
-    "pacientes": [
+    "pessoas":[
         {
-            "nome": "Fernando Souza Pimenta",
-            "email": "fsouzapimenta@gmail.com",
-            "telefone": "32991608320"
+            "id":1,
+            "nome": "Giuliano de Souza Leite",
+            "cpf": 12345678990,
+            "rg": 123456789,
+            "dat_nascimento": "29/06/2000",
+            "telefone":"32988080905",
+            "email":"giuliano@gmail.com",
+            "endereco_id": 1
         },
         {
-            "nome": "Fernando Souza Pimenta",
-            "email": "fsouzapimenta@gmail.com",
-            "telefone": "32991608320"
+            "id":2,
+            "nome": "Igor Rosa Pinto",
+            "cpf": 12345678990,
+            "rg": 123456789,
+            "dat_nascimento": "29/06/2000",
+            "telefone":"32988080905",
+            "email":"igorrosa@gmail.com"   ,
+            "endereco_id":1 
         },
         {
+            "id":3,
             "nome": "Fernando Souza Pimenta",
-            "email": "fsouzapimenta@gmail.com",
-            "telefone": "32991608320"
+            "cpf": 12345678990,
+            "rg": 123456789,
+            "dat_nascimento": "29/06/2000",
+            "telefone":"32988080905",
+            "email":"pimenta@gmail.com",
+            "endereco_id":1
+        }
+    ],
+
+    "dentistas":[
+        {
+            "id":1,
+            "cro":"1456",
+            "pessoa_id":1,
+            "especialidade_id":1,
+            "agenda_id":1
+        }
+    ],
+
+    "secretaria":[
+        {
+            "id":1,
+            "salario": 1250.00,
+            "pis":"153539",
+            "pessoa_id":2
+        }
+    ],
+
+    "pacientes":[
+        {
+            "id":1,
+            "num_prontuario":1,
+            "pessoa_id":3,
+            "convenio_id":1
+        },
+        {
+            "id":2,
+            "num_prontuario":2,
+            "convenio_id": null,
+            "pessoa_id":2
+        }
+    ],
+
+    "convenios":[
+        {
+            "id":1,
+            "nome": "Unimed",
+            "registro_ans":"123",
+            "email":"unimed@gmail.com",
+            "telefone":"329555444"
+        }
+    ],
+
+    "consultas":[
+        {
+            "id":1,
+            "valor_consulta": 54.30,
+            "paciente_id":1,
+            "dentista_id":1,
+            "procedimento_id":1,        
+            "data": "30/02/1700AC",
+            "hora": "09:30"
+        }
+    ],
+
+    "procedimentos":[
+        {
+            "id":1,
+            "nome":"Limpeza",
+            "especialidade_id":1,
+            "status": true
+        }
+    ],
+
+    "especialidades":[
+        {
+            "id":1,
+            "nome":"Periodontia",
+            "status": true
+        },
+        {
+            "id":2,
+            "nome":"Cirurgia",
+            "status":false
+        }
+    ],
+
+    "agendas":[
+        {
+            "id":1,
+            "disponibilidade_id": 1
+        }
+    ],
+
+    "disponibilidades":[
+        {
+            "id":1,
+            "hora":"09:30",
+            "data":"01/01/2023"
+        },
+        {
+            "id":2,
+            "hora":"08:30",
+            "data": "01/01/2023"
+        }
+    ],
+
+    "endereco":[
+        {
+            "id":1,
+            "logradouro":"rua padre bonifacio",
+            "uf":"mg",
+            "cidade":"juiz de fora",
+            "numero": "50",
+            "complemento":"Ap 102",
+            "bairro": "Bairu",
+            "cep":"36050080"
+
+        }
+    ],
+    "tratamentos":[
+        {
+            "id":1,
+            "valor":250.00,
+            "procedimento_id":1
         }
     ]
 }

@@ -4,6 +4,9 @@ import Tabela from "./Tabela";
 import AddBotão from "./AddBotão";
 
 const TelaInicialGenerica = ({titulo, colunas , linhas}) => {
+    let pessoa = true
+    titulo === "Especialidade" || 
+    titulo === "Procedimento"  ? pessoa = false : pessoa = true
     return(
         <div className='container-principal-central'>
             <div className='cabeçalho-central'>
@@ -11,7 +14,7 @@ const TelaInicialGenerica = ({titulo, colunas , linhas}) => {
                 <AddBotão titulo={titulo} />
             </div>
             <div className='conteudo-principal-central'>
-                <Tabela colunas={colunas} linhas={linhas} />
+                <Tabela pessoa={pessoa} colunas={colunas} linhas={linhas} />
             </div>
         </div>
     )

@@ -8,6 +8,7 @@ linhaConvenio, linhaRecepcionista, linhaProcedimento, linhaEspecialidade}
 from './data/tabela_info';
 
 function App() {
+	const dados = require('./data/db.json')
 	return (
 		<BrowserRouter>
 			<div className="container">
@@ -15,17 +16,17 @@ function App() {
 				<Routes>
 					<Route path='/' element={<PaginaGenerica />}/>
 					<Route path='/paciente' element={<PaginaGenerica 
-					titulo="Paciente" coluna={colunaPessoa} linha={linhaPaciente} />}/>
+					titulo="Paciente" coluna={colunaPessoa} linha={dados.pessoas} />}/>
 					<Route path='/dentista' element={<PaginaGenerica 
-					titulo="Dentista" coluna={colunaPessoa} linha={linhaDentista}  />}/>
+					titulo="Dentista" coluna={colunaPessoa} linha={dados.pessoas}  />}/>
 					<Route path='/recepcionista' element={<PaginaGenerica 
-					titulo="Recepcionista" coluna={colunaPessoa} linha={linhaRecepcionista}  />}/>
+					titulo="Recepcionista" coluna={colunaPessoa} linha={dados.pessoas} />}/>
 					<Route path='/procedimento' element={<PaginaGenerica 
-					titulo="Procedimento" coluna={colunaEspecialidade} linha={linhaProcedimento} />}/>
+					titulo="Procedimento" coluna={colunaEspecialidade} linha={dados.procedimentos} />}/>
 					<Route path='/especialidade' element={<PaginaGenerica 
-					titulo="Especialidade" coluna={colunaEspecialidade} linha={linhaEspecialidade} />} />
+					titulo="Especialidade" coluna={colunaEspecialidade} linha={dados.especialidades} />} />
 					<Route path='/convenio' element={<PaginaGenerica 
-					titulo="Convenio" coluna={colunaPessoa} linha={linhaConvenio} />} />
+					titulo="Convenio" coluna={colunaPessoa} linha={dados.convenios} />} />
           			<Route path='/agenda' element={<Agenda />} />
 				</Routes>
 			</div>
