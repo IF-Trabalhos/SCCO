@@ -48,6 +48,7 @@
 }
 
 a{
+    all: unset;
     text-decoration: none;
     color: black;
 }

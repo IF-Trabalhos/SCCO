@@ -1,4 +1,5 @@
-import React, {useState} from "react";
+import React from "react";
+import { Link } from "react-router-dom";
 import './Financeiro.css'
 
 const Financeiro= () => {
@@ -8,14 +9,19 @@ const Financeiro= () => {
                 <h1>Financeiro</h1>
             </div>
             <div className='corpo-financas'>
-                <div className="caixa-financas" id="caixa-paciente">
-                    Paciente</div>
-                <div className="caixa-financas" id="caixa-convenio">
-                    Convênio</div>
-                <div className="caixa-financas" id="caixa-mensal">
-                    Despesas Mensais</div>
-                <div className="caixa-financas" id="caixa-recorrente">
-                    Despesas Recorrentes</div>
+                <Link className="caixa-financas" id="caixa-paciente" 
+                to={"paciente"}>
+                    Paciente
+                </Link>
+                <Link className="caixa-financas" id="caixa-convenio" 
+                to={"convenio"}>
+                    Convênio</Link>
+                <Link className="caixa-financas" id="caixa-mensal" 
+                to={"mensal"}>
+                    Despesas Mensais</Link>
+                <Link className="caixa-financas" id="caixa-recorrente" 
+                to={"recorrente"}>
+                    Despesas Recorrentes</Link>
             </div>
         </div>
     )

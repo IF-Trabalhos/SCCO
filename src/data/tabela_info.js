@@ -21,3 +21,39 @@ export const colunaEspecialidade =[
         id: "3", nome: "Status", classe:"", sort: true
     },
 ]
+
+export const colunaDespesa =[
+    {
+        id: "1", nome: "Nome", classe:"borda-lateral", sort: true
+    },
+    {
+        id: "2", nome: "Vencimento", classe:"borda-lateral", sort: true
+    },
+    {
+        id: "3", nome: "Status", classe:"", sort: true
+    },
+]
+
+export const colunaFaturaPaciente =[
+    {
+        id: "1", nome: "Nome", classe:"borda-lateral", sort: true
+    },
+    {
+        id: "2", nome: "Telefone", classe:"borda-lateral", sort: true
+    },
+    {
+        id: "3", nome: "Status", classe:"", sort: true
+    },
+]
+
+export const colunaFaturaConvenio =[
+    {
+        id: "1", nome: "Nome do Paciente", classe:"borda-lateral", sort: true
+    },
+    {
+        id: "2", nome: "Nome do Convenio", classe:"borda-lateral", sort: true
+    },
+    {
+        id: "3", nome: "Status", classe:"", sort: true
+    },
+]
