@@ -1,0 +1,40 @@
+.corpo-financas{
+    background-color: white;
+    margin-top: 1vh;
+    margin-left: 5%;
+    border: 2px solid;
+    border-radius: 10px;
+    width: 90%;
+    height: 80vh;
+    display: grid;
+    align-items: center;
+    justify-items: center;
+}
+
+.caixa-financas{
+    height: 15vh;
+    width: 30%;
+    text-align: center;
+    display: grid;
+    align-items: center;
+    font-size: 1.6em;
+    border: 1px solid black;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+#caixa-paciente{
+    background-color: green;
+}
+
+#caixa-convenio{
+    background-color: aqua;
+}
+
+#caixa-mensal{
+    background-color: red;
+}
+
+#caixa-recorrente{
+    background-color: purple;
+}

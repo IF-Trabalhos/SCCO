@@ -6,21 +6,25 @@ import Agendamento from "./Agendamento";
 const Agenda= () => {
     const consultas1 =[
         {
+            id: "1",
             nome: "Paciente 1",
             hora_inicial: "08:00",    
             hora_final: "09:00"   
         },
         {
+            id: "2",
             nome: "",
             hora_inicial: "09:00",    
             hora_final: "10:00"     
         },
         {
+            id: "3",
             nome: "",
             hora_inicial: "10:00",    
             hora_final: "11:00"           
         },
         {
+            id: "4",
             nome: "Paciente 4",
             hora_inicial: "11:00",    
             hora_final: "12:00"   
@@ -29,26 +33,31 @@ const Agenda= () => {
 
     const consultas2 =[
         {
+            id: "1",
             nome: "Paciente 1",
             hora_inicial: "08:00",    
             hora_final: "09:00"   
         },
         {
+            id: "2",
             nome: "Paciente 2",
             hora_inicial: "09:00",    
             hora_final: "10:00"     
         },
         {
+            id: "3",
             nome: "Paciente 3",
             hora_inicial: "10:00",    
             hora_final: "11:00"           
         },
         {
+            id: "4",
             nome: "Paciente 4",
             hora_inicial: "11:00",    
             hora_final: "12:00"   
         },
         {
+            id: "5",
             nome: "Paciente 5",
             hora_inicial: "12:00",    
             hora_final: "13:00"   
@@ -57,18 +66,22 @@ const Agenda= () => {
 
     const dentistas =[
         {
+            id: "1",
             nome: "Dentista 1",
             consultas: consultas1
         },
         {
+            id: "2",
             nome: "Dentista 2",
             consultas: consultas2
         },
         {
+            id: "3",
             nome: "Dentista 3",
             consultas: consultas1
         },
         {
+            id: "4",
             nome: "Dentista 4",           
             consultas: consultas2
         },
@@ -95,8 +108,8 @@ const Agenda= () => {
                             <h1>Agendas</h1>
                         </div>
                         <div className="agenda-config-conteudo">
-                            {dentistas.map(({nome, consultas}) => (
-                                <div
+                            {dentistas.map(({id, nome, consultas}) => (
+                                <div key={id}
                                 onClick={() => {
                                     setAgenda(nome)
                                     setConsultas(consultas)
