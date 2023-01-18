@@ -4,9 +4,14 @@ import Tabela from "./Tabela";
 import AddBotão from "./AddBotão";
 
 const TelaInicialGenerica = ({titulo, colunas , linhas}) => {
-    let pessoa = true
-    titulo === "Especialidade" || 
-    titulo === "Procedimento"  ? pessoa = false : pessoa = true
+
+    const generica = ["Paciente", "Dentista", "Recepcionista", "Convenio"];
+    const especialista = ["Especialidade", "Procedimento"];
+    let pessoa = ""
+    generica.includes(titulo) ? pessoa = "Generica" 
+    : especialista.includes(titulo) ? pessoa = "Especialista"
+    : pessoa = titulo
+
     return(
         <div className='container-principal-central'>
             <div className='cabeçalho-central'>

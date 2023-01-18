@@ -56,7 +56,7 @@ const MenuLateral = () => {
 			id: "9",
 			texto: "FINANCEIRO",
 			icone: "icones/financeiro.svg",
-			link: "/"
+			link: "/financeiro"
 		},
 		{
 			id: "10",
@@ -68,7 +68,6 @@ const MenuLateral = () => {
 	return (
 		<div className="menu-lateral-container">
 			<div className="menu-lateral-titulo">
-				<img src="icons/Logo.svg" alt="" srcset="" />
 				<h1>Clinica</h1>
 			</div>
 			<div className="menu-lateral-conteudo">
