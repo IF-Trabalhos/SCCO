@@ -1,5 +1,6 @@
 import React from "react";
 import TelaInicialGenerica from "../componentes/TelaInicialGenerica";
+import { useState } from "react";
 
 const PaginaGenerica = ({titulo, coluna, linha}) => {
     return(

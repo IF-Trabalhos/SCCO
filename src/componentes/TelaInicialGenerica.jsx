@@ -2,6 +2,7 @@ import React from "react";
 import BarraDePesquisa from "./BarraDePesquisa";
 import Tabela from "./Tabela";
 import AddBotão from "./AddBotão";
+import { Link } from "react-router-dom";
 
 const TelaInicialGenerica = ({titulo, colunas , linhas}) => {
 
@@ -16,7 +17,9 @@ const TelaInicialGenerica = ({titulo, colunas , linhas}) => {
         <div className='container-principal-central'>
             <div className='cabeçalho-central'>
                 <BarraDePesquisa />
-                <AddBotão titulo={titulo} />
+                <Link className="add-botão" to={"cadastro"}>
+                    Adicionar {titulo}
+                </Link>
             </div>
             <div className='conteudo-principal-central'>
                 <Tabela pessoa={pessoa} colunas={colunas} linhas={linhas} />
