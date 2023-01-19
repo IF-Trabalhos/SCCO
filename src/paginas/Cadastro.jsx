@@ -9,6 +9,7 @@ const Cadastro = ({titulo, componenteCadastro}) => {
           <h1>{titulo}</h1>
         </div>
         <div className='corpo-cadastro'>
+            <h2>Novo Cadastro</h2>
             {componenteCadastro}
         </div>
     </div>

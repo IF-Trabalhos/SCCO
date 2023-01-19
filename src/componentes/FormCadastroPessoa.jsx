@@ -13,18 +13,18 @@ const FormCadastro = ({ labelDinamica }) => {
           <label htmlFor='inputNome'>Nome:<input type="text" name='inputNome' required /></label>
         </div>
         <div>
-          <label htmlFor={labelDinamica}>{labelDinamica}:<input type="number" name={labelDinamica} required /></label>
+          <label htmlFor={labelDinamica}>{labelDinamica}:<input type="number" className={labelDinamica} name={labelDinamica} required /></label>
         </div>
         <div>
-          <label htmlFor="innputDt-nascimento">Dt. Nascimento:<input type="date" name='inputDt-nascimento' required /></label>
+          <label htmlFor="innputDt-nascimento">Dt. Nascimento:<input type="date" className='inputDt-nascimento' name='dt-nascimento' required /></label>
 
         </div>
         <div>
-          <label htmlFor="inputRg">RG:<input type="number" name='inputRg' required /></label>
+          <label htmlFor="inputRg">RG:<input type="number" name='rg' className='inputRg' required /></label>
 
         </div>
         <div>
-          <label htmlFor="inputCpf">CPF:<input type="number" name='inputCpf' required /></label>
+          <label htmlFor="inputCpf">CPF:<input type="number" name='cpf' className='inputCpf' required /></label>
 
         </div>
       </div>
