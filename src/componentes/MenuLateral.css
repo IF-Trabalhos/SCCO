@@ -39,7 +39,7 @@
 
 .menu-item{
 	display: flex;
-	border-bottom: 0.15em solid;
+	border-bottom: 0.1em solid;
 	cursor: pointer;
 	height: 8.3vh;
 	align-items: center;
