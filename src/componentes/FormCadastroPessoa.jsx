@@ -1,6 +1,6 @@
 import React from 'react'
 import './FormCadastroPessoa.css'
-const FormCadastro = ({ labelDinamica }) => {
+const FormCadastroPessoa = ({ labelDinamica }) => {
   console.log(labelDinamica)
   return (
     <div className='container-cadastro'>
@@ -76,4 +76,4 @@ const FormCadastro = ({ labelDinamica }) => {
   )
 }
 
-export default FormCadastro
+export default FormCadastroPessoa
