@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React from "react";
 import './Agendamento.css'
 
 const Agendamento= ({trigger, infos, setBotaoFalse}) => {

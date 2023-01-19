@@ -5,6 +5,14 @@ import AddBotão from "./AddBotão";
 import { Link } from "react-router-dom";
 
 const TelaInicialGenerica = ({titulo, colunas , linhas}) => {
+
+    const generica = ["Paciente", "Dentista", "Recepcionista", "Convenio"];
+    const especialista = ["Especialidade", "Procedimento"];
+    let pessoa = ""
+    generica.includes(titulo) ? pessoa = "Generica" 
+    : especialista.includes(titulo) ? pessoa = "Especialista"
+    : pessoa = titulo
+
     return(
         <div className='container-principal-central'>
             <div className='cabeçalho-central'>
@@ -14,7 +22,7 @@ const TelaInicialGenerica = ({titulo, colunas , linhas}) => {
                 </Link>
             </div>
             <div className='conteudo-principal-central'>
-                <Tabela colunas={colunas} linhas={linhas} />
+                <Tabela pessoa={pessoa} colunas={colunas} linhas={linhas} />
             </div>
         </div>
     )

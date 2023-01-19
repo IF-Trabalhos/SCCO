@@ -1,7 +1,6 @@
 import React from "react";
 import './TelaInicialAgenda.css'
 import BarraDePesquisa from "./BarraDePesquisa";
-import { Link } from "react-router-dom";
 
 const TelaInicialAgenda = ({nomes, dentista, data_atual, setBotaoTrue, setConsultaValue}) => {
     return(
@@ -14,8 +13,8 @@ const TelaInicialAgenda = ({nomes, dentista, data_atual, setBotaoTrue, setConsul
                 <div className="agenda-barra-de-pesquisa">
                     <BarraDePesquisa />
                 </div>
-                {nomes.map(({nome, hora_inicial, hora_final}) => (
-                    <div className="agenda-horarios-info" onClick={() => {
+                {nomes.map(({id, nome, hora_inicial, hora_final}) => (
+                    <div key={id} className="agenda-horarios-info" onClick={() => {
                         setBotaoTrue(true)
                         setConsultaValue([nome, dentista, hora_inicial])
                     }} >
