@@ -1,5 +1,5 @@
 import React from 'react'
-import './FormCadastro.css'
+import './FormCadastroPessoa.css'
 const FormCadastro = ({ labelDinamica }) => {
   console.log(labelDinamica)
   return (
@@ -32,43 +32,43 @@ const FormCadastro = ({ labelDinamica }) => {
         <h3>ENDEREÇO</h3>
       <div className='linha1-endereco'>
         
-          <label htmlFor="inputCep">CEP:<input type="number" name='inputCep' className='cep' required /></label>
+          <label htmlFor="inputCep">CEP:<input type="number" name='cep' className='inputCep' required /></label>
 
-          <label htmlFor="inputUf">UF:<input type="text" name='inputUf' className='uf' required /></label>
+          <label htmlFor="inputUf">UF:<input type="text" name='uf' className='inputUf' required /></label>
 
      
-          <label htmlFor="inputCidade">Cidade:<input type="text" name='inputCidade' className='cidade' required /></label>
+          <label htmlFor="inputCidade">Cidade:<input type="text" name='cidade' className='inputCidade' required /></label>
 
       </div>
       <div className='linha2-endereco'>
-          <label htmlFor="inputLogradouro">Logradouro:<input type="text" name='inputLogradouro'className='logradouro' required /></label>
+          <label htmlFor="inputLogradouro">Logradouro:<input type="text" name='logradouro'className='inputLogradouro' required /></label>
 
       
     
-          <label htmlFor="inputNumero">Numero:<input type="text" name='inputNumero' className='numero' required /></label>
+          <label htmlFor="inputNumero">Numero:<input type="text" name='numero' className='inputNumero' required /></label>
 
       </div>
       <div className='linha3-endereco'>
-          <label htmlFor="inputBairro">Bairro:<input type="text" name='inputBairro' className='bairro' required /></label>
+          <label htmlFor="inputBairro">Bairro:<input type="text" name='bairro' className='inputBairro' required /></label>
           
         
 
         
-          <label htmlFor="inputComplemento">Complemento:<input type="text" name='inputComplemento' className='complemento' required /></label>
+          <label htmlFor="inputComplemento">Complemento:<input type="text" name='complemento' className='inputComplemento' required /></label>
 
      </div>   
     </div>
       <div className='contato'>
         <h3>CONTATO</h3>
         <div>       
-          <label htmlFor="inputEmail">E-mail:<input type="text" required name='inputEmail' /></label>
+          <label htmlFor="inputEmail">E-mail:<input type="text" required className='inputEmail' name='email' /></label>
 
   
-          <label htmlFor="inputCelular">Celular:<input type="text" required name='inputCelular' /></label>
+          <label htmlFor="inputCelular">Celular:<input type="text" className='inputCelular' required name='celular' /></label>
 
    
       
-          <label htmlFor="inputTelefone">Telefone:<input type="text" required name='inputTelefone' /></label>
+          <label htmlFor="inputTelefone">Telefone:<input type="text" className='inputTelefone' name='telefone' /></label>
 
         </div>
       </div>
