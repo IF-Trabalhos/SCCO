@@ -1,6 +1,36 @@
-import React from 'react'
+import axios from 'axios';
+import React, { useState } from 'react'
+import { BASE_URL } from '../config/axios';
 import './FormCadastroPessoa.css'
-const FormCadastroPessoa = ({ labelDinamica }) => {
+const FormCadastroPessoa = ({ labelDinamica, dados, setDados}) => {
+
+  const [id, setId] = useState('');
+  const [nome, setNome] = useState('');
+  const [cpf, setCpf] = useState('');
+  const [email, setEmail] = useState('');
+  const [telefone, setTelefone] = useState('');
+  const [rg, setRg] = useState('');
+  const [cep, setCep] = useState('');
+
+  async function salvar() {
+    let data = { id, nome, cpf, rg, telefone, email};
+    data = JSON.stringify(data);
+    await axios
+      .post(`${BASE_URL}/pessoas`, data, {
+        headers: { 'Content-Type': 'application/json' },
+      })
+      .then(function(response) {
+        let aux = dados;
+        let nova_pessoa = {id: id, nome: nome, cpf: cpf, rg: rg, telefone: telefone, email: email};
+        aux.push(nova_pessoa);
+        setDados(aux)
+        console.log("Sucesso")
+      })
+      .catch(function(error) {
+        console.log("Erro")
+      })
+  }
+
   console.log(labelDinamica)
   return (
     <div className='container-cadastro'>
@@ -10,21 +40,57 @@ const FormCadastroPessoa = ({ labelDinamica }) => {
         <h3>IDENTIFICAÇÃO</h3>
 
         <div>
-          <label htmlFor='inputNome'>Nome:<input type="text" name='inputNome' required /></label>
+          <label htmlFor='inputNome'>Nome:
+            <input 
+              type="text" 
+              name='inputNome' 
+              required
+              onChange={(e) => setNome(e.target.value)}
+               />
+          </label>
         </div>
         <div>
-          <label htmlFor={labelDinamica}>{labelDinamica}:<input type="number" className={labelDinamica} name={labelDinamica} required /></label>
+          <label htmlFor={labelDinamica}>{labelDinamica}:
+            <input 
+              type="number" 
+              className={labelDinamica} 
+              name={labelDinamica} 
+              required
+              />
+          </label>
         </div>
         <div>
-          <label htmlFor="innputDt-nascimento">Dt. Nascimento:<input type="date" className='inputDt-nascimento' name='dt-nascimento' required /></label>
+          <label htmlFor="innputDt-nascimento">Dt. Nascimento:
+            <input 
+              type="date" 
+              className='inputDt-nascimento' 
+              name='dt-nascimento' 
+              required />
+          </label>
 
         </div>
         <div>
-          <label htmlFor="inputRg">RG:<input type="number" name='rg' className='inputRg' required /></label>
+          <label htmlFor="inputRg">RG:
+            <input 
+              type="number" 
+              name='rg' 
+              className='inputRg' 
+              required
+              onChange={(e) => setRg(e.target.value)}
+              />
+          </label>
 
         </div>
         <div>
-          <label htmlFor="inputCpf">CPF:<input type="number" name='cpf' className='inputCpf' required /></label>
+          <label htmlFor="inputCpf">CPF:
+            <input 
+              type="number" 
+              name='cpf' 
+              className='inputCpf' 
+              required
+              onChange={(e) => setCpf(e.target.value)}
+              />
+          </label>
 
         </div>
       </div>
@@ -32,7 +98,15 @@ const FormCadastroPessoa = ({ labelDinamica }) => {
         <h3>ENDEREÇO</h3>
       <div className='linha1-endereco'>
         
-          <label htmlFor="inputCep">CEP:<input type="number" name='cep' className='inputCep' required /></label>
+          <label htmlFor="inputCep">CEP:
+            <input 
+              type="number" 
+              name='cep' 
+              className='inputCep' 
+              required
+              onChange={(e) => setCep(e.target.value)}
+              />
+          </label>
 
           <label htmlFor="inputUf">UF:<input type="text" name='uf' className='inputUf' required /></label>
 
@@ -61,15 +135,30 @@ const FormCadastroPessoa = ({ labelDinamica }) => {
       <div className='contato'>
         <h3>CONTATO</h3>
         <div>       
-          <label htmlFor="inputEmail">E-mail:<input type="text" required className='inputEmail' name='email' /></label>
+          <label htmlFor="inputEmail">E-mail:
+            <input 
+              type="text" 
+              required className='inputEmail' 
+              name='email'
+              onChange={(e) => setEmail(e.target.value)}
+              />
+          </label>
 
-  
-          <label htmlFor="inputCelular">Celular:<input type="text" className='inputCelular' required name='celular' /></label>
+          <label htmlFor="inputCelular">Celular:
+            <input 
+              type="text" 
+              className='inputCelular' 
+              required name='celular'
+              onChange={(e) => setTelefone(e.target.value)}
+              />
+          </label>
 
-   
-      
-          <label htmlFor="inputTelefone">Telefone:<input type="text" className='inputTelefone' name='telefone' /></label>
-
+          <label htmlFor="inputTelefone">Telefone:
+            <input 
+              type="text" 
+              className='inputTelefone' 
+              name='telefone' />
+          </label>
         </div>
       </div>
     </div>
