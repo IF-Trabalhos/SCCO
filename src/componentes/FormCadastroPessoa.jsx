@@ -1,14 +1,31 @@
+import axios from 'axios';
 import React, { useState } from 'react'
+import { BASE_URL } from '../config/axios';
 import './FormCadastroPessoa.css'
-const FormCadastroPessoa = ({ labelDinamica }) => {
+const FormCadastroPessoa = ({ labelDinamica}) => {
 
   const [id, setId] = useState('');
   const [nome, setNome] = useState('');
   const [cpf, setCpf] = useState('');
   const [email, setEmail] = useState('');
-  const [celular, setCelular] = useState('');
+  const [telefone, setTelefone] = useState('');
   const [rg, setRg] = useState('');
   const [cep, setCep] = useState('');
+
+  async function salvar() {
+    let data = { id, nome, cpf, rg, telefone, email};
+    data = JSON.stringify(data);
+    await axios
+      .post(`${BASE_URL}/pessoas`, data, {
+        headers: { 'Content-Type': 'application/json' },
+      })
+      .then(function(response) {
+        console.log("Sucesso")
+      })
+      .catch(function(error) {
+        console.log("Erro")
+      })
+  }
 
   console.log(labelDinamica)
   return (
@@ -128,7 +145,7 @@ const FormCadastroPessoa = ({ labelDinamica }) => {
               type="text" 
               className='inputCelular' 
               required name='celular'
-              onChange={(e) => setCelular(e.target.value)}
+              onChange={(e) => setTelefone(e.target.value)}
               />
           </label>
 
@@ -138,7 +155,7 @@ const FormCadastroPessoa = ({ labelDinamica }) => {
               className='inputTelefone' 
               name='telefone' />
           </label>
-
+          <button onClick={salvar}>Salvar</button>
         </div>
       </div>
     </div>
