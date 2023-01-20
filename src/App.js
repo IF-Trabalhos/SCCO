@@ -51,16 +51,19 @@ function App() {
 					<Route path='/paciente' element={<PaginaGenerica 
 					titulo="Paciente" coluna={colunaPessoa} linha={pessoa} />}/>
           			<Route path='/paciente/cadastro' element={<Cadastro titulo="Cadastro Paciente" 
-          			componenteCadastro={<FormCadastroPessoa labelDinamica = "N. Prontuario" />}/>}/>
+          			componenteCadastro={<FormCadastroPessoa labelDinamica = "N. Prontuario" 
+					dados={pessoa} setDados={setPessoa} />}/>}/>
 
 					<Route path='/dentista' element={<PaginaGenerica 
 					titulo="Dentista" coluna={colunaPessoa} linha={pessoa}  />}/>
           			<Route path='/dentista/cadastro' element={<Cadastro titulo="Cadastro Dentista" 
-          			componenteCadastro={<FormCadastroPessoa labelDinamica = "CRO"/>}/>}/>
+          			componenteCadastro={<FormCadastroPessoa labelDinamica = "CRO"
+					dados={pessoa} setDados={setPessoa}/>}/>}/>
 
 					<Route path='/recepcionista' element={<PaginaGenerica 
 					titulo="Recepcionista" coluna={colunaPessoa} linha={pessoa} />}/>
-          			<Route path='/recepcionista/cadastro' element={<Cadastro titulo="Cadastro Recepcionista"/>}/>
+          			<Route path='/recepcionista/cadastro' element={<Cadastro titulo="Cadastro Recepcionista"
+					dados={pessoa} setDados={setPessoa}/>}/>
 
 					<Route path='/procedimento' element={<PaginaGenerica 
 					titulo="Procedimento" coluna={colunaEspecialidade} linha={procedimento} />}/>

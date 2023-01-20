@@ -2,7 +2,7 @@ import axios from 'axios';
 import React, { useState } from 'react'
 import { BASE_URL } from '../config/axios';
 import './FormCadastroPessoa.css'
-const FormCadastroPessoa = ({ labelDinamica}) => {
+const FormCadastroPessoa = ({ labelDinamica, dados, setDados}) => {
 
   const [id, setId] = useState('');
   const [nome, setNome] = useState('');
@@ -20,6 +20,10 @@ const FormCadastroPessoa = ({ labelDinamica}) => {
         headers: { 'Content-Type': 'application/json' },
       })
       .then(function(response) {
+        let aux = dados;
+        let nova_pessoa = {id: id, nome: nome, cpf: cpf, rg: rg, telefone: telefone, email: email};
+        aux.push(nova_pessoa);
+        setDados(aux)
         console.log("Sucesso")
       })
       .catch(function(error) {
@@ -155,7 +159,6 @@ const FormCadastroPessoa = ({ labelDinamica}) => {
               className='inputTelefone' 
               name='telefone' />
           </label>
-          <button onClick={salvar}>Salvar</button>
         </div>
       </div>
     </div>
