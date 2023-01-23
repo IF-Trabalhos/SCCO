@@ -3,6 +3,7 @@ import './TelaInicialAgenda.css'
 import BarraDePesquisa from "./BarraDePesquisa";
 
 const TelaInicialAgenda = ({nomes, dentista, data_atual, setBotaoTrue, setConsultaValue}) => {
+    console.log(nomes)
     return(
         <div className='container-principal-agenda'>
             <div className="container-principal-agenda-cabeçalho">
@@ -13,13 +14,13 @@ const TelaInicialAgenda = ({nomes, dentista, data_atual, setBotaoTrue, setConsul
                 <div className="agenda-barra-de-pesquisa">
                     <BarraDePesquisa />
                 </div>
-                {nomes.map(({id, nome, hora_inicial, hora_final}) => (
+                {nomes.map(({id, hr_inicial, hr_final, nome_paciente, nome_dentista}) => (
                     <div key={id} className="agenda-horarios-info" onClick={() => {
                         setBotaoTrue(true)
-                        setConsultaValue([nome, dentista, hora_inicial])
+                        setConsultaValue([nome_paciente, nome_dentista, hr_inicial])
                     }} >
-                        <div className="agenda-horarios-info-hora">{hora_inicial} - {hora_final}</div>
-                        <div className="agenda-horarios-info-nome">{nome} </div>
+                        <div className="agenda-horarios-info-hora">{hr_inicial} - {hr_final}</div>
+                        <div className="agenda-horarios-info-nome">{nome_paciente} </div>
                     </div>
                 ))}
             </div>

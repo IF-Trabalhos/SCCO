@@ -20,6 +20,7 @@ function App() {
 	const [convenio, setConvenio] = useState([]);
 	const [especialidade, setEspecialidade] = useState([]);
 	const [procedimento, setProcedimento] = useState([]);
+	const [consulta, setConsultas] = useState([]);
 
 	async function buscar() {
 		await axios.get(`${BASE_URL}/pessoas`).then((response) => {
@@ -33,6 +34,9 @@ function App() {
 		})
 		await axios.get(`${BASE_URL}/procedimentos`).then((response) => {
 			setProcedimento(response.data);
+		})
+		await axios.get(`${BASE_URL}/consultas`).then((response) => {
+			setConsultas(response.data);
 		})
 	}
 
@@ -82,7 +86,7 @@ function App() {
           			<Route path='/convenio/cadastro' element={<Cadastro titulo="Cadastro Convenio" 
           			componenteCadastro={<FormCadastroConvenio/>}/>} />
 
-          			<Route path='/agenda' element={<Agenda />} />
+          			<Route path='/agenda' element={<Agenda consultas={consulta} />} />
 					<Route path='/financeiro' element={<Financeiro />} />
 					<Route path='/financeiro/paciente' element={<PaginaGenerica 
 					titulo="Fatura Paciente" coluna={colunaFaturaPaciente} 
