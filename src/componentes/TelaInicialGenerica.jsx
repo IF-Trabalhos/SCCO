@@ -4,7 +4,7 @@ import Tabela from "./Tabela";
 import AddBotão from "./AddBotão";
 import { Link } from "react-router-dom";
 
-const TelaInicialGenerica = ({titulo, colunas , linhas}) => {
+const TelaInicialGenerica = ({titulo, colunas , linhas, setInfo}) => {
 
     const generica = ["Paciente", "Dentista", "Recepcionista", "Convenio"];
     const especialista = ["Especialidade", "Procedimento"];
@@ -17,12 +17,12 @@ const TelaInicialGenerica = ({titulo, colunas , linhas}) => {
         <div className='container-principal-central'>
             <div className='cabeçalho-central'>
                 <BarraDePesquisa />
-                <Link className="add-botão" to={"cadastro"}>
+                <Link onClick={() => setInfo([{}])} className="add-botão" to={"cadastro"}>
                     Adicionar {titulo}
                 </Link>
             </div>
             <div className='conteudo-principal-central'>
-                <Tabela pessoa={pessoa} colunas={colunas} linhas={linhas} />
+                <Tabela pessoa={pessoa} colunas={colunas} linhas={linhas} setInfo={setInfo}/>
             </div>
         </div>
     )

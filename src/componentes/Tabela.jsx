@@ -1,7 +1,17 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 import './Tabela.css'
 
-const Tabela = ({pessoa, colunas, linhas}) => {
+const Tabela = ({pessoa, colunas, linhas, setInfo}) => {
+    const navigate = useNavigate();
+
+    const editar = (atual, id) => {
+        let value = id - 1
+        console.log(atual[value])
+        setInfo([atual[value]])
+        navigate("cadastro");
+    };
+
     return(
         <table className="tabela-principal">
             <tr>
@@ -10,7 +20,7 @@ const Tabela = ({pessoa, colunas, linhas}) => {
                 ))}
             </tr>
             {pessoa === "Generica" ? linhas.map(({id, nome, email, telefone}) => (
-                <tr key={id} className="tabela-conteudo">
+                <tr onClick={() => editar(linhas, id)} key={id} className="tabela-conteudo">
                     <td className="borda-lateral">{nome}</td>
                     <td className="borda-lateral">{email}</td>
                     <td>{telefone}</td>

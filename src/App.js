@@ -21,6 +21,7 @@ function App() {
 	const [especialidade, setEspecialidade] = useState([]);
 	const [procedimento, setProcedimento] = useState([]);
 	const [consulta, setConsultas] = useState([]);
+	const [atualInfo, setAtualInfo] = useState([{}]);
 
 	async function buscar() {
 		await axios.get(`${BASE_URL}/pessoas`).then((response) => {
@@ -53,21 +54,21 @@ function App() {
 					titulo={"Home"} coluna={colunaPessoa} linha={pessoa} />}/>
           
 					<Route path='/paciente' element={<PaginaGenerica 
-					titulo="Paciente" coluna={colunaPessoa} linha={pessoa} />}/>
+					titulo="Paciente" coluna={colunaPessoa} linha={pessoa} setInfo={setAtualInfo} />}/>
           			<Route path='/paciente/cadastro' element={<Cadastro titulo="Cadastro Paciente" 
           			componenteCadastro={<FormCadastroPessoa labelDinamica = "N. Prontuario" 
-					dados={pessoa} setDados={setPessoa} />}/>}/>
+					dados={pessoa} setDados={setPessoa} info={atualInfo} />}/>}/>
 
 					<Route path='/dentista' element={<PaginaGenerica 
-					titulo="Dentista" coluna={colunaPessoa} linha={pessoa}  />}/>
+					titulo="Dentista" coluna={colunaPessoa} linha={pessoa} setInfo={setAtualInfo} />}/>
           			<Route path='/dentista/cadastro' element={<Cadastro titulo="Cadastro Dentista" 
           			componenteCadastro={<FormCadastroPessoa labelDinamica = "CRO"
-					dados={pessoa} setDados={setPessoa}/>}/>}/>
+					dados={pessoa} setDados={setPessoa} info={atualInfo}/>}/>}/>
 
 					<Route path='/recepcionista' element={<PaginaGenerica 
-					titulo="Recepcionista" coluna={colunaPessoa} linha={pessoa} />}/>
+					titulo="Recepcionista" coluna={colunaPessoa} linha={pessoa} setInfo={setAtualInfo} />}/>
           			<Route path='/recepcionista/cadastro' element={<Cadastro titulo="Cadastro Recepcionista"
-					dados={pessoa} setDados={setPessoa}/>}/>
+					dados={pessoa} setDados={setPessoa} info={atualInfo}/>}/>
 
 					<Route path='/procedimento' element={<PaginaGenerica 
 					titulo="Procedimento" coluna={colunaEspecialidade} linha={procedimento} />}/>

@@ -2,7 +2,7 @@ import axios from 'axios';
 import React, { useState } from 'react'
 import { BASE_URL } from '../config/axios';
 import './FormCadastroPessoa.css'
-const FormCadastroPessoa = ({ labelDinamica, dados, setDados}) => {
+const FormCadastroPessoa = ({ labelDinamica, dados, setDados, info}) => {
 
   const [id, setId] = useState('');
   const [nome, setNome] = useState('');
@@ -44,6 +44,7 @@ const FormCadastroPessoa = ({ labelDinamica, dados, setDados}) => {
             <input 
               type="text" 
               name='inputNome' 
+              value={info[0].nome}
               required
               onChange={(e) => setNome(e.target.value)}
                />
@@ -65,6 +66,7 @@ const FormCadastroPessoa = ({ labelDinamica, dados, setDados}) => {
               type="date" 
               className='inputDt-nascimento' 
               name='dt-nascimento' 
+              value={info[0].dat_nascimento}
               required />
           </label>
 
@@ -75,6 +77,7 @@ const FormCadastroPessoa = ({ labelDinamica, dados, setDados}) => {
               type="number" 
               name='rg' 
               className='inputRg' 
+              value={info[0].rg}
               required
               onChange={(e) => setRg(e.target.value)}
               />
@@ -88,6 +91,7 @@ const FormCadastroPessoa = ({ labelDinamica, dados, setDados}) => {
               name='cpf' 
               className='inputCpf' 
               required
+              value={info[0].cpf}
               onChange={(e) => setCpf(e.target.value)}
               />
           </label>
@@ -140,6 +144,7 @@ const FormCadastroPessoa = ({ labelDinamica, dados, setDados}) => {
               type="text" 
               required className='inputEmail' 
               name='email'
+              value={info[0].email}
               onChange={(e) => setEmail(e.target.value)}
               />
           </label>
@@ -156,7 +161,8 @@ const FormCadastroPessoa = ({ labelDinamica, dados, setDados}) => {
           <label htmlFor="inputTelefone">Telefone:
             <input 
               type="text" 
-              className='inputTelefone' 
+              className='inputTelefone'
+              value={info[0].telefone} 
               name='telefone' />
           </label>
         </div>
