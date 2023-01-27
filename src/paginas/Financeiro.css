@@ -12,29 +12,22 @@
 }
 
 .caixa-financas{
-    height: 15vh;
+    height: 12vh;
     width: 30%;
     text-align: center;
     display: grid;
     align-items: center;
     font-size: 1.6em;
-    border: 1px solid black;
-    border-radius: 10px;
+    border: 1px solid rgb(93, 242, 255);
+    border-radius: 30px;
     cursor: pointer;
-}
+    transition: all 0.5s;
 
-#caixa-paciente{
-    background-color: green;
+    background-color: #018b12;
+    background-image: linear-gradient(43deg, #018b12 0%, #f2ff66 46%, #09c102 100%);
+    
 }
-
-#caixa-convenio{
-    background-color: aqua;
-}
-
-#caixa-mensal{
-    background-color: red;
-}
-
-#caixa-recorrente{
-    background-color: purple;
+.caixa-financas:hover{
+    -webkit-transform: scale(1.2);
+    transform: scale(1.1);
 }
