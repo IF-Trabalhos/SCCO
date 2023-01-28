@@ -1,6 +1,7 @@
 import axios from 'axios';
 import React, { useState } from 'react'
 import { BASE_URL } from '../config/axios';
+import BotãoSalvar from './BotãoSalvar';
 import './FormCadastroPessoa.css'
 const FormCadastroPessoa = ({ labelDinamica, dados, setDados}) => {
 
@@ -161,6 +162,7 @@ const FormCadastroPessoa = ({ labelDinamica, dados, setDados}) => {
           </label>
         </div>
       </div>
+      <BotãoSalvar/>
     </div>
   )
 }
