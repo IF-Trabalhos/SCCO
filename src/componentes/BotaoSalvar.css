@@ -1,9 +1,12 @@
-.botaoSalvar{border-radius: 10px;
+.botao{border-radius: 10px;
     margin-right: 2.5%;
-    width: 20%;
-    height: 8vh;
+    margin-left: 1.5%;
+    width: 15%;
+    height: 6vh;
     font-size: 20px;
-    cursor: pointer}
+    cursor: pointer;
+    margin-top: 1.5%;
+}
 .container-botao{
     width: 65%;
 }
