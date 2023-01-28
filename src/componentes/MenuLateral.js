@@ -62,7 +62,7 @@ const MenuLateral = () => {
 			id: "10",
 			texto: "RELATÓRIOS",
 			icone: "icones/relatorio.svg",
-			link: "/"
+			link: "/relatorio"
 		},
 	];
 	return (

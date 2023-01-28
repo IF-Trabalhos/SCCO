@@ -17,6 +17,8 @@ import {
 }
 	from './data/tabela_info';
 import Financeiro from './paginas/Financeiro';
+import RelatorioInicial from './paginas/RelatorioInicial';
+import PaginaGenericaRelatorio from './componentes/PaginaGenericaRelatorio';
 
 function App() {
 	const [pessoa, setPessoa] = useState([]);
@@ -116,6 +118,17 @@ function App() {
 					<Route path='/financeiro/recorrente/cadastro' element={<Cadastro
 						titulo="Financeiro" componenteCadastro={<FormCadastroFatura primeiroInput={"Despesa:"}
 							segundoInput={"Quantidade:"}/>} />} />
+
+					<Route path='/relatorio' element={<RelatorioInicial/>}/>
+					<Route path='relatorio/clinica' element={<PaginaGenericaRelatorio titulo={"Relatorio Clinica"} colunas={colunaDespesa}
+					linhas={pessoa}/>}/>
+					<Route path='/relatorio/clinica/cadastro'/>
+					<Route path='relatorio/paciente' element={<PaginaGenericaRelatorio titulo={"Relatorio Paciente"} colunas={colunaDespesa}
+					linhas={pessoa}/>}/>
+					<Route path='relatorio/dentista' element={<PaginaGenericaRelatorio titulo={"Relatorio Dentista"} colunas={colunaDespesa}
+					linhas={pessoa}/>}/>
+					<Route path='relatorio/convenio'element={<PaginaGenericaRelatorio titulo={"Relatorio Dentista"} colunas={colunaDespesa}
+					linhas={pessoa}/>}/>
 				</Routes>
 			</div>
 		</BrowserRouter>
