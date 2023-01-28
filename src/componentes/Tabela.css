@@ -4,15 +4,19 @@
     border-collapse: collapse;
     margin-top: 2%;
     margin-right: 10%;
-    font-size: 1em;
+    font-size: 1.2em;
+    
 }
 
 .tabela-principal th, td{
     padding-top: 0.5%;
 }
+.tabela-conteudo{
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
 
 .tabela-conteudo:hover{
-    background-color: rgb(223, 223, 223);
+    background-color: rgb(130, 196, 100);
     cursor: pointer;
 }
 

@@ -1,5 +1,4 @@
 .corpo-financas{
-    background-color: white;
     margin-top: 1vh;
     margin-left: 5%;
     border: 2px solid;
@@ -9,6 +8,7 @@
     display: grid;
     align-items: center;
     justify-items: center;
+    background-color: #fefefe;
 }
 
 .caixa-financas{
@@ -17,15 +17,16 @@
     text-align: center;
     display: grid;
     align-items: center;
-    font-size: 1.6em;
-    border: 1px solid rgb(93, 242, 255);
+    font-size: 1.8em;
+    border: 1px solid rgb(0, 188, 41);
     border-radius: 30px;
     cursor: pointer;
     transition: all 0.5s;
-
     background-color: #018b12;
-    background-image: linear-gradient(43deg, #018b12 0%, #f2ff66 46%, #09c102 100%);
-    
+    background-image: linear-gradient(43deg, #058314 0%, #7eff2d 46%, #13cc70 100%);
+    font-family: 'Poppins', sans-serif;
+
+
 }
 .caixa-financas:hover{
     -webkit-transform: scale(1.2);
