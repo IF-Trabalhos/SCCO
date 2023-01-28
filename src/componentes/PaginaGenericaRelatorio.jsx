@@ -11,18 +11,21 @@ const PaginaGenericaRelatorio = ({ titulo, pessoa, colunas, linhas }) => {
         <h1>{titulo}</h1>
       </div>
       <div className='container-principal-central'>
+        <div className='periodo'>
+
+          <label htmlFor="dt-inicio" >DE:
+            <input type="date"/>
+          </label>
+          <label htmlFor="dt-fim">ATÉ:
+            <input type="date"/>
+          </label>
+
+        </div>
         <div className='cabeçalho-central'>
-          <div>
-            <label htmlFor="dt-inicio">DE:
-            <input type="date"/></label>
-            <label htmlFor="dt-fim">ATÉ:
-            <input type="date"/></label>
-          
-            <BarraDePesquisa />
-            <Link className="add-botão" to={"cadastro"}>
-              Adicionar {titulo}
-            </Link>
-          </div>
+          <BarraDePesquisa />
+          <Link className="add-botão" to={"cadastro"}>
+            Adicionar {titulo}
+          </Link>
         </div>
         <div className='conteudo-principal-central'>
           <Tabela pessoa={pessoa} colunas={colunas} linhas={linhas} />
