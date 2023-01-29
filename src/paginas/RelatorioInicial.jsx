@@ -18,7 +18,7 @@ const RelatorioInicial = () => {
                 <Link className="caixa-relatorio" id="caixa-mensal"
                     to={"dentista"}>
                     Dentista</Link>
-                <Link className="caixa-relatorio" id="caixa-recorrente"
+                    <Link className="caixa-relatorio" id="caixa-recorrente"
                     to={"convenio"}>
                     Convênio</Link>
             </div>

@@ -14,10 +14,10 @@ const PaginaGenericaRelatorio = ({ titulo, pessoa, colunas, linhas }) => {
         <div className='periodo'>
 
           <label htmlFor="dt-inicio" >DE:
-            <input type="date"/>
+            <input type="date" />
           </label>
           <label htmlFor="dt-fim">ATÉ:
-            <input type="date"/>
+            <input type="date" />
           </label>
 
         </div>

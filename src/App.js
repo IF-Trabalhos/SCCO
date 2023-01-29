@@ -127,7 +127,7 @@ function App() {
 					linhas={pessoa}/>}/>
 					<Route path='relatorio/dentista' element={<PaginaGenericaRelatorio titulo={"Relatorio Dentista"} colunas={colunaDespesa}
 					linhas={pessoa}/>}/>
-					<Route path='relatorio/convenio'element={<PaginaGenericaRelatorio titulo={"Relatorio Dentista"} colunas={colunaDespesa}
+					<Route path='relatorio/convenio'element={<PaginaGenericaRelatorio titulo={"Relatorio Convênio"} colunas={colunaDespesa}
 					linhas={pessoa}/>}/>
 				</Routes>
 			</div>
