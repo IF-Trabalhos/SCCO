@@ -1,4 +1,4 @@
-.corpo-financas{
+.corpo-relatorio{
     margin-top: 1vh;
     margin-left: 5%;
     border: 2px solid;
@@ -11,7 +11,7 @@
     background-color: #fefefe;
 }
 
-.caixa-financas{
+.caixa-relatorio{
     height: 12vh;
     width: 30%;
     text-align: center;
@@ -28,7 +28,17 @@
 
 
 }
-.caixa-financas:hover{
-    -webkit-transform: scale(1.2);
-    transform: scale(1.1);
+input[type="date"] {
+    align-items: center;
+    display: inline-flex;
+    font-family: monospace;
+    padding-inline-start: 1px;
+    cursor: default;
+    overflow: hidden;
+    padding: 0px;
+}
+label{
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 1.2em;
+    margin-right: 1em;
 }

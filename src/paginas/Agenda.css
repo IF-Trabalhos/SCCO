@@ -39,6 +39,6 @@
 }
 
 .agenda-config-conteudo div:hover{
-    background-color: rgb(179, 179, 179);
+    background-color: rgba(19, 152, 7, 0.68);
     cursor: pointer;
 }

@@ -1,4 +1,5 @@
 import React from "react";
+import BotãoSalvar from "../componentes/BotãoSalvar";
 import './Agendamento.css'
 
 const Agendamento= ({trigger, infos, setBotaoFalse}) => {
@@ -28,12 +29,7 @@ const Agendamento= ({trigger, infos, setBotaoFalse}) => {
                         <input type="email" />
                     </div>
                     <div className="corpo-consulta-linha-botoes">
-                        <button type="button" id="botao-excluir" onClick={() => {
-                                    setBotaoFalse(false)
-                                }} >Excluir</button>
-                        <button type="button" id="botao-salvar" onClick={() => {
-                                    setBotaoFalse(false)
-                                }}>Salvar</button>
+                        <BotãoSalvar trigger ={trigger} setBotaoFalse = {setBotaoFalse} infos ={infos}/>
                     </div>
                 </div>
             </div>
