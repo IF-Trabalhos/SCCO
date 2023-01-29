@@ -2,95 +2,31 @@ import React, {useState} from "react";
 import TelaInicialAgenda from "../componentes/TelaInicialAgenda";
 import './Agenda.css'
 import Agendamento from "./Agendamento";
+import Calendar from 'moedim';
 
-const Agenda= () => {
-    const consultas1 =[
-        {
-            id: "1",
-            nome: "Paciente 1",
-            hora_inicial: "08:00",    
-            hora_final: "09:00"   
-        },
-        {
-            id: "2",
-            nome: "",
-            hora_inicial: "09:00",    
-            hora_final: "10:00"     
-        },
-        {
-            id: "3",
-            nome: "",
-            hora_inicial: "10:00",    
-            hora_final: "11:00"           
-        },
-        {
-            id: "4",
-            nome: "Paciente 4",
-            hora_inicial: "11:00",    
-            hora_final: "12:00"   
-        },
-    ]
-
-    const consultas2 =[
-        {
-            id: "1",
-            nome: "Paciente 1",
-            hora_inicial: "08:00",    
-            hora_final: "09:00"   
-        },
-        {
-            id: "2",
-            nome: "Paciente 2",
-            hora_inicial: "09:00",    
-            hora_final: "10:00"     
-        },
-        {
-            id: "3",
-            nome: "Paciente 3",
-            hora_inicial: "10:00",    
-            hora_final: "11:00"           
-        },
-        {
-            id: "4",
-            nome: "Paciente 4",
-            hora_inicial: "11:00",    
-            hora_final: "12:00"   
-        },
-        {
-            id: "5",
-            nome: "Paciente 5",
-            hora_inicial: "12:00",    
-            hora_final: "13:00"   
-        },
-    ]
-
+const Agenda= ({consultas}) => {
     const dentistas =[
         {
             id: "1",
-            nome: "Dentista 1",
-            consultas: consultas1
+            nome: "Giuliano de Souza Leite",
         },
         {
             id: "2",
-            nome: "Dentista 2",
-            consultas: consultas2
+            nome: "Fernando Souza Pimenta",
         },
         {
             id: "3",
-            nome: "Dentista 3",
-            consultas: consultas1
-        },
-        {
-            id: "4",
-            nome: "Dentista 4",           
-            consultas: consultas2
+            nome: "Igor Rosa Pinto",
         },
     ]
 
-    const [agenda, setAgenda] = useState("Dentista 1");
-    const [consultas, setConsultas] = useState(consultas1);
+    const [agenda, setAgenda] = useState("Giuliano de Souza Leite");
     const [botaoPopup, setBotaoPopup] = useState(false);
     const [agendamentoInfo, setAgendamentoInfo] = useState([{nome: "", dentista: ""}]);
+    const [data, setData] = useState(new Date())
+    const meses = ["Janeiro", "Fevereiro", "Março", "Abril", "Maio", "Junho", "Julho",
+                   "Agosto", "Setembro", "Outubro", "Novembro", "Dezembro"];
+    const dia = data.getDate() + " de " + meses[data.getMonth()]
 
     return(
         <div className="conteudo-principal">
@@ -98,21 +34,21 @@ const Agenda= () => {
                 <h1>Agenda</h1>
             </div>
             <div className='corpo-agenda'>
-                <TelaInicialAgenda nomes={consultas} dentista={agenda} data_atual={"6 de Janeiro"} setBotaoTrue={setBotaoPopup}
+                <TelaInicialAgenda nomes={consultas} dentista={agenda} data_atual={dia} setBotaoTrue={setBotaoPopup}
                 setConsultaValue={setAgendamentoInfo} />
                 <div className="container-lateral-agenda">
                     <div className="calendario">
+                        <Calendar locale="pt-BR" value={data} onChange={(d) => setData(d)} />
                     </div>
                     <div className="agenda-config">
                         <div className="agenda-config-cabeçalho">
                             <h1>Agendas</h1>
                         </div>
                         <div className="agenda-config-conteudo">
-                            {dentistas.map(({id, nome, consultas}) => (
+                            {dentistas.map(({id, nome}) => (
                                 <div key={id}
                                 onClick={() => {
                                     setAgenda(nome)
-                                    setConsultas(consultas)
                                 }} 
                                 >{nome}</div>
                             ))}

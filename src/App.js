@@ -25,6 +25,8 @@ function App() {
 	const [convenio, setConvenio] = useState([]);
 	const [especialidade, setEspecialidade] = useState([]);
 	const [procedimento, setProcedimento] = useState([]);
+	const [consulta, setConsultas] = useState([]);
+	const [atualInfo, setAtualInfo] = useState([{}]);
 
 	async function buscar() {
 		await axios.get(`${BASE_URL}/pessoas`).then((response) => {
@@ -39,6 +41,9 @@ function App() {
 		await axios.get(`${BASE_URL}/procedimentos`).then((response) => {
 			setProcedimento(response.data);
 		})
+		await axios.get(`${BASE_URL}/consultas`).then((response) => {
+			setConsultas(response.data);
+		})
 	}
 
 	useEffect(() => {
@@ -51,45 +56,44 @@ function App() {
 				<MenuLateral />
 				<Routes>
 					<Route path='/' element={<PaginaGenerica
-						titulo={"Home"} coluna={colunaPessoa} linha={pessoa} />} />
+					titulo={"Home"} coluna={colunaPessoa} linha={pessoa} />}/>
+          
+					<Route path='/paciente' element={<PaginaGenerica 
+					titulo="Paciente" coluna={colunaPessoa} linha={pessoa} setInfo={setAtualInfo} />}/>
+          			<Route path='/paciente/cadastro' element={<Cadastro titulo="Cadastro Paciente" 
+          			componenteCadastro={<FormCadastroPessoa labelDinamica = "N. Prontuario" 
+					dados={pessoa} setDados={setPessoa} info={atualInfo} />}/>}/>
 
-					<Route path='/paciente' element={<PaginaGenerica
-						titulo="Paciente" coluna={colunaPessoa} linha={pessoa} />} />
-					<Route path='/paciente/cadastro' element={<Cadastro titulo="Cadastro Paciente"
-						componenteCadastro={<FormCadastroPessoa labelDinamica="N. Prontuario"
-							dados={pessoa} setDados={setPessoa} />} />} />
+					<Route path='/dentista' element={<PaginaGenerica 
+					titulo="Dentista" coluna={colunaPessoa} linha={pessoa} setInfo={setAtualInfo} />}/>
+          			<Route path='/dentista/cadastro' element={<Cadastro titulo="Cadastro Dentista" 
+          			componenteCadastro={<FormCadastroPessoa labelDinamica = "CRO"
+					dados={pessoa} setDados={setPessoa} info={atualInfo}/>}/>}/>
 
-					<Route path='/dentista' element={<PaginaGenerica
-						titulo="Dentista" coluna={colunaPessoa} linha={pessoa} />} />
-					<Route path='/dentista/cadastro' element={<Cadastro titulo="Cadastro Dentista"
-						componenteCadastro={<FormCadastroPessoa labelDinamica="CRO"
-							dados={pessoa} setDados={setPessoa} />} />} />
+					<Route path='/recepcionista' element={<PaginaGenerica 
+					titulo="Recepcionista" coluna={colunaPessoa} linha={pessoa} setInfo={setAtualInfo} />}/>
+          			<Route path='/recepcionista/cadastro' element={<Cadastro titulo="Cadastro Recepcionista"
+					dados={pessoa} setDados={setPessoa} info={atualInfo}/>}/>
 
-					<Route path='/recepcionista' element={<PaginaGenerica
-						titulo="Recepcionista" coluna={colunaPessoa} linha={pessoa} />} />
-					<Route path='/recepcionista/cadastro' element={<Cadastro titulo="Cadastro Recepcionista"
-						dados={pessoa} setDados={setPessoa} componenteCadastro={<FormCadastroPessoa labelDinamica={"N. PIS"} />} />} />
+					<Route path='/procedimento' element={<PaginaGenerica 
+					titulo="Procedimento" coluna={colunaEspecialidade} linha={procedimento} />}/>
+          			<Route path='/procedimento/cadastro' element={<Cadastro titulo="Cadastro Procedimento" 
+          			componenteCadastro={<FormCadastroItem></FormCadastroItem>} />}/>
 
-					<Route path='/procedimento' element={<PaginaGenerica
-						titulo="Procedimento" coluna={colunaEspecialidade} linha={procedimento} />} />
-					<Route path='/procedimento/cadastro' element={<Cadastro titulo="Cadastro Procedimento"
-						componenteCadastro={<FormCadastroItem></FormCadastroItem>} />} />
-
-					<Route path='/especialidade' element={<PaginaGenerica
-						titulo="Especialidade" coluna={colunaEspecialidade} linha={especialidade} />} />
-					<Route path='/especialidade/cadastro' element={<Cadastro titulo="Cadastro Especialidade" componenteCadastro={<FormCadastroItem>
+					<Route path='/especialidade' element={<PaginaGenerica 
+					titulo="Especialidade" coluna={colunaEspecialidade} linha={especialidade} />} />
+          			<Route path='/especialidade/cadastro' element={<Cadastro titulo="Cadastro Especialidade" componenteCadastro={<FormCadastroItem>
 						<label htmlFor="inputEspecialidade">Especialidade:</label><input type="text" name='especialidade' required htmlFor="inputEspecialidade" />
 						<br />
-					</FormCadastroItem>} />} />
+					</FormCadastroItem>}/>} />
+          
+					<Route path='/convenio' element={<PaginaGenerica 
+					titulo="Convenio" coluna={colunaPessoa} linha={convenio} />} />
+          			<Route path='/convenio/cadastro' element={<Cadastro titulo="Cadastro Convenio" 
+          			componenteCadastro={<FormCadastroConvenio/>}/>} />
 
-					<Route path='/convenio' element={<PaginaGenerica
-						titulo="Convenio" coluna={colunaPessoa} linha={convenio} />} />
-					<Route path='/convenio/cadastro' element={<Cadastro titulo="Cadastro Convenio"
-						componenteCadastro={<FormCadastroConvenio />} />} />
-
-					<Route path='/agenda' element={<Agenda />} />
-
-
+          			<Route path='/agenda' element={<Agenda consultas={consulta} />} />
+                
 					<Route path='/financeiro' element={<Financeiro />} />
 					<Route path='/financeiro/paciente' element={<PaginaGenerica
 						titulo="Fatura Paciente" coluna={colunaFaturaPaciente}
