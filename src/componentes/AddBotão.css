@@ -1,13 +1,17 @@
 .add-botão{
     margin-top: 4vh;
-    background-color: green;
+    background-color: #9cff8b;
+background-image: linear-gradient(45deg, #9cff8b 0%, #28a200 52%, #5dffc3 90%);
     border: 2px solid;
     border-radius: 10px;
     width: 20%;
     height: 7vh;
-    font-size: 1.2em;
+    font-size: 1.1em;
     cursor: pointer;
     text-align: center;
     display: grid;
     align-items: center;
+    font-family: 'Poppins', sans-serif;
+
 }
+ 

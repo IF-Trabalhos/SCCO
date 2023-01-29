@@ -1,12 +1,15 @@
 import React, { useState } from 'react'
 import axios from 'axios';
 import { BASE_URL } from '../config/axios';
+import BotãoSalvar from './BotãoSalvar';
 
 const FormCadastroConvenio = () => {
 
   const[id, setId] = useState('');
   const[nome, setNome] = useState('');
   const[ans, setAns] = useState('');
+  const [botaoPopup, setBotaoPopup] = useState(false);
+  
 
   async function salvar() {
     let data = { id, nome, ans};
@@ -42,7 +45,7 @@ const FormCadastroConvenio = () => {
           onChange={(e) => setAns(e.target.value)} 
         />
       </label>
-    
+      <BotãoSalvar trigger={botaoPopup} setBotaoFalse = {setBotaoPopup}/>
     </div>
   )
 }

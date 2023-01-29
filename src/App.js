@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React, { useEffect, useState } from 'react';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import './App.css'
 import FormCadastroConvenio from './componentes/FormCadastroConvenio';
@@ -8,12 +8,17 @@ import MenuLateral from './componentes/MenuLateral';
 import Agenda from './paginas/Agenda'
 import Cadastro from './paginas/Cadastro';
 import PaginaGenerica from './paginas/PaginaGenerica';
+import FormCadastroFatura from './componentes/FormCadastroFatura';
 import axios from 'axios';
 import { BASE_URL } from './config/axios';
-import {colunaPessoa, colunaEspecialidade, colunaDespesa,
-colunaFaturaConvenio, colunaFaturaPaciente} 
-from './data/tabela_info';
+import {
+	colunaPessoa, colunaEspecialidade, colunaDespesa,
+	colunaFaturaConvenio, colunaFaturaPaciente
+}
+	from './data/tabela_info';
 import Financeiro from './paginas/Financeiro';
+import RelatorioInicial from './paginas/RelatorioInicial';
+import PaginaGenericaRelatorio from './componentes/PaginaGenericaRelatorio';
 
 function App() {
 	const [pessoa, setPessoa] = useState([]);
@@ -88,19 +93,46 @@ function App() {
           			componenteCadastro={<FormCadastroConvenio/>}/>} />
 
           			<Route path='/agenda' element={<Agenda consultas={consulta} />} />
+                
 					<Route path='/financeiro' element={<Financeiro />} />
-					<Route path='/financeiro/paciente' element={<PaginaGenerica 
-					titulo="Fatura Paciente" coluna={colunaFaturaPaciente} 
-					linha={pessoa}/>} />
-					<Route path='/financeiro/convenio' element={<PaginaGenerica 
-					titulo="Fatura Convenio" coluna={colunaFaturaConvenio} 
-					linha={convenio}/>} />
-					<Route path='/financeiro/mensal' element={<PaginaGenerica 
-					titulo="Despesa Mensal" coluna={colunaDespesa} 
-					linha={pessoa}/>} />
-					<Route path='/financeiro/recorrente' element={<PaginaGenerica 
-					titulo="Despesa Recorrente" coluna={colunaDespesa} 
-					linha={pessoa}/>} />
+					<Route path='/financeiro/paciente' element={<PaginaGenerica
+						titulo="Fatura Paciente" coluna={colunaFaturaPaciente}
+						linha={pessoa} />} />
+					<Route path='/financeiro/paciente/cadastro' element={<Cadastro
+						titulo="Financeiro" componenteCadastro={<FormCadastroFatura primeiroInput={"Paciente:"}
+							segundoInput={"Procedimentos:"}/>} />} />
+
+					<Route path='/financeiro/convenio' element={<PaginaGenerica
+						titulo="Fatura Convenio" coluna={colunaFaturaConvenio}
+						linha={convenio} />} />
+
+					<Route path='/financeiro/convenio/cadastro' element={<Cadastro
+						titulo="Financeiro" componenteCadastro={<FormCadastroFatura primeiroInput={"Paciente:"}
+							segundoInput={"Procedimentos:"}/>} />} />
+
+					<Route path='/financeiro/mensal' element={<PaginaGenerica
+						titulo="Despesa Mensal" coluna={colunaDespesa}
+						linha={pessoa} />} />
+					<Route path='/financeiro/mensal/cadastro' element={<Cadastro
+						titulo="Financeiro" componenteCadastro={<FormCadastroFatura primeiroInput={"Despesa fixa:"}
+							segundoInput={"Dt_Limite:"}/>} />} />
+					<Route path='/financeiro/recorrente' element={<PaginaGenerica
+						titulo="Despesa Recorrente" coluna={colunaDespesa}
+						linha={pessoa} />} />
+					<Route path='/financeiro/recorrente/cadastro' element={<Cadastro
+						titulo="Financeiro" componenteCadastro={<FormCadastroFatura primeiroInput={"Despesa:"}
+							segundoInput={"Quantidade:"}/>} />} />
+
+					<Route path='/relatorio' element={<RelatorioInicial/>}/>
+					<Route path='relatorio/clinica' element={<PaginaGenericaRelatorio titulo={"Relatorio Clinica"} colunas={colunaDespesa}
+					linhas={pessoa}/>}/>
+					<Route path='/relatorio/clinica/cadastro'/>
+					<Route path='relatorio/paciente' element={<PaginaGenericaRelatorio titulo={"Relatorio Paciente"} colunas={colunaDespesa}
+					linhas={pessoa}/>}/>
+					<Route path='relatorio/dentista' element={<PaginaGenericaRelatorio titulo={"Relatorio Dentista"} colunas={colunaDespesa}
+					linhas={pessoa}/>}/>
+					<Route path='relatorio/convenio'element={<PaginaGenericaRelatorio titulo={"Relatorio Convênio"} colunas={colunaDespesa}
+					linhas={pessoa}/>}/>
 				</Routes>
 			</div>
 		</BrowserRouter>
