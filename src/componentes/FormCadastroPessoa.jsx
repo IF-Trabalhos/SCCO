@@ -1,9 +1,12 @@
 import axios from 'axios';
 import React, { useState } from 'react'
+import { useNavigate } from 'react-router';
 import { BASE_URL } from '../config/axios';
 import BotãoSalvar from './BotãoSalvar';
 import './FormCadastroPessoa.css'
-const FormCadastroPessoa = ({ labelDinamica, dados, setDados, info}) => {
+const FormCadastroPessoa = ({ labelDinamica, dados, setDados, info, rota}) => {
+
+  const navigate = useNavigate()
 
   const [id, setId] = useState('');
   const [nome, setNome] = useState('');
@@ -22,7 +25,7 @@ const FormCadastroPessoa = ({ labelDinamica, dados, setDados, info}) => {
       })
       .then(function(response) {
         let aux = dados;
-        let nova_pessoa = {id: id, nome: nome, cpf: cpf, rg: rg, telefone: telefone, email: email};
+        let nova_pessoa = {id: 6, nome: nome, cpf: cpf, rg: rg, telefone: telefone, email: email};
         aux.push(nova_pessoa);
         setDados(aux)
         console.log("Sucesso")
@@ -30,6 +33,7 @@ const FormCadastroPessoa = ({ labelDinamica, dados, setDados, info}) => {
       .catch(function(error) {
         console.log("Erro")
       })
+      navigate(`${rota}`)
   }
 
   console.log(labelDinamica)
@@ -43,12 +47,11 @@ const FormCadastroPessoa = ({ labelDinamica, dados, setDados, info}) => {
         <div>
           <label htmlFor='inputNome'>Nome:
             <input 
-              type="text" 
-              name='inputNome' 
-              value={info[0].nome}
-              required
-              onChange={(e) => setNome(e.target.value)}
-               />
+                type="text" 
+                name='inputNome' 
+                value={info[0].nome}
+                onChange={(e) => setNome(e.target.value)}
+              />
           </label>
         </div>
         <div>
@@ -168,7 +171,7 @@ const FormCadastroPessoa = ({ labelDinamica, dados, setDados, info}) => {
           </label>
         </div>
       </div>
-      <BotãoSalvar/>
+      <BotãoSalvar salvar={salvar}/>
     </div>
   )
 }

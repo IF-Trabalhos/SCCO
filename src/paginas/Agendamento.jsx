@@ -33,7 +33,7 @@ const Agendamento= ({trigger, infos, setBotaoFalse}) => {
                         <input type="email" />
                     </div>
                     <div className="corpo-consulta-linha-botoes">
-                        <BotãoSalvar trigger ={trigger} setBotaoFalse = {setBotaoFalse} infos ={infos}/>
+                        <BotãoSalvar setBotaoFalse = {setBotaoFalse} />
                     </div>
                 </div>
             </div>
