@@ -28,17 +28,12 @@
 
 
 }
-input[type="date"] {
-    align-items: center;
-    display: inline-flex;
-    font-family: monospace;
-    padding-inline-start: 1px;
-    cursor: default;
-    overflow: hidden;
-    padding: 0px;
-}
 label{
     font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     font-size: 1.2em;
     margin-right: 1em;
+}
+.caixa-relatorio:hover{
+    -webkit-transform: scale(1.2);
+    transform: scale(1.1);
 }

@@ -1,6 +1,7 @@
 import React from 'react'
 import { useState } from 'react'
 import BotãoSalvar from '../BotãoSalvar'
+import './Relatorios.css';
 
 const RelatorioConvenio = ({cabecalho, primeiroDadoLabel,primeiroDado,}) => {
   const getIntAleatorio =()=>{
@@ -16,26 +17,33 @@ const RelatorioConvenio = ({cabecalho, primeiroDadoLabel,primeiroDado,}) => {
       <div className='cabeçalho-principal'>
         <h1>Relatório</h1>
       </div>
-      <div>
-        <h2>Convênio</h2>
-        <h3>De: 05/07/2022 Até: 25/10/2022</h3>
-      </div>
-      <div>
-        <p>
-          Pacientes atendidos: {getIntAleatorio()}
-        </p>
-        <p>
-          Valor total: {valorTotal}
-        </p>
-        <p>
-          Valor total a ser descontado: {valorDescontado}
-        </p>
-        <p>
-          Valor a receber: {(valorTotal - valorDescontado).toFixed(2)}
-        </p>
-        <BotãoSalvar/>
+      <div className='container-principal-central'>
+        <div className='formatadorrelatorio'>  
+          <div>
+            <h2 className='titulorelatorio'>Convênio</h2>
+            <h3 className='periodorelatorio'>De: 05/07/2022 Até: 25/10/2022</h3>
+          </div>
+          <div className='informacoescompleta'>
+            <div className='informacoes'>
+              Pacientes atendidos: {getIntAleatorio()}
+            </div>
+            <div className='informacoes'>
+              Valor total: {valorTotal}
+            </div>
+            <div className='informacoes'>
+              Valor total a ser descontado: {valorDescontado}
+            </div>
+            <div className='informacoes'>
+              Valor a receber: {(valorTotal - valorDescontado).toFixed(2)}
+            </div>
+          </div>
+          <div className='botoes'>
+            <BotãoSalvar/>
+          </div>
+        </div>
       </div>
     </div>
+    
   )
 }
 
