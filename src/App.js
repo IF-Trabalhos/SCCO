@@ -2,20 +2,14 @@ import React, { useEffect, useState } from 'react';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import './App.css'
 import FormCadastroConvenio from './componentes/FormCadastroConvenio';
-import FormCadastroItem from './componentes/FormCadastroItem';
 import MenuLateral from './componentes/MenuLateral';
 import Agenda from './pages/agenda/Agenda'
 import Cadastro from './pages/Cadastro';
-import PaginaGenerica from './pages/PaginaGenerica';
-import FormCadastroFatura from './componentes/FormCadastroFatura';
 import axios from 'axios';
 import { BASE_URL } from './config/axios';
-import {
-	colunaPessoa, colunaEspecialidade, colunaDespesa,
-	colunaFaturaConvenio, colunaFaturaPaciente
-}
+import {colunaDespesa}
 	from './data/tabela_info';
-import Financeiro from './pages/Financeiro';
+import Financeiro from './pages/financeiro/Financeiro';
 import RelatorioInicial from './pages/RelatorioInicial';
 import PaginaGenericaRelatorio from './componentes/PaginaGenericaRelatorio';
 import Paciente from './pages/paciente/Paciente'
@@ -29,6 +23,15 @@ import CadastroProcedimento from './pages/procedimento/CadastroProcedimento';
 import Especialidade from './pages/especialidade/Especialidade';
 import CadastroEspecialidade from './pages/especialidade/CadastroEspecialidade';
 import Convenio from './pages/convenio/Convenio';
+import FinanceiroPaciente from './pages/financeiro/paciente/FinanceiroPaciente';
+import CadastroFinanceiroPaciente from './pages/financeiro/paciente/CadastroFinanceiroPaciente';
+import FinanceiroConvenio from './pages/financeiro/convenio/FinanceiroConvenio';
+import CadastroFinanceiroConvenio from './pages/financeiro/convenio/CadastroFinanceiroConvenio';
+import FinanceiroMensal from './pages/financeiro/mensal/FinanceiroMensal';
+import FinanceiroRecorrente from './pages/financeiro/recorrente/FinanceiroRecorrente';
+import CadastroFinanceiroMensal from './pages/financeiro/mensal/CadastroFinanceiroMensal';
+import CadastroFinanceiroRecorrente from './pages/financeiro/recorrente/CadastroFinanceiroRecorrente';
+
 
 function App() {
 	const [pessoa, setPessoa] = useState([]);
@@ -64,9 +67,6 @@ function App() {
 			<div className="container">
 				<MenuLateral />
 				<Routes>
-					<Route path='/' element={<PaginaGenerica
-					titulo={"Home"} coluna={colunaPessoa} linha={pessoa} />}/>
-          
 					<Route path='/paciente' element={<Paciente titulo="Paciente" />}/>
           			<Route path='/paciente/cadastro' element={<CadastroPaciente />}/>
 
@@ -89,33 +89,20 @@ function App() {
           			<Route path='/agenda' element={<Agenda consultas={consulta} />} />
                 
 					<Route path='/financeiro' element={<Financeiro />} />
-					<Route path='/financeiro/paciente' element={<PaginaGenerica
-						titulo="Fatura Paciente" coluna={colunaFaturaPaciente}
-						linha={pessoa} />} />
-					<Route path='/financeiro/paciente/cadastro' element={<Cadastro
-						titulo="Financeiro" componenteCadastro={<FormCadastroFatura primeiroInput={"Paciente:"}
-							segundoInput={"Procedimentos:"}/>} />} />
+					<Route path='/financeiro/paciente' element={<FinanceiroPaciente titulo="Fatura Paciente" />} />
+					<Route path='/financeiro/paciente/cadastro' element={<CadastroFinanceiroPaciente primeiroInput={"Paciente:"}
+							segundoInput={"Procedimentos:"}/>} />
 
-					<Route path='/financeiro/convenio' element={<PaginaGenerica
-						titulo="Fatura Convenio" coluna={colunaFaturaConvenio}
-						linha={convenio} />} />
+					<Route path='/financeiro/convenio' element={<FinanceiroConvenio titulo="Fatura Convenio" />} />
+					<Route path='/financeiro/convenio/cadastro' element={<CadastroFinanceiroConvenio primeiroInput={"Paciente:"}
+							segundoInput={"Procedimentos:"}/>} />
 
-					<Route path='/financeiro/convenio/cadastro' element={<Cadastro
-						titulo="Financeiro" componenteCadastro={<FormCadastroFatura primeiroInput={"Paciente:"}
-							segundoInput={"Procedimentos:"}/>} />} />
-
-					<Route path='/financeiro/mensal' element={<PaginaGenerica
-						titulo="Despesa Mensal" coluna={colunaDespesa}
-						linha={pessoa} />} />
-					<Route path='/financeiro/mensal/cadastro' element={<Cadastro
-						titulo="Financeiro" componenteCadastro={<FormCadastroFatura primeiroInput={"Despesa fixa:"}
-							segundoInput={"Dt_Limite:"}/>} />} />
-					<Route path='/financeiro/recorrente' element={<PaginaGenerica
-						titulo="Despesa Recorrente" coluna={colunaDespesa}
-						linha={pessoa} />} />
-					<Route path='/financeiro/recorrente/cadastro' element={<Cadastro
-						titulo="Financeiro" componenteCadastro={<FormCadastroFatura primeiroInput={"Despesa:"}
-							segundoInput={"Quantidade:"}/>} />} />
+					<Route path='/financeiro/mensal' element={<FinanceiroMensal titulo="Despesa Mensal" />} />
+					<Route path='/financeiro/mensal/cadastro' element={<CadastroFinanceiroMensal primeiroInput={"Despesa fixa:"}
+							segundoInput={"Dt_Limite:"}/>} />
+					<Route path='/financeiro/recorrente' element={<FinanceiroRecorrente titulo="Despesa Recorrente" />} />
+					<Route path='/financeiro/recorrente/cadastro' element={<CadastroFinanceiroRecorrente primeiroInput={"Despesa:"}
+							segundoInput={"Quantidade:"}/>} />
 
 					<Route path='/relatorio' element={<RelatorioInicial/>}/>
 					<Route path='relatorio/clinica' element={<PaginaGenericaRelatorio titulo={"Relatorio Clinica"} colunas={colunaDespesa}
