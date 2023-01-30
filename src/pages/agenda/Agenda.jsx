@@ -1,5 +1,5 @@
 import React, {useState} from "react";
-import TelaInicialAgenda from "../componentes/TelaInicialAgenda";
+import TelaInicialAgenda from "../../componentes/TelaInicialAgenda";
 import './Agenda.css'
 import Agendamento from "./Agendamento";
 import Calendar from 'moedim';

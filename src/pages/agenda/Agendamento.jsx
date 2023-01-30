@@ -1,5 +1,5 @@
 import React from "react";
-import BotãoSalvar from "../componentes/BotãoSalvar";
+import BotãoSalvar from "../../componentes/BotãoSalvar";
 import './Agendamento.css'
 
 const Agendamento= ({trigger, infos, setBotaoFalse}) => {

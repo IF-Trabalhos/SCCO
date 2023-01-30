@@ -3,9 +3,8 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import './App.css'
 import FormCadastroConvenio from './componentes/FormCadastroConvenio';
 import FormCadastroItem from './componentes/FormCadastroItem';
-import FormCadastroPessoa from './componentes/FormCadastroPessoa';
 import MenuLateral from './componentes/MenuLateral';
-import Agenda from './pages/Agenda'
+import Agenda from './pages/agenda/Agenda'
 import Cadastro from './pages/Cadastro';
 import PaginaGenerica from './pages/PaginaGenerica';
 import FormCadastroFatura from './componentes/FormCadastroFatura';
@@ -25,7 +24,8 @@ import Dentista from './pages/dentista/Dentista'
 import CadastroDentista from './pages/dentista/CadastroDentista'
 import Recepcionista from './pages/recepcionista/Recepcionista'
 import CadastroRecepcionista from './pages/recepcionista/CadastroRecepcionista'
-
+import Procedimento from './pages/procedimento/Procedimento'
+import CadastroProcedimento from './pages/procedimento/CadastroProcedimento';
 
 function App() {
 	const [pessoa, setPessoa] = useState([]);
@@ -33,7 +33,6 @@ function App() {
 	const [especialidade, setEspecialidade] = useState([]);
 	const [procedimento, setProcedimento] = useState([]);
 	const [consulta, setConsultas] = useState([]);
-	const [atualInfo, setAtualInfo] = useState([{}]);
 
 	async function buscar() {
 		await axios.get(`${BASE_URL}/pessoas`).then((response) => {
@@ -74,10 +73,8 @@ function App() {
 					<Route path='/recepcionista' element={<Recepcionista titulo="Recepcionista" />}/>
           			<Route path='/recepcionista/cadastro' element={<CadastroRecepcionista/>}/>
 
-					<Route path='/procedimento' element={<PaginaGenerica 
-					titulo="Procedimento" coluna={colunaEspecialidade} linha={procedimento} />}/>
-          			<Route path='/procedimento/cadastro' element={<Cadastro titulo="Cadastro Procedimento" 
-          			componenteCadastro={<FormCadastroItem></FormCadastroItem>} />}/>
+					<Route path='/procedimento' element={<Procedimento titulo="Procedimento" />}/>
+          			<Route path='/procedimento/cadastro' element={<CadastroProcedimento/>}/>
 
 					<Route path='/especialidade' element={<PaginaGenerica 
 					titulo="Especialidade" coluna={colunaEspecialidade} linha={especialidade} />} />
