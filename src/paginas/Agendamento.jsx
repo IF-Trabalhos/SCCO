@@ -16,11 +16,15 @@ const Agendamento= ({trigger, infos, setBotaoFalse}) => {
                     </div>
                     <div className="corpo-consulta-linha-nome">
                         <label for="data">Nome do Paciente: </label>  
-                        <input type="text" value={infos[0]}/>
+                        <select name="pacientes" id="pacientes">
+                            <option value={infos[0]}>{infos[0]}</option>
+                        </select>
                     </div>
                     <div className="corpo-consulta-linha-nome">
                         <label for="data">Nome do Dentista: </label>  
-                        <input type="text" value={infos[1]}/>
+                        <select name="dentistas" id="dentistas">
+                            <option value={infos[1]}>{infos[1]}</option>
+                        </select>
                     </div>
                     <div className="corpo-consulta-linha">
                         <label for="data">Telefone: </label>  

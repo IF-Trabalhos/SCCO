@@ -43,7 +43,7 @@
     font-size: 20px;
 }
 
-.corpo-consulta-linha input{
+.corpo-consulta-linha input, select{
     margin-top: 2.5vh;
     width: 30%;
     height: 4vh;
