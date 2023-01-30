@@ -36,6 +36,24 @@ const FormCadastroPessoa = ({ labelDinamica, dados, setDados, info, rota}) => {
       navigate(`${rota}`)
   }
 
+  async function excluir(id) {
+    let data = JSON.stringify({ id });
+    await axios
+      .delete(`${BASE_URL}/pessoas`, data, {
+        headers: { 'Content-Type': 'application/json' },
+      })
+      .then(function (response) {
+        console.log("Sucesso")
+      })
+      .catch(function (error) {
+        console.log("Erro")
+      });
+      let aux = dados
+      delete aux[info[0].id - 1]
+      setDados(aux)
+      navigate(`${rota}`)
+  }
+
   console.log(labelDinamica)
   return (
     <div className='container-cadastro'>
@@ -171,7 +189,7 @@ const FormCadastroPessoa = ({ labelDinamica, dados, setDados, info, rota}) => {
           </label>
         </div>
       </div>
-      <BotãoSalvar salvar={salvar}/>
+      <BotãoSalvar salvar={salvar} excluir={excluir}/>
     </div>
   )
 }
