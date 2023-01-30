@@ -26,6 +26,8 @@ import Recepcionista from './pages/recepcionista/Recepcionista'
 import CadastroRecepcionista from './pages/recepcionista/CadastroRecepcionista'
 import Procedimento from './pages/procedimento/Procedimento'
 import CadastroProcedimento from './pages/procedimento/CadastroProcedimento';
+import Especialidade from './pages/especialidade/Especialidade';
+import CadastroEspecialidade from './pages/especialidade/CadastroEspecialidade';
 
 function App() {
 	const [pessoa, setPessoa] = useState([]);
@@ -76,12 +78,8 @@ function App() {
 					<Route path='/procedimento' element={<Procedimento titulo="Procedimento" />}/>
           			<Route path='/procedimento/cadastro' element={<CadastroProcedimento/>}/>
 
-					<Route path='/especialidade' element={<PaginaGenerica 
-					titulo="Especialidade" coluna={colunaEspecialidade} linha={especialidade} />} />
-          			<Route path='/especialidade/cadastro' element={<Cadastro titulo="Cadastro Especialidade" componenteCadastro={<FormCadastroItem>
-						<label htmlFor="inputEspecialidade">Especialidade:</label><input type="text" name='especialidade' required htmlFor="inputEspecialidade" />
-						<br />
-					</FormCadastroItem>}/>} />
+					<Route path='/especialidade' element={<Especialidade titulo="Especialidade" />} />
+          			<Route path='/especialidade/cadastro' element={<CadastroEspecialidade/>} />
           
 					<Route path='/convenio' element={<PaginaGenerica 
 					titulo="Convenio" coluna={colunaPessoa} linha={convenio} />} />
