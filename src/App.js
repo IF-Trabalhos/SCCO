@@ -5,9 +5,9 @@ import FormCadastroConvenio from './componentes/FormCadastroConvenio';
 import FormCadastroItem from './componentes/FormCadastroItem';
 import FormCadastroPessoa from './componentes/FormCadastroPessoa';
 import MenuLateral from './componentes/MenuLateral';
-import Agenda from './paginas/Agenda'
-import Cadastro from './paginas/Cadastro';
-import PaginaGenerica from './paginas/PaginaGenerica';
+import Agenda from './pages/Agenda'
+import Cadastro from './pages/Cadastro';
+import PaginaGenerica from './pages/PaginaGenerica';
 import FormCadastroFatura from './componentes/FormCadastroFatura';
 import axios from 'axios';
 import { BASE_URL } from './config/axios';
@@ -16,9 +16,14 @@ import {
 	colunaFaturaConvenio, colunaFaturaPaciente
 }
 	from './data/tabela_info';
-import Financeiro from './paginas/Financeiro';
-import RelatorioInicial from './paginas/RelatorioInicial';
+import Financeiro from './pages/Financeiro';
+import RelatorioInicial from './pages/RelatorioInicial';
 import PaginaGenericaRelatorio from './componentes/PaginaGenericaRelatorio';
+import Paciente from './pages/paciente/Paciente'
+import CadastroPaciente from './pages/paciente/CadastroPaciente'
+import Dentista from './pages/dentista/Dentista'
+import CadastroDentista from './pages/dentista/CadastroDentista'
+
 
 function App() {
 	const [pessoa, setPessoa] = useState([]);
@@ -58,17 +63,11 @@ function App() {
 					<Route path='/' element={<PaginaGenerica
 					titulo={"Home"} coluna={colunaPessoa} linha={pessoa} />}/>
           
-					<Route path='/paciente' element={<PaginaGenerica 
-					titulo="Paciente" coluna={colunaPessoa} linha={pessoa} setInfo={setAtualInfo} />}/>
-          			<Route path='/paciente/cadastro' element={<Cadastro titulo="Cadastro Paciente" 
-          			componenteCadastro={<FormCadastroPessoa labelDinamica = "N. Prontuario" 
-					dados={pessoa} setDados={setPessoa} info={atualInfo} rota="/paciente" />}/>}/>
+					<Route path='/paciente' element={<Paciente titulo="Paciente" />}/>
+          			<Route path='/paciente/cadastro' element={<CadastroPaciente />}/>
 
-					<Route path='/dentista' element={<PaginaGenerica 
-					titulo="Dentista" coluna={colunaPessoa} linha={pessoa} setInfo={setAtualInfo} />}/>
-          			<Route path='/dentista/cadastro' element={<Cadastro titulo="Cadastro Dentista" 
-          			componenteCadastro={<FormCadastroPessoa labelDinamica = "CRO"
-					dados={pessoa} setDados={setPessoa} info={atualInfo} rota="/dentista"/>}/>}/>
+					<Route path='/dentista' element={<Dentista titulo="Dentista" />}/>
+          			<Route path='/dentista/cadastro' element={<CadastroDentista />}/>
 
 					<Route path='/recepcionista' element={<PaginaGenerica 
 					titulo="Recepcionista" coluna={colunaPessoa} linha={pessoa} setInfo={setAtualInfo} />}/>
