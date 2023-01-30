@@ -23,6 +23,8 @@ import Paciente from './pages/paciente/Paciente'
 import CadastroPaciente from './pages/paciente/CadastroPaciente'
 import Dentista from './pages/dentista/Dentista'
 import CadastroDentista from './pages/dentista/CadastroDentista'
+import Recepcionista from './pages/recepcionista/Recepcionista'
+import CadastroRecepcionista from './pages/recepcionista/CadastroRecepcionista'
 
 
 function App() {
@@ -69,10 +71,8 @@ function App() {
 					<Route path='/dentista' element={<Dentista titulo="Dentista" />}/>
           			<Route path='/dentista/cadastro' element={<CadastroDentista />}/>
 
-					<Route path='/recepcionista' element={<PaginaGenerica 
-					titulo="Recepcionista" coluna={colunaPessoa} linha={pessoa} setInfo={setAtualInfo} />}/>
-          			<Route path='/recepcionista/cadastro' element={<Cadastro titulo="Cadastro Recepcionista"
-					dados={pessoa} setDados={setPessoa} info={atualInfo}/>}/>
+					<Route path='/recepcionista' element={<Recepcionista titulo="Recepcionista" />}/>
+          			<Route path='/recepcionista/cadastro' element={<CadastroRecepcionista/>}/>
 
 					<Route path='/procedimento' element={<PaginaGenerica 
 					titulo="Procedimento" coluna={colunaEspecialidade} linha={procedimento} />}/>
