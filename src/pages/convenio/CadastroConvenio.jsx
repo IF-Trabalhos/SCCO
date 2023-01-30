@@ -14,7 +14,6 @@ const CadastroConvenio = ({}) => {
                     type="text" 
                     className='inputNome' 
                     required name='nome' 
-                    onChange={(e) => setNome(e.target.value)}
                     />
                 </label>
                 <br />
@@ -23,10 +22,9 @@ const CadastroConvenio = ({}) => {
                     type="text" 
                     className='inputANS' 
                     required name='registroANS'
-                    onChange={(e) => setAns(e.target.value)} 
                     />
                 </label>
-                <BotãoSalvar trigger={botaoPopup} setBotaoFalse = {setBotaoPopup}/>
+                <BotãoSalvar />
             </div>
         </div>
     </div>

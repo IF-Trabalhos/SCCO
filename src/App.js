@@ -1,10 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import './App.css'
-import FormCadastroConvenio from './componentes/FormCadastroConvenio';
 import MenuLateral from './componentes/MenuLateral';
 import Agenda from './pages/agenda/Agenda'
-import Cadastro from './pages/Cadastro';
 import axios from 'axios';
 import { BASE_URL } from './config/axios';
 import {colunaDespesa}
@@ -23,6 +21,7 @@ import CadastroProcedimento from './pages/procedimento/CadastroProcedimento';
 import Especialidade from './pages/especialidade/Especialidade';
 import CadastroEspecialidade from './pages/especialidade/CadastroEspecialidade';
 import Convenio from './pages/convenio/Convenio';
+import CadastroConvenio from './pages/convenio/CadastroConvenio';
 import FinanceiroPaciente from './pages/financeiro/paciente/FinanceiroPaciente';
 import CadastroFinanceiroPaciente from './pages/financeiro/paciente/CadastroFinanceiroPaciente';
 import FinanceiroConvenio from './pages/financeiro/convenio/FinanceiroConvenio';
@@ -83,8 +82,7 @@ function App() {
           			<Route path='/especialidade/cadastro' element={<CadastroEspecialidade/>} />
           
 					<Route path='/convenio' element={<Convenio titulo="Convenio"/>} />
-          			<Route path='/convenio/cadastro' element={<Cadastro titulo="Cadastro Convenio" 
-          			componenteCadastro={<FormCadastroConvenio/>}/>} />
+          			<Route path='/convenio/cadastro' element={<CadastroConvenio />}/>
 
           			<Route path='/agenda' element={<Agenda consultas={consulta} />} />
                 
