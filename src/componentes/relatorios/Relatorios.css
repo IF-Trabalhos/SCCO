@@ -10,7 +10,7 @@
    background-image: radial-gradient( circle 993px at 0.5% 50.5%,  rgba(94, 126, 112, 0.37) 0%, rgb(134, 134, 134) 100.2% );
     font-family: 'Poppins', sans-serif;
 }
-.informacoescompleta{
+.informacoes-completa{
     display: grid;
     align-items: center;
     justify-items: center;
@@ -19,16 +19,16 @@
 .botoes{
     margin-left: 43%;
 }
-.periodorelatorio, .titulorelatorio{
+.periodo-relatorio, .titulorelatorio{
 
     margin-left: 2em;
     font-family: 'Poppins', sans-serif;
 
 }
-.titulorelatorio{
+.titulo-relatorio{
     font-size: 1.6em;
 
 }
-.periodorelatorio{
+.periodo-relatorio{
     border-bottom: 0.2em solid rgb(115, 118, 115);
 }

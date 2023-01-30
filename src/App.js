@@ -20,6 +20,10 @@ import Financeiro from './paginas/Financeiro';
 import RelatorioInicial from './paginas/RelatorioInicial';
 import PaginaGenericaRelatorio from './componentes/PaginaGenericaRelatorio';
 import RelatorioConvenio from './componentes/relatorios/RelatorioConvenio';
+import RelatorioClinica from './componentes/relatorios/RelatorioClinica';
+import RelatorioPaciente from './componentes/relatorios/RelatorioPaciente';
+import RelatorioDentista from './componentes/relatorios/RelatorioDentista';
+
 
 function App() {
 	const [pessoa, setPessoa] = useState([]);
@@ -124,17 +128,18 @@ function App() {
 					<Route path='relatorio/clinica' element={<PaginaGenericaRelatorio titulo={"Relatorio Clinica"} colunas={colunaDespesa}
 					linhas={pessoa}/>}/>
 					<Route path='/relatorio/clinica/gerar-relatorio' element={
-						<RelatorioConvenio cabecalho={"Relatorio da clinica"} primeiroDadoLabel={"Consultas Realizadas:"}
-						primeiroDado={98}>
-
-						</RelatorioConvenio>}/>
+						<RelatorioClinica/>}/>
 
 					<Route path='relatorio/paciente' element={<PaginaGenericaRelatorio titulo={"Relatorio Paciente"} colunas={colunaDespesa}
 					linhas={pessoa}/>}/>
+					<Route path='relatorio/paciente/gerar-relatorio' element={<RelatorioPaciente/>}/>
 					<Route path='relatorio/dentista' element={<PaginaGenericaRelatorio titulo={"Relatorio Dentista"} colunas={colunaDespesa}
 					linhas={pessoa}/>}/>
+					<Route path='relatorio/dentista/gerar-relatorio' element={<RelatorioDentista/>}/> 
 					<Route path='relatorio/convenio'element={<PaginaGenericaRelatorio titulo={"Relatorio Convênio"} colunas={colunaDespesa}
 					linhas={pessoa}/>}/>
+					<Route path='/relatorio/convenio/gerar-relatorio' element={
+						<RelatorioConvenio/>}/>
 				</Routes>
 			</div>
 		</BrowserRouter>
