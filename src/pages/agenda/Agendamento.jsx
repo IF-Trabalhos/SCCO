@@ -1,8 +1,23 @@
-import React from "react";
+import axios from "axios";
+import React, {useState, useEffect} from "react";
 import BotãoSalvar from "../../componentes/BotãoSalvar";
 import './Agendamento.css'
+import { BASE_URL2 } from '../../config/axios';
 
 const Agendamento= ({trigger, infos, setBotaoFalse}) => {
+
+    const [dadosDentista, setDadosDentista] = useState([]);
+    const [dadosPaciente, setDadosPaciente] = useState([]);
+
+    useEffect(() => {
+        axios.get(`${BASE_URL2}/pacientes`).then((response) => {
+            setDadosPaciente(response.data);
+        });
+        axios.get(`${BASE_URL2}/dentistas`).then((response) => {
+            setDadosDentista(response.data);
+          });
+      }, []);
+
     return(trigger) ? (
          <div className='container-consulta'>
             <div className="corpo-consulta">
@@ -17,13 +32,17 @@ const Agendamento= ({trigger, infos, setBotaoFalse}) => {
                     <div className="corpo-consulta-linha-nome">
                         <label for="data">Nome do Paciente: </label>  
                         <select name="pacientes" id="pacientes">
-                            <option value={infos[0]}>{infos[0]}</option>
+                        {dadosPaciente.map(({id, nome}) => (
+                            <option key={id} value={nome}>{nome}</option>
+                        ))}
                         </select>
                     </div>
                     <div className="corpo-consulta-linha-nome">
                         <label for="data">Nome do Dentista: </label>  
                         <select name="dentistas" id="dentistas">
-                            <option value={infos[1]}>{infos[1]}</option>
+                        {dadosDentista.map(({id, nome}) => (
+                            <option key={id} value={nome}>{nome}</option>
+                        ))}
                         </select>
                     </div>
                     <div className="corpo-consulta-linha">

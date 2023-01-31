@@ -1,24 +1,12 @@
-import React, {useState} from "react";
+import axios from "axios";
+import React, {useState, useEffect} from "react";
 import TelaInicialAgenda from "../../componentes/TelaInicialAgenda";
 import './Agenda.css'
 import Agendamento from "./Agendamento";
 import Calendar from 'moedim';
+import { BASE_URL, BASE_URL2 } from '../../config/axios';
 
-const Agenda= ({consultas}) => {
-    const dentistas =[
-        {
-            id: "1",
-            nome: "Giuliano de Souza Leite",
-        },
-        {
-            id: "2",
-            nome: "Fernando Souza Pimenta",
-        },
-        {
-            id: "3",
-            nome: "Igor Rosa Pinto",
-        },
-    ]
+const Agenda= ({}) => {
 
     const [agenda, setAgenda] = useState("Giuliano de Souza Leite");
     const [botaoPopup, setBotaoPopup] = useState(false);
@@ -28,13 +16,25 @@ const Agenda= ({consultas}) => {
                    "Agosto", "Setembro", "Outubro", "Novembro", "Dezembro"];
     const dia = data.getDate() + " de " + meses[data.getMonth()]
 
+    const [dados, setDados] = useState([]);
+    const [dadosDentista, setDadosDentista] = useState([]);
+
+    useEffect(() => {
+        axios.get(`${BASE_URL}/consultas`).then((response) => {
+          setDados(response.data);
+        });
+        axios.get(`${BASE_URL2}/dentistas`).then((response) => {
+            setDadosDentista(response.data);
+          });
+      }, []);
+
     return(
         <div className="conteudo-principal">
             <div className='cabeçalho-principal'>
                 <h1>Agenda</h1>
             </div>
             <div className='corpo-agenda'>
-                <TelaInicialAgenda nomes={consultas} dentista={agenda} data_atual={dia} setBotaoTrue={setBotaoPopup}
+                <TelaInicialAgenda nomes={dados} dentista={agenda} data_atual={dia} setBotaoTrue={setBotaoPopup}
                 setConsultaValue={setAgendamentoInfo} />
                 <div className="container-lateral-agenda">
                     <div className="calendario">
@@ -45,7 +45,7 @@ const Agenda= ({consultas}) => {
                             <h1>Agendas</h1>
                         </div>
                         <div className="agenda-config-conteudo">
-                            {dentistas.map(({id, nome}) => (
+                            {dadosDentista.map(({id, nome}) => (
                                 <div key={id}
                                 onClick={() => {
                                     setAgenda(nome)

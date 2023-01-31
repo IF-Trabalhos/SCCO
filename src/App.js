@@ -34,26 +34,10 @@ import CadastroFinanceiroRecorrente from './pages/financeiro/recorrente/Cadastro
 
 function App() {
 	const [pessoa, setPessoa] = useState([]);
-	const [convenio, setConvenio] = useState([]);
-	const [especialidade, setEspecialidade] = useState([]);
-	const [procedimento, setProcedimento] = useState([]);
-	const [consulta, setConsultas] = useState([]);
 
 	async function buscar() {
 		await axios.get(`${BASE_URL}/pessoas`).then((response) => {
 			setPessoa(response.data);
-		})
-		await axios.get(`${BASE_URL}/convenios`).then((response) => {
-			setConvenio(response.data);
-		})
-		await axios.get(`${BASE_URL}/especialidades`).then((response) => {
-			setEspecialidade(response.data);
-		})
-		await axios.get(`${BASE_URL}/procedimentos`).then((response) => {
-			setProcedimento(response.data);
-		})
-		await axios.get(`${BASE_URL}/consultas`).then((response) => {
-			setConsultas(response.data);
 		})
 	}
 
@@ -84,7 +68,7 @@ function App() {
 					<Route path='/convenio' element={<Convenio titulo="Convenio"/>} />
           			<Route path='/convenio/cadastro' element={<CadastroConvenio />}/>
 
-          			<Route path='/agenda' element={<Agenda consultas={consulta} />} />
+          			<Route path='/agenda' element={<Agenda />} />
                 
 					<Route path='/financeiro' element={<Financeiro />} />
 					<Route path='/financeiro/paciente' element={<FinanceiroPaciente titulo="Fatura Paciente" />} />

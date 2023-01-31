@@ -20,7 +20,6 @@ const CadastroDentista = ({}) => {
   async function buscar() {
     await axios.get(`${BASE_URL2}/dentistas/${handle}`).then((response) => {
       setDados(response.data);
-      console.log(response.data)
     });
     setId(dados.id);
     setRg(dados.rg);
