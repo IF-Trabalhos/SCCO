@@ -5,8 +5,8 @@ import MenuLateral from './componentes/MenuLateral';
 import Agenda from './pages/agenda/Agenda'
 import axios from 'axios';
 import { BASE_URL } from './config/axios';
-import {colunaDespesa}
-	from './data/tabela_info';
+import {colunaDespesa} from './data/tabela_info';
+import Inicio from './pages/Inicio'
 import Financeiro from './pages/financeiro/Financeiro';
 import RelatorioInicial from './pages/RelatorioInicial';
 import PaginaGenericaRelatorio from './componentes/PaginaGenericaRelatorio';
@@ -50,6 +50,8 @@ function App() {
 			<div className="container">
 				<MenuLateral />
 				<Routes>
+					<Route path='/' element={<Inicio />} />
+
 					<Route path='/paciente' element={<Paciente titulo="Paciente" />}/>
           			<Route path='/cadastro-paciente/:handle?' element={<CadastroPaciente />}/>
 

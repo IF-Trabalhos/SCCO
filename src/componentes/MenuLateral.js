@@ -14,7 +14,7 @@ const MenuLateral = () => {
 			id: "1",
 			texto: "INICIO",
 			icone: "icones/inicio.svg",
-			link: "/paciente"
+			link: "/"
 		},
 		{
 			id: "2",
