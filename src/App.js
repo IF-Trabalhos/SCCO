@@ -54,7 +54,7 @@ function App() {
 			<div className="container">
 				<MenuLateral />
 				<Routes>
-					<Route path='/' element={<Inicio />} />
+					<Route path='/SCCO/' element={<Inicio />} />
 
 					<Route path='/paciente' element={<Paciente titulo="Paciente" />}/>
           			<Route path='/cadastro-paciente/:handle?' element={<CadastroPaciente />}/>
