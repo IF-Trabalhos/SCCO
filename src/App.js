@@ -67,7 +67,7 @@ function App() {
 				<MenuLateral />
 				<Routes>
 					<Route path='/paciente' element={<Paciente titulo="Paciente" />}/>
-          			<Route path='/paciente/cadastro' element={<CadastroPaciente />}/>
+          			<Route path='/cadastro-paciente/:handle?' element={<CadastroPaciente />}/>
 
 					<Route path='/dentista' element={<Dentista titulo="Dentista" />}/>
           			<Route path='/dentista/cadastro' element={<CadastroDentista />}/>

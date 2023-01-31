@@ -1,14 +1,20 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import "./MenuLateral.css";
 
 const MenuLateral = () => {
+	const navigate = useNavigate();
+
+	function navegar(link) {
+		navigate(`${link}`)
+	}
+
 	const menuItems = [
 		{
 			id: "1",
 			texto: "INICIO",
 			icone: "icones/inicio.svg",
-			link: "/"
+			link: "/paciente"
 		},
 		{
 			id: "2",
@@ -72,16 +78,14 @@ const MenuLateral = () => {
 			</div>
 			<div className="menu-lateral-conteudo">
 				{menuItems.map(({id, texto, icone, link }) => (
-					<Link key={id} to={link}>
-						<div className="menu-item">
-							<div className="menu-item-img">
-								<img className="menu-item-icone" src={icone} alt="" srcset="" />
-							</div>
-							<div className="menu-item-texto">
-								<p>{texto}</p>
-							</div>
-						</div>		
-					</Link>			
+					<div onClick={() => navegar(link)} key={id} className="menu-item">
+						<div className="menu-item-img">
+							<img className="menu-item-icone" src={icone} alt="" srcset="" />
+						</div>
+						<div className="menu-item-texto">
+							<p>{texto}</p>
+						</div>
+					</div>		
 				))}
 			</div>
 		</div>
