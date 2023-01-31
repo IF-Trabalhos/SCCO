@@ -66,7 +66,7 @@ function App() {
           			<Route path='/cadastro-especialidade/:handle?' element={<CadastroEspecialidade/>} />
           
 					<Route path='/convenio' element={<Convenio titulo="Convenio"/>} />
-          			<Route path='/convenio/cadastro' element={<CadastroConvenio />}/>
+          			<Route path='/cadastro-convenio/:handle?' element={<CadastroConvenio />}/>
 
           			<Route path='/agenda' element={<Agenda />} />
                 
