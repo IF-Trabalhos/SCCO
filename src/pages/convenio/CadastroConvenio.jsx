@@ -49,7 +49,7 @@ const CadastroConvenio = ({}) => {
                     required name='registroANS'
                     />
                 </label>
-                <BotãoSalvar />
+                <BotãoSalvar pagina={'/convenio'} />
             </div>
         </div>
     </div>

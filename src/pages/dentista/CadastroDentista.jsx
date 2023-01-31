@@ -152,7 +152,7 @@ const CadastroDentista = ({}) => {
               </label>
             </div>
           </div>
-          <BotãoSalvar/>
+          <BotãoSalvar pagina={'/dentista'}/>
         </div>
       </div>
     </div>

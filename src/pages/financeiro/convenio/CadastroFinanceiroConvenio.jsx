@@ -31,7 +31,7 @@ const CadastroFinanceiroConvenio = ({primeiroInput, segundoInput}) => {
                     </label>
                     </div>
                 </div>
-                <BotãoSalvar />
+                <BotãoSalvar pagina={'/financeiro/convenio'} />
             </div>
         </div>
     </div>

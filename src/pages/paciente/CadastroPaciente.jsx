@@ -153,7 +153,7 @@ const CadastroPaciente = ({}) => {
               </label>
             </div>
           </div>
-          <BotãoSalvar/>
+          <BotãoSalvar pagina={'/paciente'}/>
         </div>
       </div>
     </div>

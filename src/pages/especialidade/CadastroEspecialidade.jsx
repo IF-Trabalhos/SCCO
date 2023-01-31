@@ -47,7 +47,7 @@ const CadastroProcedimento = ({children}) => {
             <label htmlFor="inputAtivo">ATIVO</label>
             <input type="radio" className='inputInativo' name='status' value="INATIVO"/>
             <label htmlFor="inputInativo">INATIVO</label>
-            <BotãoSalvar/>
+            <BotãoSalvar pagina={'/especialidade'} />
             </div>
         </div>
     </div>

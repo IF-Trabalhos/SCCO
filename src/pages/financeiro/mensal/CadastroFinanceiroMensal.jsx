@@ -31,7 +31,7 @@ const CadastroFinanceiroMensal = ({primeiroInput, segundoInput}) => {
                     </label>
                     </div>
                 </div>
-                <BotãoSalvar />
+                <BotãoSalvar pagina={'/financeiro/mensal'} />
             </div>
         </div>
     </div>
