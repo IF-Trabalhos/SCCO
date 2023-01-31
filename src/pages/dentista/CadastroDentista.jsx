@@ -1,7 +1,39 @@
-import React from 'react'
+import axios from 'axios';
+import React, { useState, useEffect } from 'react'
+import { useParams } from 'react-router-dom';
 import BotãoSalvar from '../../componentes/BotãoSalvar';
 import './CadastroDentista.css'
+import { BASE_URL2 } from '../../config/axios';
+
 const CadastroDentista = ({}) => {
+  const {handle} = useParams() 
+
+  const [id, setId] = useState('');
+  const [nome, setNome] = useState('');
+  const [cpf, setCpf] = useState('');
+  const [email, setEmail] = useState('');
+  const [telefone, setTelefone] = useState('');
+  const [rg, setRg] = useState('');
+
+  const [dados, setDados] = useState([]);
+
+  async function buscar() {
+    await axios.get(`${BASE_URL2}/dentistas/${handle}`).then((response) => {
+      setDados(response.data);
+      console.log(response.data)
+    });
+    setId(dados.id);
+    setRg(dados.rg);
+    setNome(dados.nome);
+    setCpf(dados.cpf);
+    setEmail(dados.email);
+    setTelefone(dados.telefone);
+  }
+
+  useEffect(() => {
+    buscar(); // eslint-disable-next-line
+  }, [id]);
+
   return (
     <div className='conteudo-principal'>
       <div className="cabeçalho-principal">
@@ -11,16 +43,25 @@ const CadastroDentista = ({}) => {
         <div className='container-cadastro'>
           <div className='bloco'>
             <h3>IDENTIFICAÇÃO</h3>
-
             <div>
               <label htmlFor='inputNome'>Nome:
                 <input 
                     type="text" 
                     name='inputNome' 
+                    value={nome}
+                    onChange={(e) => setNome(e.target.value)}
                   />
               </label>
             </div>
             <div>
+              <label htmlFor="cro">CRO:
+              <input 
+                type="number" 
+                className="cro"
+                name="cro"
+                required
+                />
+            </label>
             </div>
             <div>
               <label htmlFor="innputDt-nascimento">Dt. Nascimento:
@@ -37,7 +78,9 @@ const CadastroDentista = ({}) => {
                   type="number" 
                   name='rg' 
                   className='inputRg' 
+                  value={rg}
                   required
+                  onChange={(e) => setRg(e.target.value)}
                   />
               </label>
             </div>
@@ -46,8 +89,10 @@ const CadastroDentista = ({}) => {
                 <input 
                   type="number" 
                   name='cpf' 
+                  value={cpf}
                   className='inputCpf' 
                   required
+                  onChange={(e) => setCpf(e.target.value)}
                   />
               </label>
             </div>
@@ -83,7 +128,9 @@ const CadastroDentista = ({}) => {
                 <input 
                   type="text" 
                   required className='inputEmail' 
+                  value={email}
                   name='email'
+                  onChange={(e) => setEmail(e.target.value)}
                   />
               </label>
 
@@ -98,8 +145,11 @@ const CadastroDentista = ({}) => {
               <label htmlFor="inputTelefone">Telefone:
                 <input 
                   type="text" 
+                  value={telefone}
                   className='inputTelefone'
-                  name='telefone' />
+                  name='telefone'
+                  onChange={(e) => setTelefone(e.target.value)}
+                  />
               </label>
             </div>
           </div>
