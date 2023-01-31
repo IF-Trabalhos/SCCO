@@ -60,10 +60,10 @@ function App() {
           			<Route path='/cadastro-recepcionista/:handle?' element={<CadastroRecepcionista/>}/>
 
 					<Route path='/procedimento' element={<Procedimento titulo="Procedimento" />}/>
-          			<Route path='/procedimento/cadastro' element={<CadastroProcedimento/>}/>
+          			<Route path='/cadastro-procedimento/:handle?' element={<CadastroProcedimento/>}/>
 
 					<Route path='/especialidade' element={<Especialidade titulo="Especialidade" />} />
-          			<Route path='/especialidade/cadastro' element={<CadastroEspecialidade/>} />
+          			<Route path='/cadastro-especialidade/:handle?' element={<CadastroEspecialidade/>} />
           
 					<Route path='/convenio' element={<Convenio titulo="Convenio"/>} />
           			<Route path='/convenio/cadastro' element={<CadastroConvenio />}/>

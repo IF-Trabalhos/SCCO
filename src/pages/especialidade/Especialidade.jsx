@@ -1,13 +1,23 @@
 import React, { useState, useEffect } from "react";
 import BarraDePesquisa from "../../componentes/BarraDePesquisa";
-import { Link } from "react-router-dom";
-import {colunaEspecialidade}from '../../data/tabela_info';
+import { useNavigate } from "react-router-dom";
+import {colunaEspecialidade }from '../../data/tabela_info';
 import axios from "axios";
 import { BASE_URL } from '../../config/axios';
 
-const Especialidade = ({titulo, setInfo}) => {
+const Especialidade = ({titulo}) => {
+
+    const navigate = useNavigate();
 
     const [dados, setDados] = useState([]);
+
+    const cadastrar = () => {
+        navigate(`/cadastro-especialidade`);
+    };
+
+    const editar = (id) => {
+        navigate(`/cadastro-especialidade/${id}`);
+    };
 
     useEffect(() => {
         axios.get(`${BASE_URL}/especialidades`).then((response) => {
@@ -23,9 +33,9 @@ const Especialidade = ({titulo, setInfo}) => {
             <div className='container-principal-central'>
             <div className='cabeçalho-central'>
                 <BarraDePesquisa />
-                <Link onClick={() => setInfo([{}])} className="add-botão" to={"cadastro"}>
+                <button onClick={() => cadastrar()} className="add-botão">
                     Adicionar {titulo}
-                </Link>
+                </button>
             </div>
             <div className='conteudo-principal-central'>
                 <table className="tabela-principal">
@@ -38,7 +48,7 @@ const Especialidade = ({titulo, setInfo}) => {
                     </tbody>
                         {dados.map(({id, nome, especialidade, status}) => (
                             <tbody key={id} >
-                            <tr className="tabela-conteudo">
+                            <tr onClick={() => editar(id)} className="tabela-conteudo">
                                 <td className="borda-lateral">{nome}</td>
                                 <td className="borda-lateral">{especialidade}</td>
                                 {status === true ?  
