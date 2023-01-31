@@ -23,8 +23,8 @@ const PaginaGenericaRelatorio = ({ titulo, pessoa, colunas, linhas }) => {
         </div>
         <div className='cabeçalho-central'>
           <BarraDePesquisa />
-          <Link className="add-botão" to={"cadastro"}>
-            Adicionar {titulo}
+          <Link className="add-botão" to={"gerar-relatorio"}>
+            Gerar {titulo}
           </Link>
         </div>
         <div className='conteudo-principal-central'>

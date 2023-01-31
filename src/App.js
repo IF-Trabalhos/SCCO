@@ -30,6 +30,10 @@ import FinanceiroMensal from './pages/financeiro/mensal/FinanceiroMensal';
 import FinanceiroRecorrente from './pages/financeiro/recorrente/FinanceiroRecorrente';
 import CadastroFinanceiroMensal from './pages/financeiro/mensal/CadastroFinanceiroMensal';
 import CadastroFinanceiroRecorrente from './pages/financeiro/recorrente/CadastroFinanceiroRecorrente';
+import RelatorioConvenio from './componentes/relatorios/RelatorioConvenio';
+import RelatorioClinica from './componentes/relatorios/RelatorioClinica';
+import RelatorioPaciente from './componentes/relatorios/RelatorioPaciente';
+import RelatorioDentista from './componentes/relatorios/RelatorioDentista';
 
 
 function App() {
@@ -91,13 +95,19 @@ function App() {
 					<Route path='/relatorio' element={<RelatorioInicial/>}/>
 					<Route path='relatorio/clinica' element={<PaginaGenericaRelatorio titulo={"Relatorio Clinica"} colunas={colunaDespesa}
 					linhas={pessoa}/>}/>
-					<Route path='/relatorio/clinica/cadastro'/>
+					<Route path='/relatorio/clinica/gerar-relatorio' element={
+						<RelatorioClinica/>}/>
+
 					<Route path='relatorio/paciente' element={<PaginaGenericaRelatorio titulo={"Relatorio Paciente"} colunas={colunaDespesa}
 					linhas={pessoa}/>}/>
+					<Route path='relatorio/paciente/gerar-relatorio' element={<RelatorioPaciente/>}/>
 					<Route path='relatorio/dentista' element={<PaginaGenericaRelatorio titulo={"Relatorio Dentista"} colunas={colunaDespesa}
 					linhas={pessoa}/>}/>
+					<Route path='relatorio/dentista/gerar-relatorio' element={<RelatorioDentista/>}/> 
 					<Route path='relatorio/convenio'element={<PaginaGenericaRelatorio titulo={"Relatorio Convênio"} colunas={colunaDespesa}
 					linhas={pessoa}/>}/>
+					<Route path='/relatorio/convenio/gerar-relatorio' element={
+						<RelatorioConvenio/>}/>
 				</Routes>
 			</div>
 		</BrowserRouter>
