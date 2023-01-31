@@ -21,7 +21,6 @@ const CadastroPaciente = ({}) => {
   async function buscar() {
     await axios.get(`${BASE_URL2}/pacientes/${handle}`).then((response) => {
       setDados(response.data);
-      console.log(response.data)
     });
     setId(dados.id);
     setRg(dados.rg);

@@ -73,7 +73,7 @@ function App() {
           			<Route path='/cadastro-dentista/:handle?' element={<CadastroDentista />}/>
 
 					<Route path='/recepcionista' element={<Recepcionista titulo="Recepcionista" />}/>
-          			<Route path='/recepcionista/cadastro' element={<CadastroRecepcionista/>}/>
+          			<Route path='/cadastro-recepcionista/:handle?' element={<CadastroRecepcionista/>}/>
 
 					<Route path='/procedimento' element={<Procedimento titulo="Procedimento" />}/>
           			<Route path='/procedimento/cadastro' element={<CadastroProcedimento/>}/>
