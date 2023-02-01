@@ -12,6 +12,7 @@ const CadastroProcedimento = ({children}) => {
   const [nome, setNome] = useState('');
 
   const [dados, setDados] = useState([]);
+  const [dadosEspecialidade, setDadosEspecialidade] = useState([]);
 
   async function buscar() {
     await axios.get(`${BASE_URL}/procedimentos/${handle}`).then((response) => {
@@ -24,6 +25,12 @@ const CadastroProcedimento = ({children}) => {
   useEffect(() => {
     buscar(); // eslint-disable-next-line
   }, [id]);
+
+  useEffect(() => {
+    axios.get(`${BASE_URL}/especialidades`).then((response) => {
+        setDadosEspecialidade(response.data);
+    });
+  }, []);
 
   return (
     <div className='conteudo-principal'>
@@ -41,8 +48,14 @@ const CadastroProcedimento = ({children}) => {
             value={nome}
             />
             <br/>
-            {children}
-            <label htmlFor="status">STATUS:</label>
+            <label htmlFor='inputEspecialidade'>Especialidade: </label>
+            <select name="especialidades" id="especialidades">
+                        {dadosEspecialidade.map(({id, nome}) => (
+                            <option key={id} value={nome}>{nome}</option>
+                        ))}
+            </select>
+            <br/>
+            <label htmlFor="status">Status:</label>
             <input type="radio" className='inputAtivo' name='status' value="ATIVO"/>
             <label htmlFor="inputAtivo">ATIVO</label>
             <input type="radio" className='inputInativo' name='status' value="INATIVO"/>
