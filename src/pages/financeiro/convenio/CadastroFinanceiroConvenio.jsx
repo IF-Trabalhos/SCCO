@@ -26,7 +26,7 @@ const CadastroFinanceiroConvenio = ({}) => {
   return (
     <div className='conteudo-principal'>
         <div className="cabeçalho-principal">
-          <h1>Procedimento</h1>
+          <h1>Cadastro de Fatura do Convênio</h1>
         </div>
         <div className='corpo-cadastro'>
         <div className='container-cadastro'>

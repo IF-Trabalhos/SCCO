@@ -35,7 +35,7 @@ const CadastroProcedimento = ({children}) => {
   return (
     <div className='conteudo-principal'>
         <div className="cabeçalho-principal">
-          <h1>Procedimento</h1>
+          <h1>Cadastro de Procedimento</h1>
         </div>
         <div className='corpo-cadastro'>
             <h2>Novo Cadastro</h2>
