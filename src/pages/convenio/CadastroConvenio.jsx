@@ -42,6 +42,14 @@ const CadastroConvenio = ({}) => {
                     />
                 </label>
                 <br />
+                <label htmlFor='inputEmail'>Email: 
+                  <input 
+                      type="email" 
+                      className='inputEmail' 
+                      required name='inputEmail'
+                      />
+                 </label>
+                <br />
                 <label htmlFor="inputANS">Registro ANS:
                     <input 
                     type="text" 

@@ -1,7 +1,28 @@
-import React from 'react'
+import axios from 'axios';
+import React, { useState, useEffect } from 'react'
 import BotãoSalvar from '../../../componentes/BotãoSalvar';
+import { useParams } from 'react-router-dom';
+import { BASE_URL } from '../../../config/axios';
 
-const CadastroFinanceiroConvenio = ({primeiroInput, segundoInput}) => {
+const CadastroFinanceiroConvenio = ({}) => {
+
+    const {handle} = useParams() 
+
+    const [id, setId] = useState('');
+  
+    const [dados, setDados] = useState([]);
+  
+    async function buscar() {
+      await axios.get(`${BASE_URL}/pacientes/${handle}`).then((response) => {
+        setDados(response.data);
+      });
+      setId(dados.id);
+    }
+  
+    useEffect(() => {
+      buscar(); // eslint-disable-next-line
+    }, [id]);
+
   return (
     <div className='conteudo-principal'>
         <div className="cabeçalho-principal">
@@ -11,15 +32,15 @@ const CadastroFinanceiroConvenio = ({primeiroInput, segundoInput}) => {
         <div className='container-cadastro'>
             <div className='bloco'>
                 <div>
-                    <label htmlFor="primeiroInput">{primeiroInput}
-                        <input type="text" name='primeiroInput'
+                    <label htmlFor="paciente">Paciente:
+                        <input type="text" name='paciente'
                         required
                         />
                     </label>
                     </div>
                     <div>
-                    <label htmlFor="segundoInput">{segundoInput}
-                        <input type="text" name='segundoInput'
+                    <label htmlFor="procedimento">Procedimentos:
+                        <input type="text" name='procedimento'
                         required
                         />
                     </label>

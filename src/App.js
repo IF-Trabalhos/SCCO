@@ -78,19 +78,15 @@ function App() {
                 
 					<Route path='/financeiro' element={<Financeiro />} />
 					<Route path='/financeiro/paciente' element={<FinanceiroPaciente titulo="Fatura Paciente" />} />
-					<Route path='/financeiro/paciente/cadastro' element={<CadastroFinanceiroPaciente primeiroInput={"Paciente:"}
-							segundoInput={"Procedimentos:"}/>} />
+					<Route path='/financeiro/cadastro-paciente/:handle?' element={<CadastroFinanceiroPaciente />} />
 
 					<Route path='/financeiro/convenio' element={<FinanceiroConvenio titulo="Fatura Convenio" />} />
-					<Route path='/financeiro/convenio/cadastro' element={<CadastroFinanceiroConvenio primeiroInput={"Paciente:"}
-							segundoInput={"Procedimentos:"}/>} />
+					<Route path='/financeiro/cadastro-convenio/:handle?' element={<CadastroFinanceiroConvenio />} />
 
 					<Route path='/financeiro/mensal' element={<FinanceiroMensal titulo="Despesa Mensal" />} />
-					<Route path='/financeiro/mensal/cadastro' element={<CadastroFinanceiroMensal primeiroInput={"Despesa fixa:"}
-							segundoInput={"Dt_Limite:"}/>} />
+					<Route path='/financeiro/cadastro-mensal/:handle?' element={<CadastroFinanceiroMensal />} />
 					<Route path='/financeiro/recorrente' element={<FinanceiroRecorrente titulo="Despesa Recorrente" />} />
-					<Route path='/financeiro/recorrente/cadastro' element={<CadastroFinanceiroRecorrente primeiroInput={"Despesa:"}
-							segundoInput={"Quantidade:"}/>} />
+					<Route path='/financeiro/cadastro-recorrente/:handle?' element={<CadastroFinanceiroRecorrente />} />
 
 					<Route path='/relatorio' element={<RelatorioInicial/>}/>
 					<Route path='relatorio/clinica' element={<PaginaGenericaRelatorio titulo={"Relatorio Clinica"} colunas={colunaDespesa}

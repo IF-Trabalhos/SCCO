@@ -1,7 +1,28 @@
-import React from 'react'
+import axios from 'axios';
+import React, { useState, useEffect } from 'react'
 import BotãoSalvar from '../../../componentes/BotãoSalvar';
+import { useParams } from 'react-router-dom';
+import { BASE_URL2 } from '../../../config/axios';
 
-const CadastroFinanceiroMensal = ({primeiroInput, segundoInput}) => {
+const CadastroFinanceiroMensal = ({}) => {
+
+    const {handle} = useParams() 
+
+    const [id, setId] = useState('');
+  
+    const [dados, setDados] = useState([]);
+  
+    async function buscar() {
+      await axios.get(`${BASE_URL2}/pacientes/${handle}`).then((response) => {
+        setDados(response.data);
+      });
+      setId(dados.id);
+    }
+  
+    useEffect(() => {
+      buscar(); // eslint-disable-next-line
+    }, [id]);
+
   return (
     <div className='conteudo-principal'>
         <div className="cabeçalho-principal">
@@ -11,15 +32,15 @@ const CadastroFinanceiroMensal = ({primeiroInput, segundoInput}) => {
         <div className='container-cadastro'>
             <div className='bloco'>
                 <div>
-                    <label htmlFor="primeiroInput">{primeiroInput}
-                        <input type="text" name='primeiroInput'
+                    <label htmlFor="despesa_fixa">Despesa Fixa: 
+                        <input type="text" name='despesa_fixa'
                         required
                         />
                     </label>
                     </div>
                     <div>
-                    <label htmlFor="segundoInput">{segundoInput}
-                        <input type="text" name='segundoInput'
+                    <label htmlFor="dt_limite">Data Limite: 
+                        <input type="text" name='dt_limite'
                         required
                         />
                     </label>
