@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 import {colunaEspecialidade}from '../../data/tabela_info';
 import axios from "axios";
 import { BASE_URL } from '../../config/axios';
-
+import './Procedimento.css';
 const Procedimento = ({titulo, setInfo}) => {
 
     const navigate = useNavigate();

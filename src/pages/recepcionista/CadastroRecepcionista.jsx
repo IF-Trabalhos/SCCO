@@ -96,8 +96,9 @@ const CadastroDentista = ({}) => {
               </label>
             </div>
           </div>
+          <h3>ENDEREÇO</h3>
           <div className='endereco'>
-            <h3>ENDEREÇO</h3>
+
           <div className='linha1-endereco'>
             
               <label htmlFor="inputCep">CEP:

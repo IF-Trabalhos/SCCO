@@ -48,10 +48,11 @@ const RelatorioClinica = () => {
                         <div className='informacoes'>
                             Lucro Total: {getFloatAleatorio()}
                         </div>
-                        <div className='botoes'>
+
+                    </div>
+                    <div className='botoes'>
                             <BotãoSalvar/>
                         </div>
-                    </div>
                 </div>
             </div>
         </div>
