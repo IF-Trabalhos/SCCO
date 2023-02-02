@@ -37,7 +37,7 @@ const CadastroPaciente = ({}) => {
   return (
     <div className='conteudo-principal'>
       <div className="cabeçalho-principal">
-        <h1>Qualquer</h1>
+        <h1>Cadastro de Paciente</h1>
       </div>
       <div className='corpo-cadastro'>
         <div className='container-cadastro'>
