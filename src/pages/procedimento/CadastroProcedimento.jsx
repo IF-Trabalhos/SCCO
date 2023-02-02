@@ -3,7 +3,7 @@ import React, { useState, useEffect } from "react";
 import { useParams } from 'react-router-dom';
 import BotãoSalvar from '../../componentes/BotãoSalvar';
 import { BASE_URL } from '../../config/axios';
-
+import './Procedimento.css';
 const CadastroProcedimento = ({children}) => {
 
   const {handle} = useParams() 
@@ -39,7 +39,7 @@ const CadastroProcedimento = ({children}) => {
         </div>
         <div className='corpo-cadastro'>
             <h2>Novo Cadastro</h2>
-            <div>
+          <div className='espec'>
             <label htmlFor="inputNome">Nome:</label>
             <input 
             type="text" 
@@ -49,7 +49,7 @@ const CadastroProcedimento = ({children}) => {
             />
             <br/>
             <label htmlFor='inputEspecialidade'>Especialidade: </label>
-            <select name="especialidades" id="especialidades">
+            <select name="especialidades" id="especialidades" className='custom-select'>
                         {dadosEspecialidade.map(({id, nome}) => (
                             <option key={id} value={nome}>{nome}</option>
                         ))}
@@ -61,7 +61,7 @@ const CadastroProcedimento = ({children}) => {
             <input type="radio" className='inputInativo' name='status' value="INATIVO"/>
             <label htmlFor="inputInativo">INATIVO</label>
             <BotãoSalvar pagina={'/procedimento'} />
-            </div>
+          </div>
         </div>
     </div>
   )

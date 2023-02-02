@@ -19,31 +19,33 @@ const RelatorioPaciente = () => {
                 <div className='formatador-relatorio'>
                     <div>
                         <h2 className='titulo-relatorio'>Dentista João da Silva</h2>
-                        <p>CRO:{getIntAleatorio()}</p>
-                        <p>Dt. Nascimento: 14/06/1956</p>
-                        <p>De: 19/09/2022 Até 15/10/2022</p>
+                        <div className='informacoes2'>
+                            <p>CRO:{getIntAleatorio()}</p>
+                            <p>Dt. Nascimento: 14/06/1956</p>
+                            <p>De: 19/09/2022 Até 15/10/2022</p>
+                        </div>
                     </div>
                     <div className='informacoes-completa'>
-                        <div className='informacoes-completa'>
-                            <div className='informacoes'>
-                                Procedimentos realizados: {getIntAleatorio()}
-                            </div>
-                            <div className='informacoes'>
-                                Pacientes atendidos: {getIntAleatorio()}
-                            </div>
-                            <div className='informacoes'>
-                                Valor total: {valorTotal}
-                            </div>
-                            <div className='informacoes'>
-                                Valor total a ser descontado: {valorDescontado}
-                            </div>
-                            <div className='informacoes'>
-                                Valor a ser pago: {(valorTotal - valorDescontado).toFixed(2)}
-                            </div>
+                        <div className='informacoes'>
+                            Procedimentos realizados: {getIntAleatorio()}
                         </div>
-                        <div className='botoes'>
-                            <BotãoSalvar/>
+                        <div className='informacoes'>
+                            Pacientes atendidos: {getIntAleatorio()}
                         </div>
+                        <div className='informacoes'>
+                            Valor total: {valorTotal}
+                        </div>
+                        <div className='informacoes'>
+                            Valor total a ser descontado: {valorDescontado}
+                        </div>
+                        <div className='informacoes'>
+                            Valor a ser pago: {(valorTotal - valorDescontado).toFixed(2)}
+                        </div>
+
+
+                    </div>
+                    <div className='botoes'>
+                        <BotãoSalvar />
                     </div>
                 </div>
             </div>

@@ -18,6 +18,7 @@
 }
 .botoes{
     margin-left: 43%;
+
 }
 .periodo-relatorio, .titulorelatorio{
 
@@ -31,4 +32,10 @@
 }
 .periodo-relatorio{
     border-bottom: 0.2em solid rgb(115, 118, 115);
+}
+.informacoes2{
+    font-size: 1.1em;
+    margin-left: 1em;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+
 }
