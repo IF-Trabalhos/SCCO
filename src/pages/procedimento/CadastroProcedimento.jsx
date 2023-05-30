@@ -12,13 +12,14 @@ const CadastroProcedimento = ({children}) => {
   const [id, setId] = useState('');
   const [nome, setNome] = useState('');
   const [status, setStatus] = useState('');
-  const [valor, setValor] = useState('');
+  const [especialidadeId, setEspecialidadeId] = useState('1');
+  const [valor, setValor] = useState('900');
 
   const [dados, setDados] = useState([]);
   const [dadosEspecialidade, setDadosEspecialidade] = useState([]);
 
   async function salvar() {
-    let data = { nome, status, valor};
+    let data = { nome, status, especialidadeId, valor};
     data = JSON.stringify(data);
     if (handle == null) {
       await axios
@@ -83,10 +84,19 @@ const CadastroProcedimento = ({children}) => {
             />
             <br/>
             <label htmlFor='inputEspecialidade'>Especialidade: </label>
-            <select name="especialidades" id="especialidades" className='custom-select'>
-                        {dadosEspecialidade.map(({id, nome}) => (
-                            <option key={id} value={nome}>{nome}</option>
-                        ))}
+            <select
+              name="especialidades" 
+              id="especialidades" 
+              className='custom-select'
+              onChange={(e) => setEspecialidadeId(e.target.value)}
+              >
+              {dadosEspecialidade.map(({id, nome}) => (
+                  <option 
+                    key={id} 
+                    value={id}
+                    >{nome}
+                  </option>
+              ))}
             </select>
             <br/>
             <label htmlFor="status">Status:</label>
