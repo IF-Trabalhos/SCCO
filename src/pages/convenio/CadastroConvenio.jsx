@@ -1,17 +1,50 @@
 import axios from 'axios';
 import React, { useState, useEffect } from "react";
-import { useParams } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 import BotãoSalvar from '../../componentes/BotãoSalvar';
 import { BASE_URL } from '../../config/axios';
 
 const CadastroConvenio = ({}) => {
 
   const {handle} = useParams() 
+  const navigate = useNavigate();
 
   const [id, setId] = useState('');
   const [nome, setNome] = useState('');
+  const [registroAns, setRegistroAns] = useState('');
+  const [email, setEmail] = useState('');
+  const [telefone, setTelefone] = useState('');
+  const [desconto, setDesconto] = useState('');
 
   const [dados, setDados] = useState([]);
+
+  async function salvar() {
+    let data = { nome, registroAns, email, telefone, desconto};
+    data = JSON.stringify(data);
+    if (handle == null) {
+      await axios
+        .post(`${BASE_URL}/convenios`, data, {
+          headers: { 'Content-Type': 'application/json' },
+        })
+        .then(function (response) {
+          navigate(`/convenio`);
+        })
+        .catch(function (error) {
+          console.log(error.response.data);
+        });
+    } else {
+      await axios
+        .put(`${BASE_URL}/convenios/${handle}`, data, {
+          headers: { 'Content-Type': 'application/json' },
+        })
+        .then(function (response) {
+          navigate(`/convenio`);
+        })
+        .catch(function (error) {
+          console.log(error.response.data);
+        });
+    }
+  }
 
   async function buscar() {
     await axios.get(`${BASE_URL}/convenios/${handle}`).then((response) => {
@@ -19,6 +52,10 @@ const CadastroConvenio = ({}) => {
     });
     setId(dados.id);
     setNome(dados.nome);
+    setRegistroAns(dados.registroAns);
+    setEmail(dados.email);
+    setTelefone(dados.telefone);
+    setDesconto(dados.desconto);
   }
 
   useEffect(() => {
@@ -39,6 +76,7 @@ const CadastroConvenio = ({}) => {
                     className='inputNome' 
                     value={nome}
                     required name='nome' 
+                    onChange={(e) => setNome(e.target.value)}
                     />
                 </label>
                 <br />
@@ -47,6 +85,8 @@ const CadastroConvenio = ({}) => {
                       type="email" 
                       className='inputEmail' 
                       required name='inputEmail'
+                      value={email}
+                      onChange={(e) => setEmail(e.target.value)}
                       />
                  </label>
                 <br />
@@ -55,9 +95,11 @@ const CadastroConvenio = ({}) => {
                     type="text" 
                     className='inputANS' 
                     required name='registroANS'
+                    value={registroAns}
+                    onChange={(e) => setRegistroAns(e.target.value)}
                     />
                 </label>
-                <BotãoSalvar pagina={'/convenio'} />
+                <BotãoSalvar funct={salvar} />
             </div>
         </div>
     </div>
