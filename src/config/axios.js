@@ -1,5 +1,5 @@
 export const BASE_URL =
-    'https://my-json-server.typicode.com/if-trabalhos/scco-json';
-
+    'http://localhost:8080/api/v1';
+    
 export const BASE_URL2 = 
-    'https://my-json-server.typicode.com/if-trabalhos/scco2-json';
+    'http://localhost:8080/api/v1';
