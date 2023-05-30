@@ -90,9 +90,21 @@ const CadastroProcedimento = ({children}) => {
             </select>
             <br/>
             <label htmlFor="status">Status:</label>
-            <input type="radio" className='inputAtivo' name='status' value="ATIVO"/>
+            <input 
+              type="radio" 
+              className='inputAtivo' 
+              name='status' 
+              value='true'
+              onChange={(e) => setStatus(e.target.value)}
+              />
             <label htmlFor="inputAtivo">ATIVO</label>
-            <input type="radio" className='inputInativo' name='status' value="INATIVO"/>
+            <input 
+              type="radio" 
+              className='inputInativo' 
+              name='status' 
+              value="false"
+              onChange={(e) => setStatus(e.target.value)}
+              />
             <label htmlFor="inputInativo">INATIVO</label>
             <BotãoSalvar funct={salvar} />
           </div>
