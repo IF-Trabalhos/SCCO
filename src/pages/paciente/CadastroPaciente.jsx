@@ -29,7 +29,6 @@ const CadastroPaciente = ({}) => {
   const [dados, setDados] = useState([]);
 
   async function salvar() {
-    console.log('Here')
     let data = { nome, numProntuario, dataDeNascimento, cpf, email, telefone, 
                  rg, logradouro, bairro, uf, cidade, complemento, cep, numero};
     data = JSON.stringify(data);
@@ -39,7 +38,6 @@ const CadastroPaciente = ({}) => {
           headers: { 'Content-Type': 'application/json' },
         })
         .then(function (response) {
-          console.log('Sucesso parça');
           navigate(`/paciente`);
         })
         .catch(function (error) {
