@@ -1,17 +1,47 @@
 import axios from 'axios';
 import React, { useState, useEffect } from "react";
-import { useParams } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 import BotãoSalvar from '../../componentes/BotãoSalvar';
 import { BASE_URL } from '../../config/axios';
 
 const CadastroProcedimento = ({children}) => {
 
   const {handle} = useParams() 
+  const navigate = useNavigate();
 
   const [id, setId] = useState('');
   const [nome, setNome] = useState('');
+  const [status, setStatus] = useState('');
 
   const [dados, setDados] = useState([]);
+
+  async function salvar() {
+    let data = { nome, status};
+    data = JSON.stringify(data);
+    if (handle == null) {
+      await axios
+        .post(`${BASE_URL}/especialidades`, data, {
+          headers: { 'Content-Type': 'application/json' },
+        })
+        .then(function (response) {
+          navigate(`/especialidade`);
+        })
+        .catch(function (error) {
+          console.log(error.response.data);
+        });
+    } else {
+      await axios
+        .put(`${BASE_URL}/especialidades/${handle}`, data, {
+          headers: { 'Content-Type': 'application/json' },
+        })
+        .then(function (response) {
+          navigate(`/especialidade`);
+        })
+        .catch(function (error) {
+          console.log(error.response.data);
+        });
+    }
+  }
 
   async function buscar() {
     await axios.get(`${BASE_URL}/especialidades/${handle}`).then((response) => {
@@ -19,6 +49,7 @@ const CadastroProcedimento = ({children}) => {
     });
     setId(dados.id);
     setNome(dados.nome);
+    setStatus(dados.status);
   }
 
   useEffect(() => {
@@ -39,6 +70,7 @@ const CadastroProcedimento = ({children}) => {
             name='inputNome' 
             className='nome'
             value={nome}
+            onChange={(e) => setNome(e.target.value)}
             />
             <br/>
             {children}
@@ -47,7 +79,7 @@ const CadastroProcedimento = ({children}) => {
             <label htmlFor="inputAtivo">ATIVO</label>
             <input type="radio" className='inputInativo' name='status' value="INATIVO"/>
             <label htmlFor="inputInativo">INATIVO</label>
-            <BotãoSalvar pagina={'/especialidade'} />
+            <BotãoSalvar funct={salvar} />
             </div>
         </div>
     </div>
