@@ -13,6 +13,7 @@ const CadastroDentista = ({}) => {
   const [nome, setNome] = useState('');
   const [cro, setCro] = useState('');
   const [cpf, setCpf] = useState('');
+  const [especialidadeId, setEspecialidadeId] = useState('1');
   const [email, setEmail] = useState('');
   const [dataDeNascimento, setDataDeNascimento] = useState(new Date());
   const [telefone, setTelefone] = useState('');
@@ -26,6 +27,7 @@ const CadastroDentista = ({}) => {
   const [numero, setNumero] = useState('');
 
   const [dados, setDados] = useState([]);
+  const [dadosEspecialidade, setDadosEspecialidade] = useState([]);
 
   async function salvar() {
     let data = { nome, cro, dataDeNascimento, cpf, email, telefone, 
@@ -80,6 +82,12 @@ const CadastroDentista = ({}) => {
   useEffect(() => {
     buscar(); // eslint-disable-next-line
   }, [id]);
+
+  useEffect(() => {
+    axios.get(`${BASE_URL2}/especialidades`).then((response) => {
+        setDadosEspecialidade(response.data);
+    });
+  }, []);
 
   return (
     <div className='conteudo-principal'>
@@ -147,6 +155,23 @@ const CadastroDentista = ({}) => {
                   onChange={(e) => setCpf(e.target.value)}
                   />
               </label>
+            </div>
+            <div>
+              <label htmlFor='inputEspecialidade'>Especialidade: </label>
+              <select
+                name="especialidades" 
+                id="especialidades" 
+                className='custom-select'
+                onChange={(e) => setEspecialidadeId(e.target.value)}
+                >
+                {dadosEspecialidade.map(({id, nome}) => (
+                    <option 
+                      key={id} 
+                      value={id}
+                      >{nome}
+                    </option>
+                ))}
+              </select>
             </div>
           </div>
           <h3>ENDEREÇO</h3>
