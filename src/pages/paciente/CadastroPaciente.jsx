@@ -5,7 +5,7 @@ import BotãoSalvar from '../../componentes/BotãoSalvar';
 import './CadastroPaciente.css'
 import { BASE_URL2 } from '../../config/axios';
 
-const CadastroPaciente = ({}) => {
+const CadastroPaciente = () => {
 
   const {handle} = useParams() 
   const navigate = useNavigate();

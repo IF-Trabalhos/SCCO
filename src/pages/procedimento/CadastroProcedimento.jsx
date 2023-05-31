@@ -12,7 +12,7 @@ const CadastroProcedimento = ({children}) => {
   const [id, setId] = useState('');
   const [nome, setNome] = useState('');
   const [status, setStatus] = useState('');
-  const [especialidadeId, setEspecialidadeId] = useState('1');
+  const [especialidadeId, setEspecialidadeId] = useState(1);
   const [valor, setValor] = useState('900');
 
   const [dados, setDados] = useState([]);
@@ -54,17 +54,18 @@ const CadastroProcedimento = ({children}) => {
     setNome(dados.nome);
     setStatus(dados.status);
     setValor(dados.valor);
+    setEspecialidadeId(dados.especialidadeId)
   }
-
-  useEffect(() => {
-    buscar(); // eslint-disable-next-line
-  }, [id]);
 
   useEffect(() => {
     axios.get(`${BASE_URL}/especialidades`).then((response) => {
         setDadosEspecialidade(response.data);
     });
   }, []);
+
+  useEffect(() => {
+    buscar(); // eslint-disable-next-line
+  }, [id]);
 
   return (
     <div className='conteudo-principal'>
@@ -94,6 +95,7 @@ const CadastroProcedimento = ({children}) => {
                   <option 
                     key={id} 
                     value={id}
+                    selected={especialidadeId === id ? 'selected' : ''}
                     >{nome}
                   </option>
               ))}

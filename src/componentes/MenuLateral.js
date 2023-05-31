@@ -80,7 +80,7 @@ const MenuLateral = () => {
 				{menuItems.map(({id, texto, icone, link }) => (
 					<div onClick={() => navegar(link)} key={id} className="menu-item">
 						<div className="menu-item-img">
-							<img className="menu-item-icone" src={icone} alt="" srcset="" />
+							<img className="menu-item-icone" src={icone} alt="" srcSet="" />
 						</div>
 						<div className="menu-item-texto">
 							<p>{texto}</p>

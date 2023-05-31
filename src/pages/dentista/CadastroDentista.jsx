@@ -5,7 +5,7 @@ import BotãoSalvar from '../../componentes/BotãoSalvar';
 import './CadastroDentista.css'
 import { BASE_URL2 } from '../../config/axios';
 
-const CadastroDentista = ({}) => {
+const CadastroDentista = () => {
   const {handle} = useParams() 
   const navigate = useNavigate();
 
@@ -13,7 +13,7 @@ const CadastroDentista = ({}) => {
   const [nome, setNome] = useState('');
   const [cro, setCro] = useState('');
   const [cpf, setCpf] = useState('');
-  const [especialidadeId, setEspecialidadeId] = useState('1');
+  const [especialidadeId, setEspecialidadeId] = useState(1);
   const [email, setEmail] = useState('');
   const [dataDeNascimento, setDataDeNascimento] = useState(new Date());
   const [telefone, setTelefone] = useState('');
@@ -30,7 +30,7 @@ const CadastroDentista = ({}) => {
   const [dadosEspecialidade, setDadosEspecialidade] = useState([]);
 
   async function salvar() {
-    let data = { nome, cro, dataDeNascimento, cpf, email, telefone, 
+    let data = { nome, cro, dataDeNascimento, cpf, email, especialidadeId, telefone, 
                  rg, logradouro, bairro, uf, cidade, complemento, cep, numero};
     data = JSON.stringify(data);
     if (handle == null) {
@@ -67,6 +67,7 @@ const CadastroDentista = ({}) => {
     setRg(dados.rg);
     setNome(dados.nome);
     setCpf(dados.cpf);
+    setEspecialidadeId(dados.especialidadeId);
     setDataDeNascimento(dados.dataDeNascimento)
     setEmail(dados.email);
     setTelefone(dados.telefone);
@@ -88,6 +89,8 @@ const CadastroDentista = ({}) => {
         setDadosEspecialidade(response.data);
     });
   }, []);
+
+  console.log(especialidadeId)
 
   return (
     <div className='conteudo-principal'>
@@ -168,6 +171,7 @@ const CadastroDentista = ({}) => {
                     <option 
                       key={id} 
                       value={id}
+                      selected={especialidadeId === id ? 'selected' : ''}
                       >{nome}
                     </option>
                 ))}
