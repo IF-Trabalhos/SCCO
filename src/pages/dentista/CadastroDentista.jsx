@@ -1,37 +1,96 @@
 import axios from 'axios';
 import React, { useState, useEffect } from 'react'
-import { useParams } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 import BotãoSalvar from '../../componentes/BotãoSalvar';
 import './CadastroDentista.css'
 import { BASE_URL2 } from '../../config/axios';
 
-const CadastroDentista = ({}) => {
+const CadastroDentista = () => {
   const {handle} = useParams() 
+  const navigate = useNavigate();
 
   const [id, setId] = useState('');
   const [nome, setNome] = useState('');
+  const [cro, setCro] = useState('');
   const [cpf, setCpf] = useState('');
+  const [especialidadeId, setEspecialidadeId] = useState(1);
   const [email, setEmail] = useState('');
+  const [dataDeNascimento, setDataDeNascimento] = useState(new Date());
   const [telefone, setTelefone] = useState('');
   const [rg, setRg] = useState('');
+  const [logradouro, setLogradouro] = useState('');
+  const [bairro, setBairro] = useState('');
+  const [uf, setUf] = useState('');
+  const [cidade, setCidade] = useState('');
+  const [complemento, setComplemento] = useState('');
+  const [cep, setCep] = useState('');
+  const [numero, setNumero] = useState('');
 
   const [dados, setDados] = useState([]);
+  const [dadosEspecialidade, setDadosEspecialidade] = useState([]);
+
+  async function salvar() {
+    let data = { nome, cro, dataDeNascimento, cpf, email, especialidadeId, telefone, 
+                 rg, logradouro, bairro, uf, cidade, complemento, cep, numero};
+    data = JSON.stringify(data);
+    if (handle == null) {
+      await axios
+        .post(`${BASE_URL2}/dentistas`, data, {
+          headers: { 'Content-Type': 'application/json' },
+        })
+        .then(function (response) {
+          navigate(`/dentista`);
+        })
+        .catch(function (error) {
+          console.log(error.response.data);
+        });
+    } else {
+      await axios
+        .put(`${BASE_URL2}/dentistas/${handle}`, data, {
+          headers: { 'Content-Type': 'application/json' },
+        })
+        .then(function (response) {
+          navigate(`/dentista`);
+        })
+        .catch(function (error) {
+          console.log(error.response.data);
+        });
+    }
+  }
 
   async function buscar() {
     await axios.get(`${BASE_URL2}/dentistas/${handle}`).then((response) => {
       setDados(response.data);
     });
     setId(dados.id);
+    setCro(dados.cro)
     setRg(dados.rg);
     setNome(dados.nome);
     setCpf(dados.cpf);
+    setEspecialidadeId(dados.especialidadeId);
+    setDataDeNascimento(dados.dataDeNascimento)
     setEmail(dados.email);
     setTelefone(dados.telefone);
+    setLogradouro(dados.logradouro)
+    setCep(dados.cep)
+    setCidade(dados.cidade)
+    setBairro(dados.bairro)
+    setComplemento(dados.complemento)
+    setNumero(dados.numero)
+    setUf(dados.uf)
   }
 
   useEffect(() => {
     buscar(); // eslint-disable-next-line
   }, [id]);
+
+  useEffect(() => {
+    axios.get(`${BASE_URL2}/especialidades`).then((response) => {
+        setDadosEspecialidade(response.data);
+    });
+  }, []);
+
+  console.log(especialidadeId)
 
   return (
     <div className='conteudo-principal'>
@@ -58,7 +117,9 @@ const CadastroDentista = ({}) => {
                 type="number" 
                 className="cro"
                 name="cro"
+                value={cro}
                 required
+                onChange={(e) => setCro(e.target.value)}
                 />
             </label>
             </div>
@@ -68,7 +129,10 @@ const CadastroDentista = ({}) => {
                   type="date" 
                   className='inputDt-nascimento' 
                   name='dt-nascimento' 
-                  required />
+                  value={dataDeNascimento}
+                  required
+                  onChange={(e) => setDataDeNascimento(e.target.value)}
+                  />
               </label>
             </div>
             <div>
@@ -95,30 +159,102 @@ const CadastroDentista = ({}) => {
                   />
               </label>
             </div>
+            <div>
+              <label htmlFor='inputEspecialidade'>Especialidade: </label>
+              <select
+                name="especialidades" 
+                id="especialidades" 
+                className='custom-select'
+                onChange={(e) => setEspecialidadeId(e.target.value)}
+                >
+                {dadosEspecialidade.map(({id, nome}) => (
+                    <option 
+                      key={id} 
+                      value={id}
+                      selected={especialidadeId === id ? 'selected' : ''}
+                      >{nome}
+                    </option>
+                ))}
+              </select>
+            </div>
           </div>
           <h3>ENDEREÇO</h3>
           <div className='endereco'>
-           
           <div className='linha1-endereco'>
-            
               <label htmlFor="inputCep">CEP:
                 <input 
                   type="number" 
                   name='cep' 
                   className='inputCep' 
+                  value={cep}
                   required
+                  onChange={(e) => setCep(e.target.value)}
                   />
               </label>
-              <label htmlFor="inputUf">UF:<input type="text" name='uf' className='inputUf' required /></label>
-              <label htmlFor="inputCidade">Cidade:<input type="text" name='cidade' className='inputCidade' required /></label>
+              <label htmlFor="inputUf">UF:
+                <input 
+                  type="text" 
+                  name='uf' 
+                  className='inputUf' 
+                  value={uf}
+                  required
+                  onChange={(e) => setUf(e.target.value)}
+                  />
+              </label>
+              <label htmlFor="inputCidade">Cidade:
+                <input 
+                  type="text" 
+                  name='cidade' 
+                  className='inputCidade' 
+                  value={cidade}
+                  required
+                  onChange={(e) => setCidade(e.target.value)}
+                  />
+              </label>
           </div>
           <div className='linha2-endereco'>
-              <label htmlFor="inputLogradouro">Logradouro:<input type="text" name='logradouro'className='inputLogradouro' required /></label>
-              <label htmlFor="inputNumero">Numero:<input type="text" name='numero' className='inputNumero' required /></label>
+              <label htmlFor="inputLogradouro">Logradouro:
+                <input 
+                  type="text" 
+                  name='logradouro'
+                  className='inputLogradouro' 
+                  value={logradouro}
+                  required
+                  onChange={(e) => setLogradouro(e.target.value)}
+                  />
+              </label>
+              <label htmlFor="inputNumero">Numero:
+                <input 
+                  type="text" 
+                  name='numero' 
+                  className='inputNumero' 
+                  value={numero}
+                  required
+                  onChange={(e) => setNumero(e.target.value)}
+                  />
+              </label>
           </div>
           <div className='linha3-endereco'>
-              <label htmlFor="inputBairro">Bairro:<input type="text" name='bairro' className='inputBairro' required /></label>
-              <label htmlFor="inputComplemento">Complemento:<input type="text" name='complemento' className='inputComplemento' required /></label>
+              <label htmlFor="inputBairro">Bairro:
+                <input 
+                  type="text" 
+                  name='bairro' 
+                  className='inputBairro'
+                  value={bairro}
+                  required
+                  onChange={(e) => setBairro(e.target.value)}
+                  />
+              </label>
+              <label htmlFor="inputComplemento">Complemento:
+                <input 
+                  type="text" 
+                  name='complemento' 
+                  className='inputComplemento' 
+                  value={complemento}
+                  required
+                  onChange={(e) => setComplemento(e.target.value)}
+                  />
+              </label>
         </div>   
         </div>
           <div className='contato'>
@@ -153,7 +289,7 @@ const CadastroDentista = ({}) => {
               </label>
             </div>
           </div>
-          <BotãoSalvar pagina={'/dentista'}/>
+          <BotãoSalvar funct={salvar}/>
         </div>
       </div>
     </div>

@@ -20,7 +20,7 @@ const Recepcionista = ({titulo, setInfo}) => {
     };
 
     useEffect(() => {
-        axios.get(`${BASE_URL2}/recepcionistas`).then((response) => {
+        axios.get(`${BASE_URL2}/secretarias`).then((response) => {
           setDados(response.data);
         });
       }, []);

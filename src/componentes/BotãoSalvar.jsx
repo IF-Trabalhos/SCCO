@@ -2,7 +2,7 @@ import React from 'react'
 import { useNavigate } from 'react-router-dom'
 import './BotaoSalvar.css'
 
-const BotãoSalvar = ({setBotaoFalse, pagina}) => {
+const BotãoSalvar = ({setBotaoFalse, pagina, funct}) => {
 
     const navigate = useNavigate()
 
@@ -18,14 +18,16 @@ const BotãoSalvar = ({setBotaoFalse, pagina}) => {
                 navegar()
             }} >Excluir</button>
             <button 
-            className='botao' 
-            type="button" 
-            id="botao-salvar" 
-            onClick={() => {
-                setBotaoFalse != null ?
-                setBotaoFalse(false) :
-                navegar()
-            }}>Salvar</button>
+                className='botao' 
+                type="button" 
+                id="botao-salvar" 
+                onClick={() => {
+                    setBotaoFalse != null ?
+                    setBotaoFalse(false) :
+                    funct()
+                }} 
+            >Salvar
+            </button>
         </div>
     )
 }
