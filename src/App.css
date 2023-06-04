@@ -64,3 +64,7 @@ a{
     text-decoration: none;
     color: black;
 }
+
+.coluna-item-icone:hover{
+    width: 35px;
+}

@@ -8,6 +8,7 @@ import { BASE_URL } from '../../config/axios';
 const Especialidade = ({titulo}) => {
 
     const navigate = useNavigate();
+    const icone = 'icones/lixeira.svg'
 
     const [dados, setDados] = useState([]);
 
@@ -18,6 +19,25 @@ const Especialidade = ({titulo}) => {
     const editar = (id) => {
         navigate(`/cadastro-especialidade/${id}`);
     };
+
+    async function excluir(id) {
+        let data = JSON.stringify({ id });
+        let url = `${BASE_URL}/especialidades/${id}`;
+        await axios
+          .delete(url, data, {
+            headers: { 'Content-Type': 'application/json' },
+          })
+          .then(function (response) {
+             setDados(
+              dados.filter((dado) => {
+                return dado.id !== id;
+              })
+            );
+          })
+          .catch(function (error) {
+            console.log(`Erro ao excluir o paciente`);
+          });
+      }
 
     useEffect(() => {
         axios.get(`${BASE_URL}/especialidades`).then((response) => {
@@ -48,12 +68,22 @@ const Especialidade = ({titulo}) => {
                     </tbody>
                         {dados.map(({id, nome, especialidade, status}) => (
                             <tbody key={id} >
-                            <tr onClick={() => editar(id)} className="tabela-conteudo">
-                                <td className="borda-lateral">{nome}</td>
-                                <td className="borda-lateral">{especialidade}</td>
+                            <tr className="tabela-conteudo">
+                                <td className="borda-lateral" onClick={() => editar(id)}>{nome}</td>
+                                <td className="borda-lateral" onClick={() => editar(id)}>{especialidade}</td>
                                 {status === true ?  
-                                <td>Ativo</td> :
-                                <td>Inativo</td>}
+                                <td onClick={() => editar(id)}>Ativo</td> :
+                                <td onClick={() => editar(id)}>Inativo</td>}
+                                <td>
+                                    <img 
+                                        className="coluna-item-icone" 
+                                        src={icone} 
+                                        alt="" 
+                                        srcSet="" 
+                                        width={30}
+                                        onClick={() => excluir(id)} 
+                                        />
+                                </td>
                             </tr>
                             </tbody>
                         ))}
