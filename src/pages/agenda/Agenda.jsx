@@ -8,7 +8,7 @@ import { BASE_URL, BASE_URL2 } from '../../config/axios';
 
 const Agenda= ({}) => {
 
-    const [agenda, setAgenda] = useState("Giuliano de Souza Leite");
+    const [agenda, setAgenda] = useState("");
     const [botaoPopup, setBotaoPopup] = useState(false);
     const [agendamentoInfo, setAgendamentoInfo] = useState([{nome: "", dentista: ""}]);
     const [data, setData] = useState(new Date())
@@ -46,8 +46,9 @@ const Agenda= ({}) => {
                         </div>
                         <div className="agenda-config-conteudo">
                             {dadosDentista.map(({id, nome}) => (
-                                <div key={id}
-                                onClick={() => {
+                                <div 
+                                    key={id}
+                                    onClick={() => {
                                     setAgenda(nome)
                                 }} 
                                 >{nome}</div>

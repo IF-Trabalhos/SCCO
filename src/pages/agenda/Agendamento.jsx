@@ -9,6 +9,12 @@ const Agendamento= ({trigger, infos, setBotaoFalse}) => {
     const [dadosDentista, setDadosDentista] = useState([]);
     const [dadosPaciente, setDadosPaciente] = useState([]);
 
+    const [data, setData] = useState(new Date());
+    const [horaInicial, setHoraInicial] = useState('');
+    const [horaFinal, setHoraFinal] = useState('');
+    const [pacienteId, setPacienteId] = useState(1);
+    const [dentistaId, setDentistaId] = useState('');
+
     useEffect(() => {
         axios.get(`${BASE_URL2}/pacientes`).then((response) => {
             setDadosPaciente(response.data);
@@ -25,23 +31,38 @@ const Agendamento= ({trigger, infos, setBotaoFalse}) => {
                 <div className="corpo-consulta-conteudo">
                     <div className="corpo-consulta-linha">
                         <label for="data">Data: </label>  
-                        <input type="date" />
+                        <input 
+                            type="date" 
+                            onChange={(e) => setData(e.target.value)}
+                            />
                         <label for="data">Horário: </label>  
-                        <input type="time" value={infos[2]}/>
+                        <input 
+                            type="time" 
+                            value={infos[2]}
+                            onChange={(e) => setHoraInicial(e.target.value)}
+                            />
                     </div>
                     <div className="corpo-consulta-linha-nome">
                         <label for="data">Nome do Paciente: </label>  
-                        <select name="pacientes" id="pacientes">
+                        <select 
+                            name="pacientes" 
+                            id="pacientes"
+                            onChange={(e) => setPacienteId(e.target.value)}
+                            >
                         {dadosPaciente.map(({id, nome}) => (
-                            <option key={id} value={nome}>{nome}</option>
+                            <option key={id} value={id}>{nome}</option>
                         ))}
                         </select>
                     </div>
                     <div className="corpo-consulta-linha-nome">
                         <label for="data">Nome do Dentista: </label>  
-                        <select name="dentistas" id="dentistas">
+                        <select 
+                            name="dentistas" 
+                            id="dentistas"
+                            onChange={(e) => setDentistaId(e.target.value)}
+                            >
                         {dadosDentista.map(({id, nome}) => (
-                            <option key={id} value={nome}>{nome}</option>
+                            <option key={id} value={id}>{nome}</option>
                         ))}
                         </select>
                     </div>

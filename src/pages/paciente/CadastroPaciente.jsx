@@ -117,8 +117,6 @@ const CadastroPaciente = () => {
                   onChange={(e) => setNumProntuario(e.target.value)}
                 />
               </label>
-
-
               <label htmlFor="innputDt-nascimento">Dt. Nasc:
                 <input
                   type="date"

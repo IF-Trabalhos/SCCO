@@ -3,6 +3,7 @@ import './TelaInicialAgenda.css'
 import BarraDePesquisa from "./BarraDePesquisa";
 
 const TelaInicialAgenda = ({nomes, dentista, data_atual, setBotaoTrue, setConsultaValue}) => {
+    console.log(nomes)
     return(
         <div className='container-principal-agenda'>
             <div className="container-principal-agenda-cabeçalho">
