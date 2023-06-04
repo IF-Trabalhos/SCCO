@@ -7,7 +7,7 @@ import { BASE_URL2 } from '../../config/axios';
 
 const CadastroPaciente = () => {
 
-  const {handle} = useParams() 
+  const { handle } = useParams()
   const navigate = useNavigate();
 
   const [id, setId] = useState('');
@@ -29,8 +29,10 @@ const CadastroPaciente = () => {
   const [dados, setDados] = useState([]);
 
   async function salvar() {
-    let data = { nome, numProntuario, dataDeNascimento, cpf, email, telefone, 
-                 rg, logradouro, bairro, uf, cidade, complemento, cep, numero};
+    let data = {
+      nome, numProntuario, dataDeNascimento, cpf, email, telefone,
+      rg, logradouro, bairro, uf, cidade, complemento, cep, numero
+    };
     data = JSON.stringify(data);
     if (handle == null) {
       await axios
@@ -83,185 +85,176 @@ const CadastroPaciente = () => {
   }, [id]);
 
   return (
-    <div className='conteudo-principal'>
+    <div className="conteudo-principal">
       <div className="cabeçalho-principal">
         <h1>Cadastro de Paciente</h1>
+
       </div>
-      <div className='corpo-cadastro'>
-        <div className='container-cadastro'>
-          <div className='bloco'>
+      <div className="corpo-cadastro">
+        <div className="container-cadastro">
+
+          <h1>Novo Cadastro</h1>
+          <div className='bloco12'>
             <h3>IDENTIFICAÇÃO</h3>
-            <div>
+            <div className='identificacao'>
+
               <label htmlFor='inputNome'>Nome:
-                <input 
-                    type="text" 
-                    name='inputNome' 
-                    value={nome}
-                    onChange={(e) => setNome(e.target.value)}
-                  />
-              </label>
-            </div>
-            <div>
-              <label htmlFor="numProntuario">N. Prontuário:
-              <input 
-                type="number" 
-                className="numProntuario"
-                name="numProntuario"
-                value={numProntuario}
-                required
-                onChange={(e) => setNumProntuario(e.target.value)}
+                <input
+                  type="text"
+                  name='inputNome'
+                  value={nome}
+                  onChange={(e) => setNome(e.target.value)}
                 />
-            </label>
-            </div>
-            <div>
-              <label htmlFor="innputDt-nascimento">Dt. Nascimento:
-                <input 
-                  type="date" 
-                  className='inputDt-nascimento' 
-                  name='dt-nascimento' 
+              </label>
+
+              <label htmlFor="numProntuario">N. Prontuário:
+                <input
+                  type="number"
+                  className="numProntuario"
+                  name="numProntuario"
+                  value={numProntuario}
+                  required
+                  onChange={(e) => setNumProntuario(e.target.value)}
+                />
+              </label>
+
+
+              <label htmlFor="innputDt-nascimento">Dt. Nasc:
+                <input
+                  type="date"
+                  className='inputDt-nascimento'
+                  name='dt-nascimento'
                   value={dataDeNascimento}
                   required
                   onChange={(e) => setDataDeNascimento(e.target.value)}
-                  />
+                />
               </label>
-            </div>
-            <div>
+
               <label htmlFor="inputRg">RG:
-                <input 
-                  type="number" 
-                  name='rg' 
-                  className='inputRg' 
+                <input
+                  type="number"
+                  name='rg'
+                  className='inputRg'
                   value={rg}
                   required
                   onChange={(e) => setRg(e.target.value)}
-                  />
+                />
               </label>
-            </div>
-            <div>
+
               <label htmlFor="inputCpf">CPF:
-                <input 
-                  type="number" 
-                  name='cpf' 
+                <input
+                  type="number"
+                  name='cpf'
                   value={cpf}
-                  className='inputCpf' 
+                  className='inputCpf'
                   required
                   onChange={(e) => setCpf(e.target.value)}
-                  />
+                />
               </label>
             </div>
-          </div>
-          <h3>ENDEREÇO</h3>
-          <div className='endereco'>
-          <div className='linha1-endereco'>
+            <h3>ENDEREÇO</h3>
+            <div className='endereco'>
+
               <label htmlFor="inputCep">CEP:
-                <input 
-                  type="number" 
-                  name='cep' 
-                  className='inputCep' 
+                <input
+                  type="number"
+                  name='cep'
+                  className='inputCep'
                   value={cep}
                   required
                   onChange={(e) => setCep(e.target.value)}
-                  />
+                />
               </label>
               <label htmlFor="inputUf">UF:
-                <input 
-                  type="text" 
-                  name='uf' 
-                  className='inputUf' 
+                <input
+                  type="text"
+                  name='uf'
+                  className='inputUf'
                   value={uf}
                   required
                   onChange={(e) => setUf(e.target.value)}
-                  />
+                />
               </label>
               <label htmlFor="inputCidade">Cidade:
-                <input 
-                  type="text" 
-                  name='cidade' 
-                  className='inputCidade' 
+                <input
+                  type="text"
+                  name='cidade'
+                  className='inputCidade'
                   value={cidade}
                   required
                   onChange={(e) => setCidade(e.target.value)}
-                  />
+                />
               </label>
-          </div>
-          <div className='linha2-endereco'>
+
               <label htmlFor="inputLogradouro">Logradouro:
-                <input 
-                  type="text" 
+                <input
+                  type="text"
                   name='logradouro'
-                  className='inputLogradouro' 
+                  className='inputLogradouro'
                   value={logradouro}
                   required
                   onChange={(e) => setLogradouro(e.target.value)}
-                  />
-                </label>
-              <label htmlFor="inputNumero">Numero:
-                <input 
-                  type="text" 
-                  name='numero' 
-                  className='inputNumero' 
-                  value={numero}
-                  required 
-                  onChange={(e) => setNumero(e.target.value)}
-                  />
+                />
               </label>
-          </div>
-          <div className='linha3-endereco'>
+              <label htmlFor="inputNumero">Numero:
+                <input
+                  type="text"
+                  name='numero'
+                  className='inputNumero'
+                  value={numero}
+                  required
+                  onChange={(e) => setNumero(e.target.value)}
+                />
+              </label>
               <label htmlFor="inputBairro">Bairro:
-                <input 
-                  type="text" 
-                  name='bairro' 
-                  className='inputBairro' 
+                <input
+                  type="text"
+                  name='bairro'
+                  className='inputBairro'
                   value={bairro}
                   required
                   onChange={(e) => setBairro(e.target.value)}
-                  />
+                />
               </label>
               <label htmlFor="inputComplemento">Complemento:
-                <input 
-                  type="text" 
-                  name='complemento' 
-                  className='inputComplemento' 
+                <input
+                  type="text"
+                  name='complemento'
+                  className='inputComplemento'
                   value={complemento}
                   required
                   onChange={(e) => setComplemento(e.target.value)}
-                  />
+                />
               </label>
-        </div>   
-        </div>
-          <div className='contato'>
+            </div>
+          </div>
+          <div className='bloco34'>
             <h3>CONTATO</h3>
-            <div>       
+            <div className='contato'>
+
               <label htmlFor="inputEmail">E-mail:
-                <input 
-                  type="text" 
-                  required className='inputEmail' 
+                <input
+                  type="text"
+                  required className='inputEmail'
                   value={email}
                   name='email'
                   onChange={(e) => setEmail(e.target.value)}
-                  />
+                />
               </label>
-
-              <label htmlFor="inputCelular">Celular:
-                <input 
-                  type="text" 
-                  className='inputCelular' 
-                  required name='celular'
-                  />
-              </label>
-
               <label htmlFor="inputTelefone">Telefone:
-                <input 
-                  type="text" 
+                <input
+                  type="text"
                   value={telefone}
                   className='inputTelefone'
                   name='telefone'
                   onChange={(e) => setTelefone(e.target.value)}
-                  />
+                />
               </label>
             </div>
+            <div className='botoes'>
+              <BotãoSalvar funct={salvar} />
+            </div>
           </div>
-          <BotãoSalvar funct={salvar}/>
         </div>
       </div>
     </div>

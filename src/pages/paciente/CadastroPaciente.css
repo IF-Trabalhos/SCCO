@@ -3,26 +3,3 @@ label{
     margin-left: 0.5em;
     
 }
-
-.bloco {
-    display: flex;
-    flex-direction: column;
-    width: 35%;
-    
-}
-.bloco label{
-    display: flex;
-    flex-direction: column;
-    
-}
-.endereco {
-    display: flex;
-    flex-direction: row;
-    width: 40%; 
-}
-.endereco label{
-    display: flex;
-    flex-direction: column;
-    width: 90%;
-    
-}

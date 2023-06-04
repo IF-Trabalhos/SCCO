@@ -4,9 +4,9 @@ import { useParams, useNavigate } from 'react-router-dom';
 import BotãoSalvar from '../../componentes/BotãoSalvar';
 import { BASE_URL } from '../../config/axios';
 import './Procedimento.css';
-const CadastroProcedimento = ({children}) => {
+const CadastroProcedimento = ({ children }) => {
 
-  const {handle} = useParams() 
+  const { handle } = useParams()
   const navigate = useNavigate();
 
   const [id, setId] = useState('');
@@ -19,7 +19,7 @@ const CadastroProcedimento = ({children}) => {
   const [dadosEspecialidade, setDadosEspecialidade] = useState([]);
 
   async function salvar() {
-    let data = { nome, status, especialidadeId, valor};
+    let data = { nome, status, especialidadeId, valor };
     data = JSON.stringify(data);
     if (handle == null) {
       await axios
@@ -59,7 +59,7 @@ const CadastroProcedimento = ({children}) => {
 
   useEffect(() => {
     axios.get(`${BASE_URL}/especialidades`).then((response) => {
-        setDadosEspecialidade(response.data);
+      setDadosEspecialidade(response.data);
     });
   }, []);
 
@@ -69,58 +69,69 @@ const CadastroProcedimento = ({children}) => {
 
   return (
     <div className='conteudo-principal'>
-        <div className="cabeçalho-principal">
-          <h1>Cadastro de Procedimento</h1>
-        </div>
-        <div className='corpo-cadastro'>
-            <h2>Novo Cadastro</h2>
-          <div className='espec'>
+      <div className="cabeçalho-principal">
+        <h1>Cadastro de Procedimento</h1>
+      </div>
+      <div className='corpo-cadastro'>
+        <div className="container-cadastro">
+          <h2>Novo Cadastro</h2>
+
+          <div className='nome'>
             <label htmlFor="inputNome">Nome:</label>
-            <input 
-            type="text" 
-            name='inputNome' 
-            className='nome'
-            value={nome}
-            onChange={(e) => setNome(e.target.value)}
+            <input
+              type="text"
+              name='inputNome'
+              className='nome'
+              value={nome}
+              onChange={(e) => setNome(e.target.value)}
             />
-            <br/>
+          </div>
+          <div className='especialidade'>
             <label htmlFor='inputEspecialidade'>Especialidade: </label>
             <select
-              name="especialidades" 
-              id="especialidades" 
+              name="especialidades"
+              id="especialidades"
               className='custom-select'
               onChange={(e) => setEspecialidadeId(e.target.value)}
-              >
-              {dadosEspecialidade.map(({id, nome}) => (
-                  <option 
-                    key={id} 
-                    value={id}
-                    selected={especialidadeId === id ? 'selected' : ''}
-                    >{nome}
-                  </option>
+            >
+              {dadosEspecialidade.map(({ id, nome }) => (
+                <option
+                  key={id}
+                  value={id}
+                  selected={especialidadeId === id ? 'selected' : ''}
+                >{nome}
+                </option>
               ))}
             </select>
-            <br/>
+          </div>
+          <div className='status'>
             <label htmlFor="status">Status:</label>
-            <input 
-              type="radio" 
-              className='inputAtivo' 
-              name='status' 
-              value='true'
-              onChange={(e) => setStatus(e.target.value)}
+            <div>
+              <input
+                type="radio"
+                id="inputAtivo"
+                name='status'
+                value='true'
+                onChange={(e) => setStatus(e.target.value)}
               />
-            <label htmlFor="inputAtivo">ATIVO</label>
-            <input 
-              type="radio" 
-              className='inputInativo' 
-              name='status' 
-              value="false"
-              onChange={(e) => setStatus(e.target.value)}
+              <label htmlFor="inputAtivo">ATIVO</label>
+            </div>
+            <div>
+              <input
+                type="radio"
+                id="inputInativo"
+                name='status'
+                value="false"
+                onChange={(e) => setStatus(e.target.value)}
               />
-            <label htmlFor="inputInativo">INATIVO</label>
-            <BotãoSalvar funct={salvar} />
+              <label htmlFor="inputInativo">INATIVO</label>
+            </div>
           </div>
         </div>
+        <div className='botoesproc'>
+            <BotãoSalvar funct={salvar} />
+          </div>
+      </div>
     </div>
   )
 }
