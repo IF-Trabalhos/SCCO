@@ -34,7 +34,7 @@ const TelaInicialAgenda = ({nomes, dentista, data_atual, setBotaoTrue, setConsul
                         setConsultaId(id)
                     }} >
                         <div className="agenda-horarios-info-hora">{horaInicial} - {horaFinal}</div>
-                        <div className="agenda-horarios-info-nome"> {paciente[pacienteId].nome} </div>
+                        <div className="agenda-horarios-info-nome"> {paciente[pacienteId - 1].nome} </div>
                     </div>
                 ))}
             </div>

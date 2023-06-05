@@ -70,7 +70,6 @@ const Especialidade = ({titulo}) => {
                             <tbody key={id} >
                             <tr className="tabela-conteudo">
                                 <td className="borda-lateral" onClick={() => editar(id)}>{nome}</td>
-                                <td className="borda-lateral" onClick={() => editar(id)}>{especialidade}</td>
                                 {status === true ?  
                                 <td onClick={() => editar(id)}>Ativo</td> :
                                 <td onClick={() => editar(id)}>Inativo</td>}

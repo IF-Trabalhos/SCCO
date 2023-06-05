@@ -11,6 +11,7 @@ const Procedimento = ({titulo, setInfo}) => {
     const icone = 'icones/lixeira.svg'
 
     const [dados, setDados] = useState([]);
+    const [dadosEspecialidade, setDadosEspecialidade] = useState([]);
 
     const cadastrar = () => {
         navigate(`/cadastro-procedimento`);
@@ -39,11 +40,23 @@ const Procedimento = ({titulo, setInfo}) => {
           });
       }
 
+    async function buscarEspecialidade() {
+        await axios.get(`${BASE_URL}/especialidades`).then((response) => {
+          setDadosEspecialidade(response.data)
+        });
+      }
+
+    useEffect(() => {
+        buscarEspecialidade(); // eslint-disable-next-line
+    }, []);
+
     useEffect(() => {
         axios.get(`${BASE_URL}/procedimentos`).then((response) => {
           setDados(response.data);
         });
       }, []);
+
+    console.log(dadosEspecialidade[0])
 
     return(
         <div className="conteudo-principal">
@@ -66,11 +79,13 @@ const Procedimento = ({titulo, setInfo}) => {
                             ))}
                         </tr>
                     </tbody>
-                        {dados.map(({id, nome, especialidade, status}) => (
+                        {dados.map(({id, nome, especialidadeId, status}) => (
                             <tbody key={id} >
                             <tr className="tabela-conteudo">
                                 <td className="borda-lateral" onClick={() => editar(id)}>{nome}</td>
-                                <td className="borda-lateral" onClick={() => editar(id)}>{especialidade}</td>
+                                <td className="borda-lateral" onClick={() => editar(id)}>
+                                    {dadosEspecialidade[especialidadeId - 1].nome}
+                                </td>
                                 {status === true ?  
                                 <td onClick={() => editar(id)}>Ativo</td> :
                                 <td onClick={() => editar(id)}>Inativo</td>}
