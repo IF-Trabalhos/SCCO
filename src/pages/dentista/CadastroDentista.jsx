@@ -135,7 +135,9 @@ const CadastroDentista = () => {
                   onChange={(e) => setDataDeNascimento(e.target.value)}
                 />
               </label>
-              <label htmlFor="inputRg">RG:
+            </div>
+            <div className='identificacao'>
+            <label htmlFor="inputRg">RG:
                 <input
                   type="number"
                   name='rg'
@@ -171,7 +173,7 @@ const CadastroDentista = () => {
                     </option>
                   ))}
                 </select>
-              </label>
+              </label>    
             </div>
             <h3>ENDEREÇO</h3>
             <div className='endereco'>
@@ -215,37 +217,39 @@ const CadastroDentista = () => {
                   onChange={(e) => setLogradouro(e.target.value)}
                 />
               </label>
-              <label htmlFor="inputNumero">Numero:
-                <input
-                  type="text"
-                  name='numero'
-                  className='inputNumero'
-                  value={numero}
-                  required
-                  onChange={(e) => setNumero(e.target.value)}
-                />
-              </label>
-              <label htmlFor="inputBairro">Bairro:
-                <input
-                  type="text"
-                  name='bairro'
-                  className='inputBairro'
-                  value={bairro}
-                  required
-                  onChange={(e) => setBairro(e.target.value)}
-                />
-              </label>
-              <label htmlFor="inputComplemento">Complemento:
-                <input
-                  type="text"
-                  name='complemento'
-                  className='inputComplemento'
-                  value={complemento}
-                  required
-                  onChange={(e) => setComplemento(e.target.value)}
-                />
-              </label>
             </div>
+            <div className='endereco'>
+                <label htmlFor="inputNumero">Numero:
+                  <input
+                    type="text"
+                    name='numero'
+                    className='inputNumero'
+                    value={numero}
+                    required
+                    onChange={(e) => setNumero(e.target.value)}
+                  />
+                </label>
+                <label htmlFor="inputBairro">Bairro:
+                  <input
+                    type="text"
+                    name='bairro'
+                    className='inputBairro'
+                    value={bairro}
+                    required
+                    onChange={(e) => setBairro(e.target.value)}
+                  />
+                </label>
+                <label htmlFor="inputComplemento">Complemento:
+                  <input
+                    type="text"
+                    name='complemento'
+                    className='inputComplemento'
+                    value={complemento}
+                    required
+                    onChange={(e) => setComplemento(e.target.value)}
+                  />
+                </label>
+              </div>
           </div>
           <div className='bloco34'>
             <h3>CONTATO</h3>
@@ -270,7 +274,7 @@ const CadastroDentista = () => {
               </label>
             </div>
             <div className='botoes'>
-              <BotãoSalvar funct={salvar} />
+              <BotãoSalvar funct={salvar} pagina={'dentista'} />
             </div>
           </div>
         </div>

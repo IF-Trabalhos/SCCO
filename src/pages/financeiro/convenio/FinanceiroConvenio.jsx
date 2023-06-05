@@ -8,6 +8,7 @@ import { BASE_URL } from '../../../config/axios';
 const FinanceiroConveio = ({titulo, setInfo}) => {
 
     const navigate = useNavigate();
+    const icone = 'icones/lixeira.svg'
 
     const [dados, setDados] = useState([]);
 
@@ -18,6 +19,25 @@ const FinanceiroConveio = ({titulo, setInfo}) => {
     const editar = (id) => {
         navigate(`/financeiro/cadastro-convenio/${id}`);
     };
+
+    async function excluir(id) {
+        let data = JSON.stringify({ id });
+        let url = `${BASE_URL}/convenios/${id}`;
+        await axios
+          .delete(url, data, {
+            headers: { 'Content-Type': 'application/json' },
+          })
+          .then(function (response) {
+             setDados(
+              dados.filter((dado) => {
+                return dado.id !== id;
+              })
+            );
+          })
+          .catch(function (error) {
+            console.log(`Erro ao excluir o paciente`);
+          });
+      }
 
     useEffect(() => {
         axios.get(`${BASE_URL}/convenios`).then((response) => {
@@ -48,10 +68,20 @@ const FinanceiroConveio = ({titulo, setInfo}) => {
                 </tbody>
                     {dados.map(({id, nome, email, telefone}) => (
                         <tbody key={id} >
-                        <tr onClick={() => editar(id)} className="tabela-conteudo">
-                            <td className="borda-lateral">{nome}</td>
-                            <td className="borda-lateral">{email}</td>
-                            <td>{telefone}</td>
+                        <tr className="tabela-conteudo">
+                            <td className="borda-lateral" onClick={() => editar(id)}>{nome}</td>
+                            <td className="borda-lateral" onClick={() => editar(id)}>{email}</td>
+                            <td onClick={() => editar(id)}>{telefone}</td>
+                            <td>
+                                <img 
+                                    className="coluna-item-icone" 
+                                    src={icone} 
+                                    alt="" 
+                                    srcSet="" 
+                                    width={30}
+                                    onClick={() => excluir(id)} 
+                                    />
+                            </td>
                         </tr>
                         </tbody>
                     ))}

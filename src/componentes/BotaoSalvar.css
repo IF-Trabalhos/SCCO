@@ -10,3 +10,11 @@
 .container-botao{
     width: 65%;
 }
+
+#botao-excluir{
+    background-color: red;
+}
+
+#botao-salvar{
+    background-color: green;
+}

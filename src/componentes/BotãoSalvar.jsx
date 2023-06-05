@@ -7,7 +7,7 @@ const BotãoSalvar = ({setBotaoFalse, pagina, funct}) => {
     const navigate = useNavigate()
 
     const navegar = () => {
-        navigate(`${pagina}`)
+        navigate(`/${pagina}`)
     }
 
     return (
@@ -16,7 +16,7 @@ const BotãoSalvar = ({setBotaoFalse, pagina, funct}) => {
                 setBotaoFalse != null ?
                 setBotaoFalse(false) :
                 navegar()
-            }} >Excluir</button>
+            }} >Cancelar</button>
             <button 
                 className='botao' 
                 type="button" 

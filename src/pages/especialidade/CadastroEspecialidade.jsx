@@ -95,7 +95,7 @@ const CadastroProcedimento = ({ children }) => {
             <label htmlFor="inputInativo">INATIVO</label>
             </div>
             <div className='botoesproc'>
-            <BotãoSalvar funct={salvar} />
+            <BotãoSalvar funct={salvar} pagina={'especialidade'} />
             </div>
           </div>
         </div>

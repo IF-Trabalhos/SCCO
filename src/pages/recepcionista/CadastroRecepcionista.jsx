@@ -5,7 +5,7 @@ import BotãoSalvar from '../../componentes/BotãoSalvar';
 import './CadastroRecepcionista.css'
 import { BASE_URL2 } from '../../config/axios';
 
-const CadastroDentista = ({}) => {
+const CadastroDentista = () => {
   const {handle} = useParams() 
   const navigate = useNavigate();
 
@@ -260,7 +260,7 @@ const CadastroDentista = ({}) => {
               </label>
             </div>
           </div>
-          <BotãoSalvar funct={salvar}/>
+          <BotãoSalvar funct={salvar} pagina={'recepcionista'}/>
         </div>
       </div>
     </div>

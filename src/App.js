@@ -34,6 +34,7 @@ import RelatorioConvenio from './componentes/relatorios/RelatorioConvenio';
 import RelatorioClinica from './componentes/relatorios/RelatorioClinica';
 import RelatorioPaciente from './componentes/relatorios/RelatorioPaciente';
 import RelatorioDentista from './componentes/relatorios/RelatorioDentista';
+import CadastroConsulta from './pages/agenda/CadastroConsulta';
 
 
 function App() {
@@ -75,6 +76,7 @@ function App() {
           			<Route path='/cadastro-convenio/:handle?' element={<CadastroConvenio />}/>
 
           			<Route path='/agenda' element={<Agenda />} />
+					<Route path='/cadastro-consulta/:handle?' element={<CadastroConsulta />} />
                 
 					<Route path='/financeiro' element={<Financeiro />} />
 					<Route path='/financeiro/paciente' element={<FinanceiroPaciente titulo="Fatura Paciente" />} />
