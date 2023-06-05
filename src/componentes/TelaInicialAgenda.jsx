@@ -1,9 +1,23 @@
-import React from "react";
+import axios from 'axios';
+import React, { useState, useEffect } from 'react'
 import './TelaInicialAgenda.css'
 import BarraDePesquisa from "./BarraDePesquisa";
+import { BASE_URL2 } from '../config/axios';
 
-const TelaInicialAgenda = ({nomes, dentista, data_atual, setBotaoTrue, setConsultaValue}) => {
-    console.log(nomes)
+const TelaInicialAgenda = ({nomes, dentista, data_atual, setBotaoTrue, setConsultaId}) => {
+
+    const [paciente, setPaciente] = useState('');
+
+    async function buscarPaciente() {
+        await axios.get(`${BASE_URL2}/pacientes/`).then((response) => {
+          setPaciente(response.data)
+        });
+      }
+
+    useEffect(() => {
+        buscarPaciente(); // eslint-disable-next-line
+    }, []);
+
     return(
         <div className='container-principal-agenda'>
             <div className="container-principal-agenda-cabeçalho">
@@ -14,13 +28,13 @@ const TelaInicialAgenda = ({nomes, dentista, data_atual, setBotaoTrue, setConsul
                 <div className="agenda-barra-de-pesquisa">
                     <BarraDePesquisa />
                 </div>
-                {nomes.map(({id, hr_inicial, hr_final, nome_paciente, nome_dentista}) => (
+                {nomes.map(({id, horaInicial, horaFinal, pacienteId}) => (
                     <div key={id} className="agenda-horarios-info" onClick={() => {
                         setBotaoTrue(true)
-                        setConsultaValue([nome_paciente, nome_dentista, hr_inicial])
+                        setConsultaId(id)
                     }} >
-                        <div className="agenda-horarios-info-hora">{hr_inicial} - {hr_final}</div>
-                        <div className="agenda-horarios-info-nome">{nome_paciente} </div>
+                        <div className="agenda-horarios-info-hora">{horaInicial} - {horaFinal}</div>
+                        <div className="agenda-horarios-info-nome"> {paciente[pacienteId].nome} </div>
                     </div>
                 ))}
             </div>

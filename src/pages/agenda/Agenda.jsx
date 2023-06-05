@@ -6,18 +6,19 @@ import Agendamento from "./Agendamento";
 import Calendar from 'moedim';
 import { BASE_URL, BASE_URL2 } from '../../config/axios';
 
-const Agenda= ({}) => {
+const Agenda= () => {
 
-    const [agenda, setAgenda] = useState("");
-    const [botaoPopup, setBotaoPopup] = useState(false);
-    const [agendamentoInfo, setAgendamentoInfo] = useState([{nome: "", dentista: ""}]);
-    const [data, setData] = useState(new Date())
+    const [consultaId, setConsultaId] = useState(null) // Id da consulta para agendamento
+    const [agenda, setAgenda] = useState(""); // Nome do dentista da agenda
+    const [botaoPopup, setBotaoPopup] = useState(false); // controlador da pop up de agendamento
+    const [agendamentoInfo, setAgendamentoInfo] = useState([{nome: "", dentista: ""}]); // Info da consulta selecionada
+    const [data, setData] = useState(new Date()) // data do calendário
     const meses = ["Janeiro", "Fevereiro", "Março", "Abril", "Maio", "Junho", "Julho",
                    "Agosto", "Setembro", "Outubro", "Novembro", "Dezembro"];
     const dia = data.getDate() + " de " + meses[data.getMonth()]
 
-    const [dados, setDados] = useState([]);
-    const [dadosDentista, setDadosDentista] = useState([]);
+    const [dados, setDados] = useState([]); // Todas as consultas
+    const [dadosDentista, setDadosDentista] = useState([]); // Todos os dentistas
 
     useEffect(() => {
         axios.get(`${BASE_URL}/consultas`).then((response) => {
@@ -35,7 +36,7 @@ const Agenda= ({}) => {
             </div>
             <div className='corpo-agenda'>
                 <TelaInicialAgenda nomes={dados} dentista={agenda} data_atual={dia} setBotaoTrue={setBotaoPopup}
-                setConsultaValue={setAgendamentoInfo} />
+                setConsultaValue={setAgendamentoInfo} setConsultaId={setConsultaId} />
                 <div className="container-lateral-agenda">
                     <div className="calendario">
                         <Calendar locale="pt-BR" value={data} onChange={(d) => setData(d)} />
@@ -57,7 +58,7 @@ const Agenda= ({}) => {
                     </div>
                 </div>
             </div>
-            <Agendamento trigger={botaoPopup} setBotaoFalse={setBotaoPopup} infos={agendamentoInfo} />
+            <Agendamento trigger={botaoPopup} setBotaoFalse={setBotaoPopup} infos={agendamentoInfo} consultaId={consultaId}/>
         </div>
     )
 }

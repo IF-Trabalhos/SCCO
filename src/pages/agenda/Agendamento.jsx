@@ -4,16 +4,66 @@ import BotãoSalvar from "../../componentes/BotãoSalvar";
 import './Agendamento.css'
 import { BASE_URL2 } from '../../config/axios';
 
-const Agendamento= ({trigger, infos, setBotaoFalse}) => {
+const Agendamento= ({trigger, setBotaoFalse, consultaId}) => {
+    console.log(consultaId)
 
+    const [dados, setDados] = useState([]);
     const [dadosDentista, setDadosDentista] = useState([]);
     const [dadosPaciente, setDadosPaciente] = useState([]);
+    const [dadosProcedimento, setDadosProcedimento] = useState([]);
 
+    const [id, setId] = useState('');
     const [data, setData] = useState(new Date());
     const [horaInicial, setHoraInicial] = useState('');
     const [horaFinal, setHoraFinal] = useState('');
     const [pacienteId, setPacienteId] = useState(1);
-    const [dentistaId, setDentistaId] = useState('');
+    const [dentistaId, setDentistaId] = useState(1);
+    const [procedimentoId, setProcedimentoId] = useState(1);
+
+    async function salvar() {
+        let data_ = {data, horaInicial, horaFinal, pacienteId, dentistaId, procedimentoId};
+        data_ = JSON.stringify(data_);
+        if (consultaId == null) {
+          await axios
+            .post(`${BASE_URL2}/consultas`, data_, {
+              headers: { 'Content-Type': 'application/json' },
+            })
+            .then(function (response) {
+              setBotaoFalse(false);
+            })
+            .catch(function (error) {
+              console.log(error.response.data);
+            });
+        } else {
+          await axios
+            .put(`${BASE_URL2}/consultas/${consultaId}`, data_, {
+              headers: { 'Content-Type': 'application/json' },
+            })
+            .then(function (response) {
+                setBotaoFalse(false);
+            })
+            .catch(function (error) {
+              console.log(error.response.data);
+            });
+        }
+      }
+
+    async function buscar() {
+        await axios.get(`${BASE_URL2}/consultas/${consultaId}`).then((response) => {
+          setDados(response.data);
+        });
+        setId(dados.id);
+        setData(dados.data)
+        setHoraInicial(dados.horaInicial);
+        setHoraFinal(dados.horaFinal);
+        setPacienteId(dados.pacienteId);
+        setDentistaId(dados.dentistaId);
+        setProcedimentoId(dados.procedimentoId)
+      }
+    
+      useEffect(() => {
+        buscar(); // eslint-disable-next-line
+      }, [id]);
 
     useEffect(() => {
         axios.get(`${BASE_URL2}/pacientes`).then((response) => {
@@ -22,6 +72,9 @@ const Agendamento= ({trigger, infos, setBotaoFalse}) => {
         axios.get(`${BASE_URL2}/dentistas`).then((response) => {
             setDadosDentista(response.data);
           });
+        axios.get(`${BASE_URL2}/procedimentos`).then((response) => {
+            setDadosProcedimento(response.data);
+        });
       }, []);
 
     return(trigger) ? (
@@ -35,12 +88,18 @@ const Agendamento= ({trigger, infos, setBotaoFalse}) => {
                             type="date" 
                             onChange={(e) => setData(e.target.value)}
                             />
-                        <label for="data">Horário: </label>  
-                        <input 
-                            type="time" 
-                            value={infos[2]}
-                            onChange={(e) => setHoraInicial(e.target.value)}
-                            />
+                    </div>
+                    <div className="corpo-consulta-linha">
+                        <label for="data">Horário Inicial: </label>  
+                            <input 
+                                type="time" 
+                                onChange={(e) => setHoraInicial(e.target.value)}
+                                />
+                        <label for="data">Horário Final: </label>  
+                            <input 
+                                type="time" 
+                                onChange={(e) => setHoraFinal(e.target.value)}
+                                />
                     </div>
                     <div className="corpo-consulta-linha-nome">
                         <label for="data">Nome do Paciente: </label>  
@@ -66,11 +125,17 @@ const Agendamento= ({trigger, infos, setBotaoFalse}) => {
                         ))}
                         </select>
                     </div>
-                    <div className="corpo-consulta-linha">
-                        <label for="data">Telefone: </label>  
-                        <input type="number" />
-                        <label for="data">E-mail: </label>  
-                        <input type="email" />
+                    <div className="corpo-consulta-linha-nome">
+                        <label for="data">Procedimento: </label>  
+                        <select 
+                            name="procedimentos" 
+                            id="procedimentos"
+                            onChange={(e) => setProcedimentoId(e.target.value)}
+                            >
+                        {dadosProcedimento.map(({id, nome}) => (
+                            <option key={id} value={id}>{nome}</option>
+                        ))}
+                        </select>
                     </div>
                     <div className="corpo-consulta-linha-botoes">
                         <BotãoSalvar setBotaoFalse = {setBotaoFalse} />
