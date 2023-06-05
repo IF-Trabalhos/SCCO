@@ -250,7 +250,7 @@ const CadastroPaciente = () => {
               </label>
             </div>
             <div className='botoes'>
-              <BotãoSalvar funct={salvar} />
+              <BotãoSalvar funct={salvar} pagina={'paciente'} />
             </div>
           </div>
         </div>

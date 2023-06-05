@@ -129,7 +129,7 @@ const CadastroProcedimento = ({ children }) => {
           </div>
         </div>
         <div className='botoesproc'>
-            <BotãoSalvar funct={salvar} />
+            <BotãoSalvar funct={salvar} pagina={'procedimento'} />
           </div>
       </div>
     </div>

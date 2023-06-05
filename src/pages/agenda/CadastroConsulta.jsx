@@ -23,8 +23,10 @@ const CadastroConsulta = () => {
   const [dadosProcedimento, setDadosProcedimento] = useState([]);
 
   async function salvar() {
-    setHoraInicial(Date.now())
-    setHoraFinal(Date.now())
+    console.log(horaInicial)
+    setHoraInicial(Date.parse(horaInicial))
+    console.log(horaInicial)
+    setHoraFinal(Date.parse(horaFinal))
     let data_ = {data, horaInicial, horaFinal, pacienteId, dentistaId, procedimentoId};
     data_ = JSON.stringify(data_);
     if (handle == null) {
@@ -94,16 +96,19 @@ const CadastroConsulta = () => {
                     <label for="data">Data: </label>  
                     <input 
                         type="date" 
+                        onChange={(e) => setData(e.target.value)}
                     />
                 </div>
                     <div className="corpo-consulta-linha">
                         <label for="data">Horário Inicial: </label>  
                             <input 
                                 type="time" 
+                                onChange={(e) => setHoraInicial(e.target.value)}
                             />
                         <label for="data">Horário Final: </label>  
                             <input 
                                 type="time" 
+                                onChange={(e) => setHoraFinal(e.target.value)}
                             />
                     </div>
                 <div className="corpo-consulta-linha-nome">
@@ -114,7 +119,11 @@ const CadastroConsulta = () => {
                             onChange={(e) => setPacienteId(e.target.value)}
                             >
                         {dadosPaciente.map(({id, nome}) => (
-                            <option key={id} value={id}>{nome}</option>
+                            <option 
+                              key={id} 
+                              value={id}                              
+                              selected={pacienteId === id ? 'selected' : ''}
+                              >{nome}</option>
                         ))}
                     </select>
                 </div>
@@ -126,7 +135,11 @@ const CadastroConsulta = () => {
                             onChange={(e) => setDentistaId(e.target.value)}
                             >
                         {dadosDentista.map(({id, nome}) => (
-                            <option key={id} value={id}>{nome}</option>
+                            <option 
+                              key={id} 
+                              value={id}
+                              selected={dentistaId === id ? 'selected' : ''}
+                            >{nome}</option>
                         ))}
                     </select>
                 </div>
@@ -138,12 +151,16 @@ const CadastroConsulta = () => {
                             onChange={(e) => setProcedimentoId(e.target.value)}
                             >
                         {dadosProcedimento.map(({id, nome}) => (
-                            <option key={id} value={id}>{nome}</option>
+                            <option 
+                              key={id} 
+                              value={id}
+                              selected={procedimentoId === id ? 'selected' : ''}
+                              >{nome}</option>
                         ))}
                     </select>
                 </div>
                 <div className="corpo-consulta-linha-botoes">
-                    <BotãoSalvar funct={salvar}/>
+                    <BotãoSalvar funct={salvar} pagina={'agenda'}/>
                 </div>
             </div>
           </div>

@@ -270,7 +270,7 @@ const CadastroDentista = () => {
               </label>
             </div>
             <div className='botoes'>
-              <BotãoSalvar funct={salvar} />
+              <BotãoSalvar funct={salvar} pagina={'dentista'} />
             </div>
           </div>
         </div>

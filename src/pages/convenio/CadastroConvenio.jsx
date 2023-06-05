@@ -4,7 +4,7 @@ import { useParams, useNavigate } from 'react-router-dom';
 import BotãoSalvar from '../../componentes/BotãoSalvar';
 import { BASE_URL } from '../../config/axios';
 
-const CadastroConvenio = ({}) => {
+const CadastroConvenio = () => {
 
   const {handle} = useParams() 
   const navigate = useNavigate();
@@ -99,7 +99,7 @@ const CadastroConvenio = ({}) => {
                     onChange={(e) => setRegistroAns(e.target.value)}
                     />
                 </label>
-                <BotãoSalvar funct={salvar} />
+                <BotãoSalvar funct={salvar} pagina={'convenio'} />
             </div>
         </div>
     </div>
