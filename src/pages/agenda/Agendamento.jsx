@@ -14,13 +14,15 @@ const Agendamento= ({trigger, setBotaoFalse, consultaId}) => {
 
     const [id, setId] = useState('');
     const [data, setData] = useState(new Date());
-    const [horaInicial, setHoraInicial] = useState('');
-    const [horaFinal, setHoraFinal] = useState('');
+    const [horaInicial, setHoraInicial] = useState();
+    const [horaFinal, setHoraFinal] = useState();
     const [pacienteId, setPacienteId] = useState(1);
     const [dentistaId, setDentistaId] = useState(1);
     const [procedimentoId, setProcedimentoId] = useState(1);
 
     async function salvar() {
+        setHoraInicial(Date.now())
+        setHoraFinal(Date.now())
         let data_ = {data, horaInicial, horaFinal, pacienteId, dentistaId, procedimentoId};
         data_ = JSON.stringify(data_);
         if (consultaId == null) {
@@ -32,6 +34,7 @@ const Agendamento= ({trigger, setBotaoFalse, consultaId}) => {
               setBotaoFalse(false);
             })
             .catch(function (error) {
+              setBotaoFalse(false);
               console.log(error.response.data);
             });
         } else {
@@ -43,6 +46,7 @@ const Agendamento= ({trigger, setBotaoFalse, consultaId}) => {
                 setBotaoFalse(false);
             })
             .catch(function (error) {
+              setBotaoFalse(false);
               console.log(error.response.data);
             });
         }
@@ -138,7 +142,7 @@ const Agendamento= ({trigger, setBotaoFalse, consultaId}) => {
                         </select>
                     </div>
                     <div className="corpo-consulta-linha-botoes">
-                        <BotãoSalvar setBotaoFalse = {setBotaoFalse} />
+                        <BotãoSalvar funct={salvar} />
                     </div>
                 </div>
             </div>

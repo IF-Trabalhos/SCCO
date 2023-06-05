@@ -12,7 +12,12 @@ const TelaInicialAgenda = ({nomes, dentista, data_atual, setBotaoTrue, setConsul
         await axios.get(`${BASE_URL2}/pacientes/`).then((response) => {
           setPaciente(response.data)
         });
-      }
+    }
+
+    const cadastrar = () => {
+        setBotaoTrue(true)
+        setConsultaId(null)
+    };
 
     useEffect(() => {
         buscarPaciente(); // eslint-disable-next-line
@@ -27,6 +32,9 @@ const TelaInicialAgenda = ({nomes, dentista, data_atual, setBotaoTrue, setConsul
             <div className="container-principal-agenda-conteudo">
                 <div className="agenda-barra-de-pesquisa">
                     <BarraDePesquisa />
+                    <button onClick={() => cadastrar()} className="add-botão">
+                        Adicionar Consulta
+                    </button>
                 </div>
                 {nomes.map(({id, horaInicial, horaFinal, pacienteId}) => (
                     <div key={id} className="agenda-horarios-info" onClick={() => {

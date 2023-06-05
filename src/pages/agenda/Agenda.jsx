@@ -28,6 +28,8 @@ const Agenda= () => {
           });
       }, []);
 
+      console.log(dados)
+
     return(
         <div className="conteudo-principal">
             <div className='cabeçalho-principal'>
