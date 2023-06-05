@@ -3,7 +3,7 @@ import React, { useState, useEffect } from "react";
 import { useParams, useNavigate } from 'react-router-dom';
 import BotãoSalvar from '../../componentes/BotãoSalvar';
 import { BASE_URL } from '../../config/axios';
-
+import './CadastroConvenio.css';
 const CadastroConvenio = () => {
 
   const {handle} = useParams() 
@@ -69,7 +69,7 @@ const CadastroConvenio = () => {
         </div>
         <div className='corpo-cadastro'>
             <h2>Novo Cadastro</h2>
-            <div>
+            <div className='conven'>
                 <label htmlFor="inputNome">Nome:
                     <input 
                     type="text" 
@@ -82,7 +82,7 @@ const CadastroConvenio = () => {
                 <br />
                 <label htmlFor='inputEmail'>Email: 
                   <input 
-                      type="email" 
+                      type="text" 
                       className='inputEmail' 
                       required name='inputEmail'
                       value={email}
@@ -99,7 +99,9 @@ const CadastroConvenio = () => {
                     onChange={(e) => setRegistroAns(e.target.value)}
                     />
                 </label>
+                <div className='botoes'>
                 <BotãoSalvar funct={salvar} pagina={'convenio'} />
+                </div>
             </div>
         </div>
     </div>

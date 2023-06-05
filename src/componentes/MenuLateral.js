@@ -54,7 +54,7 @@ const MenuLateral = () => {
 		},
 		{
 			id: "8",
-			texto: "RECEPCIONISTA",
+			texto: "SECRETÁRIA",
 			icone: "icones/recepcionista.svg",
 			link: "/recepcionista"
 		},

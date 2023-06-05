@@ -3,7 +3,6 @@ import React, { useState, useEffect } from "react";
 import { useParams, useNavigate } from 'react-router-dom';
 import BotãoSalvar from '../../componentes/BotãoSalvar';
 import { BASE_URL } from '../../config/axios';
-
 const CadastroConsulta = () => {
 
   const { handle } = useParams()

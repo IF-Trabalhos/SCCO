@@ -2,7 +2,7 @@ import axios from 'axios';
 import React, { useState, useEffect } from 'react'
 import { useParams, useNavigate } from 'react-router-dom';
 import BotãoSalvar from '../../componentes/BotãoSalvar';
-import './CadastroPaciente.css'
+import './CadastroPaciente.css';
 import { BASE_URL2 } from '../../config/axios';
 
 const CadastroPaciente = () => {
