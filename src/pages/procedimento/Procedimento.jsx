@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import BarraDePesquisa from "../../componentes/BarraDePesquisa";
 import { useNavigate } from "react-router-dom";
-import {colunaEspecialidade}from '../../data/tabela_info';
+import {colunaProcedimento}from '../../data/tabela_info';
 import axios from "axios";
 import { BASE_URL } from '../../config/axios';
 import './Procedimento.css';
@@ -56,8 +56,6 @@ const Procedimento = ({titulo, setInfo}) => {
         });
       }, []);
 
-    console.log(dadosEspecialidade[0])
-
     return(
         <div className="conteudo-principal">
             <div className='cabeçalho-principal' >
@@ -74,7 +72,7 @@ const Procedimento = ({titulo, setInfo}) => {
                 <table className="tabela-principal">
                     <tbody>
                         <tr>
-                            {colunaEspecialidade.map(({id, nome, classe}) => (
+                            {colunaProcedimento.map(({id, nome, classe}) => (
                                 <th key={id} className={classe}>{nome}</th>
                             ))}
                         </tr>

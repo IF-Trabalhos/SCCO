@@ -19,6 +19,18 @@ export const colunaEspecialidade =[
     },
 ]
 
+export const colunaProcedimento =[
+    {
+        id: "1", nome: "Nome", classe:"borda-lateral", sort: true
+    },
+    {
+        id: "2", nome: "Especialidade", classe:"borda-lateral", sort: true
+    },
+    {
+        id: "3", nome: "Status", classe:"", sort: true
+    },
+]
+
 export const colunaDespesa =[
     {
         id: "1", nome: "Nome", classe:"borda-lateral", sort: true
