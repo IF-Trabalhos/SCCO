@@ -1,11 +1,13 @@
 import axios from 'axios';
 import React, { useState, useEffect } from 'react'
+import { useNavigate } from 'react-router-dom';
 import './TelaInicialAgenda.css'
 import BarraDePesquisa from "./BarraDePesquisa";
 import { BASE_URL2 } from '../config/axios';
 
-const TelaInicialAgenda = ({nomes, dentista, data_atual, setBotaoTrue, setConsultaId}) => {
+const TelaInicialAgenda = ({nomes, dentista, data_atual}) => {
 
+    const navigate = useNavigate();
     const [paciente, setPaciente] = useState('');
 
     async function buscarPaciente() {
@@ -14,9 +16,12 @@ const TelaInicialAgenda = ({nomes, dentista, data_atual, setBotaoTrue, setConsul
         });
     }
 
+    const editar = (id) => {
+        navigate(`/cadastro-consulta/${id}`);
+    };
+
     const cadastrar = () => {
-        setBotaoTrue(true)
-        setConsultaId(null)
+        navigate(`/cadastro-consulta/`);
     };
 
     useEffect(() => {
@@ -38,8 +43,7 @@ const TelaInicialAgenda = ({nomes, dentista, data_atual, setBotaoTrue, setConsul
                 </div>
                 {nomes.map(({id, horaInicial, horaFinal, pacienteId}) => (
                     <div key={id} className="agenda-horarios-info" onClick={() => {
-                        setBotaoTrue(true)
-                        setConsultaId(id)
+                        editar(id)
                     }} >
                         <div className="agenda-horarios-info-hora">{horaInicial} - {horaFinal}</div>
                         <div className="agenda-horarios-info-nome"> {paciente[pacienteId - 1].nome} </div>
