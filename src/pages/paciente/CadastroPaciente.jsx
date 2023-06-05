@@ -97,7 +97,6 @@ const CadastroPaciente = () => {
           <div className='bloco12'>
             <h3>IDENTIFICAÇÃO</h3>
             <div className='identificacao'>
-
               <label htmlFor='inputNome'>Nome:
                 <input
                   type="text"
@@ -127,32 +126,32 @@ const CadastroPaciente = () => {
                   onChange={(e) => setDataDeNascimento(e.target.value)}
                 />
               </label>
+              <div className='identificacao'>
+                <label htmlFor="inputRg">RG:
+                  <input
+                    type="number"
+                    name='rg'
+                    className='inputRg'
+                    value={rg}
+                    required
+                    onChange={(e) => setRg(e.target.value)}
+                  />
+                </label>
 
-              <label htmlFor="inputRg">RG:
-                <input
-                  type="number"
-                  name='rg'
-                  className='inputRg'
-                  value={rg}
-                  required
-                  onChange={(e) => setRg(e.target.value)}
-                />
-              </label>
-
-              <label htmlFor="inputCpf">CPF:
-                <input
-                  type="number"
-                  name='cpf'
-                  value={cpf}
-                  className='inputCpf'
-                  required
-                  onChange={(e) => setCpf(e.target.value)}
-                />
-              </label>
+                <label htmlFor="inputCpf">CPF:
+                  <input
+                    type="number"
+                    name='cpf'
+                    value={cpf}
+                    className='inputCpf'
+                    required
+                    onChange={(e) => setCpf(e.target.value)}
+                  />
+                </label>
+              </div>
             </div>
             <h3>ENDEREÇO</h3>
             <div className='endereco'>
-
               <label htmlFor="inputCep">CEP:
                 <input
                   type="number"
@@ -183,7 +182,6 @@ const CadastroPaciente = () => {
                   onChange={(e) => setCidade(e.target.value)}
                 />
               </label>
-
               <label htmlFor="inputLogradouro">Logradouro:
                 <input
                   type="text"
@@ -194,37 +192,39 @@ const CadastroPaciente = () => {
                   onChange={(e) => setLogradouro(e.target.value)}
                 />
               </label>
-              <label htmlFor="inputNumero">Numero:
-                <input
-                  type="text"
-                  name='numero'
-                  className='inputNumero'
-                  value={numero}
-                  required
-                  onChange={(e) => setNumero(e.target.value)}
-                />
-              </label>
-              <label htmlFor="inputBairro">Bairro:
-                <input
-                  type="text"
-                  name='bairro'
-                  className='inputBairro'
-                  value={bairro}
-                  required
-                  onChange={(e) => setBairro(e.target.value)}
-                />
-              </label>
-              <label htmlFor="inputComplemento">Complemento:
-                <input
-                  type="text"
-                  name='complemento'
-                  className='inputComplemento'
-                  value={complemento}
-                  required
-                  onChange={(e) => setComplemento(e.target.value)}
-                />
-              </label>
             </div>
+            <div className='endereco'>
+                <label htmlFor="inputNumero">Numero:
+                  <input
+                    type="text"
+                    name='numero'
+                    className='inputNumero'
+                    value={numero}
+                    required
+                    onChange={(e) => setNumero(e.target.value)}
+                  />
+                </label>
+                <label htmlFor="inputBairro">Bairro:
+                  <input
+                    type="text"
+                    name='bairro'
+                    className='inputBairro'
+                    value={bairro}
+                    required
+                    onChange={(e) => setBairro(e.target.value)}
+                  />
+                </label>
+                <label htmlFor="inputComplemento">Complemento:
+                  <input
+                    type="text"
+                    name='complemento'
+                    className='inputComplemento'
+                    value={complemento}
+                    required
+                    onChange={(e) => setComplemento(e.target.value)}
+                  />
+                </label>
+              </div>
           </div>
           <div className='bloco34'>
             <h3>CONTATO</h3>
