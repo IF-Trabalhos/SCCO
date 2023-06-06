@@ -34,7 +34,7 @@ const Agenda= () => {
                 <h1>Agenda</h1>
             </div>
             <div className='corpo-agenda'>
-                <TelaInicialAgenda nomes={dados} dentista={agenda} data_atual={dia} />
+                <TelaInicialAgenda nomes={dados} setDados={setDados} dentista={agenda} data_atual={dia} />
                 <div className="container-lateral-agenda">
                     <div className="calendario">
                         <Calendar locale="pt-BR" value={data} onChange={(d) => setData(d)} />

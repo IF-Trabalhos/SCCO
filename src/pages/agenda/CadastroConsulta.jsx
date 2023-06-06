@@ -3,6 +3,7 @@ import React, { useState, useEffect } from "react";
 import { useParams, useNavigate } from 'react-router-dom';
 import BotãoSalvar from '../../componentes/BotãoSalvar';
 import { BASE_URL } from '../../config/axios';
+import { mensagemSucesso, mensagemErro } from '../../componentes/toastr';
 
 const CadastroConsulta = () => {
 
@@ -24,9 +25,6 @@ const CadastroConsulta = () => {
 
   async function salvar() {
     console.log(horaInicial)
-    setHoraInicial(Date.parse(horaInicial))
-    console.log(horaInicial)
-    setHoraFinal(Date.parse(horaFinal))
     let data_ = {data, horaInicial, horaFinal, pacienteId, dentistaId, procedimentoId};
     data_ = JSON.stringify(data_);
     if (handle == null) {
@@ -35,10 +33,11 @@ const CadastroConsulta = () => {
           headers: { 'Content-Type': 'application/json' },
         })
         .then(function (response) {
+            mensagemSucesso(`Consulta cadastrada com sucesso!`)
             navigate(`/agenda`);
         })
         .catch(function (error) {
-          console.log(error.response.data);
+          mensagemErro(error.response.data);
         });
     } else {
       await axios
@@ -46,10 +45,11 @@ const CadastroConsulta = () => {
           headers: { 'Content-Type': 'application/json' },
         })
         .then(function (response) {
+            mensagemSucesso(`Consulta atualizada com sucesso!`)
             navigate(`/agenda`);
         })
         .catch(function (error) {
-          console.log(error.response.data);
+          mensagemErro(error.response.data);
         });
     }
   }
@@ -103,12 +103,12 @@ const CadastroConsulta = () => {
                         <label for="data">Horário Inicial: </label>  
                             <input 
                                 type="time" 
-                                onChange={(e) => setHoraInicial(e.target.value)}
+                                onChange={(e) => setHoraInicial(e.target.value + ":00")}
                             />
                         <label for="data">Horário Final: </label>  
                             <input 
                                 type="time" 
-                                onChange={(e) => setHoraFinal(e.target.value)}
+                                onChange={(e) => setHoraFinal(e.target.value + ":00")}
                             />
                     </div>
                 <div className="corpo-consulta-linha-nome">
