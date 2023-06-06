@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 import {colunaPessoa }from '../../data/tabela_info';
 import axios from "axios";
 import { BASE_URL } from '../../config/axios';
+import { mensagemSucesso, mensagemErro } from '../../componentes/toastr';
 
 const Convenio = ({titulo}) => {
 

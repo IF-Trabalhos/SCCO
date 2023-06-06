@@ -5,6 +5,8 @@ import {colunaProcedimento}from '../../data/tabela_info';
 import axios from "axios";
 import { BASE_URL } from '../../config/axios';
 import './Procedimento.css';
+import { mensagemSucesso, mensagemErro } from '../../componentes/toastr';
+
 const Procedimento = ({titulo, setInfo}) => {
 
     const navigate = useNavigate();
@@ -29,6 +31,7 @@ const Procedimento = ({titulo, setInfo}) => {
             headers: { 'Content-Type': 'application/json' },
           })
           .then(function (response) {
+            mensagemSucesso('Procedimento deletado com sucesso')
              setDados(
               dados.filter((dado) => {
                 return dado.id !== id;
@@ -36,7 +39,7 @@ const Procedimento = ({titulo, setInfo}) => {
             );
           })
           .catch(function (error) {
-            console.log(`Erro ao excluir o paciente`);
+            mensagemErro(`Erro ao excluir o paciente`);
           });
       }
 

@@ -4,6 +4,8 @@ import { useParams, useNavigate } from 'react-router-dom';
 import BotãoSalvar from '../../componentes/BotãoSalvar';
 import './CadastroDentista.css'
 import { BASE_URL2 } from '../../config/axios';
+import { mensagemSucesso, mensagemErro } from '../../componentes/toastr';
+import 'reactjs-toastr/lib/toast.css';
 
 const CadastroDentista = () => {
   const { handle } = useParams()
@@ -41,10 +43,11 @@ const CadastroDentista = () => {
           headers: { 'Content-Type': 'application/json' },
         })
         .then(function (response) {
+          mensagemSucesso(`Dentista ${nome} cadastrado com sucesso!`)
           navigate(`/dentista`);
         })
         .catch(function (error) {
-          console.log(error.response.data);
+          mensagemErro(error.response.data)
         });
     } else {
       await axios
@@ -52,10 +55,11 @@ const CadastroDentista = () => {
           headers: { 'Content-Type': 'application/json' },
         })
         .then(function (response) {
+          mensagemSucesso(`Dentista ${nome} atualizado com sucesso!`)
           navigate(`/dentista`);
         })
         .catch(function (error) {
-          console.log(error.response.data);
+          mensagemErro(error.response.data);
         });
     }
   }

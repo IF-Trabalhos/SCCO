@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 import {colunaPessoa}from '../../data/tabela_info';
 import axios from "axios";
 import { BASE_URL2 } from '../../config/axios';
+import { mensagemSucesso, mensagemErro } from '../../componentes/toastr';
 
 const Recepcionista = ({titulo, setInfo}) => {
 
@@ -28,6 +29,7 @@ const Recepcionista = ({titulo, setInfo}) => {
             headers: { 'Content-Type': 'application/json' },
           })
           .then(function (response) {
+            mensagemSucesso('Secretaria deletada com sucesso')
              setDados(
               dados.filter((dado) => {
                 return dado.id !== id;
@@ -35,7 +37,7 @@ const Recepcionista = ({titulo, setInfo}) => {
             );
           })
           .catch(function (error) {
-            console.log(`Erro ao excluir o paciente`);
+            mensagemErro(`Erro ao excluir secretaria`);
           });
       }
 

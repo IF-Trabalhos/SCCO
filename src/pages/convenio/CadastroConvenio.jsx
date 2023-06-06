@@ -3,6 +3,7 @@ import React, { useState, useEffect } from "react";
 import { useParams, useNavigate } from 'react-router-dom';
 import BotãoSalvar from '../../componentes/BotãoSalvar';
 import { BASE_URL } from '../../config/axios';
+import { mensagemSucesso, mensagemErro } from '../../componentes/toastr';
 
 const CadastroConvenio = () => {
 
@@ -27,10 +28,11 @@ const CadastroConvenio = () => {
           headers: { 'Content-Type': 'application/json' },
         })
         .then(function (response) {
+          mensagemSucesso(`Convenio ${nome} cadastrado com sucesso!`)
           navigate(`/convenio`);
         })
         .catch(function (error) {
-          console.log(error.response.data);
+          mensagemErro(error.response.data);
         });
     } else {
       await axios
@@ -38,10 +40,11 @@ const CadastroConvenio = () => {
           headers: { 'Content-Type': 'application/json' },
         })
         .then(function (response) {
+          mensagemSucesso(`Convenio ${nome} atualizado com sucesso!`)
           navigate(`/convenio`);
         })
         .catch(function (error) {
-          console.log(error.response.data);
+          mensagemErro(error.response.data);
         });
     }
   }

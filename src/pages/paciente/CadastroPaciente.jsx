@@ -4,6 +4,7 @@ import { useParams, useNavigate } from 'react-router-dom';
 import BotãoSalvar from '../../componentes/BotãoSalvar';
 import './CadastroPaciente.css'
 import { BASE_URL2 } from '../../config/axios';
+import { mensagemSucesso, mensagemErro } from '../../componentes/toastr';
 
 const CadastroPaciente = () => {
 
@@ -40,10 +41,11 @@ const CadastroPaciente = () => {
           headers: { 'Content-Type': 'application/json' },
         })
         .then(function (response) {
+          mensagemSucesso(`Paciente ${nome} cadastrado com sucesso!`)
           navigate(`/paciente`);
         })
         .catch(function (error) {
-          console.log(error.response.data);
+          mensagemErro(error.response.data);
         });
     } else {
       await axios
@@ -51,10 +53,11 @@ const CadastroPaciente = () => {
           headers: { 'Content-Type': 'application/json' },
         })
         .then(function (response) {
+          mensagemSucesso(`Paciente ${nome} atualizado com sucesso!`)
           navigate(`/paciente`);
         })
         .catch(function (error) {
-          console.log(error.response.data);
+          mensagemErro(error.response.data);
         });
     }
   }

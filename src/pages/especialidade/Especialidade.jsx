@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 import {colunaEspecialidade }from '../../data/tabela_info';
 import axios from "axios";
 import { BASE_URL } from '../../config/axios';
+import { mensagemSucesso, mensagemErro } from '../../componentes/toastr';
 
 const Especialidade = ({titulo}) => {
 
@@ -28,6 +29,7 @@ const Especialidade = ({titulo}) => {
             headers: { 'Content-Type': 'application/json' },
           })
           .then(function (response) {
+            mensagemSucesso('Especialidade deletada com sucesso')
              setDados(
               dados.filter((dado) => {
                 return dado.id !== id;
@@ -35,7 +37,7 @@ const Especialidade = ({titulo}) => {
             );
           })
           .catch(function (error) {
-            console.log(`Erro ao excluir o paciente`);
+            mensagemErro('Erro ao excluir especialidade');
           });
       }
 
