@@ -1,15 +1,33 @@
 import React from 'react'
 import axios from 'axios';
 import {useState, useEffect} from 'react'
+import { useParams } from 'react-router-dom';
 import BotãoSalvar from '../BotãoSalvar'
 import './Relatorios.css'
 import { BASE_URL2 } from '../../config/axios'
 
 const RelatorioClinica = () => {
+    const { handle } = useParams()
+
     const getIntAleatorio = () => {
         return Math.floor(Math.random() * 100)
     }
-    
+
+    const formatData = (data_input) => {
+        const data = new Date(data_input)
+
+        let dia = String(data.getDate()).padStart(2, "0");
+        let mes = String(data.getMonth() + 1).padStart(2, "0");
+        let ano = data.getFullYear();
+
+        let data_formatada = dia + "/" + mes + "/" + ano;
+        return data_formatada;
+    }
+
+    const datas = handle.split(",");
+    const data_inicial = formatData(datas[0])
+    const data_final = formatData(datas[1])
+
     const [qtdConsulta, setQtdConsultas] = useState('');    
     const [qtdPacientes, setQtdPacientes] = useState('');
     const [valorTotal, setValorTotal] = useState('');
@@ -30,6 +48,8 @@ const RelatorioClinica = () => {
         buscarDados(); // eslint-disable-next-line
     }, []);
 
+    console.log(handle)
+
     return (
         <div className='conteudo-principal'>
             <div className='cabeçalho-principal'>
@@ -42,7 +62,7 @@ const RelatorioClinica = () => {
                             Nome Relatório:
                             <input type="text" required name='inputNome Relatorio' />
                         </label>
-                        <h3 className='periodo-relatorio'>De: 09/04/2021 Até: 13/07/2022</h3>
+                        <h3 className='periodo-relatorio'>De: {data_inicial} Até: {data_final}</h3>
 
                     </div>
                     <div className='informacoes-completa'>

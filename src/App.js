@@ -77,15 +77,15 @@ function App() {
 
 					<Route path='/relatorio' element={<RelatorioInicial/>}/>
 					<Route path='relatorio/clinica' element={<PaginaGenericaRelatorio titulo={"Clinica"}/>}/>
-					<Route path='/relatorio/clinica/gerar-relatorio' element={
+					<Route path='/relatorio/clinica/gerar-relatorio/:handle?' element={
 						<RelatorioClinica/>}/>
 
 					<Route path='relatorio/paciente' element={<PaginaGenericaRelatorio titulo={"Paciente"}/>}/>
-					<Route path='relatorio/paciente/gerar-relatorio' element={<RelatorioPaciente/>}/>
+					<Route path='relatorio/paciente/gerar-relatorio/:handle?' element={<RelatorioPaciente/>}/>
 					<Route path='relatorio/dentista' element={<PaginaGenericaRelatorio titulo={"Dentista"}/>}/>
-					<Route path='relatorio/dentista/gerar-relatorio' element={<RelatorioDentista/>}/> 
+					<Route path='relatorio/dentista/gerar-relatorio/:handle?' element={<RelatorioDentista/>}/> 
 					<Route path='relatorio/convenio'element={<PaginaGenericaRelatorio titulo={"Convenio"}/>}/>
-					<Route path='/relatorio/convenio/gerar-relatorio' element={
+					<Route path='/relatorio/convenio/gerar-relatorio/:handle?' element={
 						<RelatorioConvenio/>}/>
 				</Routes>
 			</div>

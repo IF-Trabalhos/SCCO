@@ -96,7 +96,7 @@ const CadastroDentista = () => {
     });
   }, []);
 
-  console.log(especialidadeId)
+  console.log(dataDeNascimento)
 
   return (
     <div className="conteudo-principal">
