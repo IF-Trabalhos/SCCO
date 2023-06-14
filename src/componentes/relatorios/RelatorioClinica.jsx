@@ -9,17 +9,13 @@ import { BASE_URL2 } from '../../config/axios'
 const RelatorioClinica = () => {
     const { handle } = useParams()
 
-    const getIntAleatorio = () => {
-        return Math.floor(Math.random() * 100)
-    }
-
     const formatData = (data_input) => {
         const data = new Date(data_input)
 
-        let dia = String(data.getDate()).padStart(2, "0");
-        let mes = String(data.getMonth() + 1).padStart(2, "0");
+        let dia = String(data.getUTCDate()).padStart(2, "0");
+        let mes = String(data.getUTCMonth() + 1).padStart(2, "0");
         let ano = data.getFullYear();
-
+        
         let data_formatada = dia + "/" + mes + "/" + ano;
         return data_formatada;
     }
@@ -57,19 +53,14 @@ const RelatorioClinica = () => {
             <div className='container-principal-central'>
                 <div className='formatador-relatorio'>
                     <div>
-                        <label htmlFor="inputNomeRelatorio">
-                            Nome Relatório:
-                            <input type="text" required name='inputNome Relatorio' />
-                        </label>
                         <h3 className='periodo-relatorio'>De: {data_inicial} Até: {data_final}</h3>
-
                     </div>
                     <div className='informacoes-completa'>
                         <div className='informacoes'>
                             Consultas realizadas: {qtdConsulta}
                         </div>
                         <div className='informacoes'>
-                            Procedimentos realizados: {getIntAleatorio()}
+                            Procedimentos realizados: {qtdConsulta}
                         </div>
                         <div className='informacoes'>
                             Pacientes atendidos: {qtdPacientes}
@@ -80,7 +71,7 @@ const RelatorioClinica = () => {
                     </div>
                     <div className='botoes'>
                             <BotãoSalvar pagina={'relatorio/clinica'}/>
-                        </div>
+                    </div>
                 </div>
             </div>
         </div>

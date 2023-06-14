@@ -17,9 +17,9 @@ const PaginaGenericaRelatorio = ({ titulo}) => {
   const formatData = () => {
     const data = new Date();
 
-    let dia= String(data.getDate()).padStart(2, '0');
+    let dia= String(data.getUTCDate()).padStart(2, '0');
     
-    let mes = String(data.getMonth()+1).padStart(2,"0");
+    let mes = String(data.getUTCMonth() + 1).padStart(2,"0");
     
     let ano = data.getFullYear();
 
