@@ -65,7 +65,7 @@ const RelatorioPaciente = () => {
 
                     </div>
                     <div className='botoes'>
-                        <BotãoSalvar />
+                        <BotãoSalvar pagina={'relatorio/paciente'}/>
                     </div>
                 </div>
             </div>

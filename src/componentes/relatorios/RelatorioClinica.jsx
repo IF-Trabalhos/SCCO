@@ -33,13 +33,14 @@ const RelatorioClinica = () => {
     const [valorTotal, setValorTotal] = useState('');
 
     async function buscarDados() {
-        await axios.get(`${BASE_URL2}/consultas/valor`).then((response) => {
+        console.log("Essa:", data_inicial)
+        await axios.get(`${BASE_URL2}/consultas/valor/${datas[0]}/${datas[1]}`).then((response) => {
           setValorTotal(response.data)
         });
-        await axios.get(`${BASE_URL2}/consultas/quantidade`).then((response) => {
+        await axios.get(`${BASE_URL2}/consultas/quantidade/${datas[0]}/${datas[1]}`).then((response) => {
             setQtdConsultas(response.data)
           });
-        await axios.get(`${BASE_URL2}/consultas/paciente/quantidade`).then((response) => {
+        await axios.get(`${BASE_URL2}/consultas/paciente/quantidade/${datas[0]}/${datas[1]}`).then((response) => {
             setQtdPacientes(response.data)
         });
     }
@@ -47,8 +48,6 @@ const RelatorioClinica = () => {
     useEffect(() => {
         buscarDados(); // eslint-disable-next-line
     }, []);
-
-    console.log(handle)
 
     return (
         <div className='conteudo-principal'>
@@ -80,7 +79,7 @@ const RelatorioClinica = () => {
                         </div>
                     </div>
                     <div className='botoes'>
-                            <BotãoSalvar/>
+                            <BotãoSalvar pagina={'relatorio/clinica'}/>
                         </div>
                 </div>
             </div>
