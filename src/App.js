@@ -1,11 +1,8 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import './App.css'
 import MenuLateral from './componentes/MenuLateral';
 import Agenda from './pages/agenda/Agenda'
-import axios from 'axios';
-import { BASE_URL } from './config/axios';
-import {colunaDespesa} from './data/tabela_info';
 import Inicio from './pages/Inicio'
 import Financeiro from './pages/financeiro/Financeiro';
 import RelatorioInicial from './pages/RelatorioInicial';
@@ -38,18 +35,6 @@ import CadastroConsulta from './pages/agenda/CadastroConsulta';
 
 
 function App() {
-	const [pessoa, setPessoa] = useState([]);
-
-	async function buscar() {
-		await axios.get(`${BASE_URL}/pessoas`).then((response) => {
-			setPessoa(response.data);
-		})
-	}
-
-	useEffect(() => {
-		buscar(); // eslint-disable-next-line
-	}, []);
-
 	return (
 		<BrowserRouter>
 			<div className="container">
@@ -91,19 +76,15 @@ function App() {
 					<Route path='/financeiro/cadastro-recorrente/:handle?' element={<CadastroFinanceiroRecorrente />} />
 
 					<Route path='/relatorio' element={<RelatorioInicial/>}/>
-					<Route path='relatorio/clinica' element={<PaginaGenericaRelatorio titulo={"Relatorio Clinica"} colunas={colunaDespesa}
-					linhas={pessoa}/>}/>
+					<Route path='relatorio/clinica' element={<PaginaGenericaRelatorio titulo={"Clinica"}/>}/>
 					<Route path='/relatorio/clinica/gerar-relatorio' element={
 						<RelatorioClinica/>}/>
 
-					<Route path='relatorio/paciente' element={<PaginaGenericaRelatorio titulo={"Relatorio Paciente"} colunas={colunaDespesa}
-					linhas={pessoa}/>}/>
+					<Route path='relatorio/paciente' element={<PaginaGenericaRelatorio titulo={"Paciente"}/>}/>
 					<Route path='relatorio/paciente/gerar-relatorio' element={<RelatorioPaciente/>}/>
-					<Route path='relatorio/dentista' element={<PaginaGenericaRelatorio titulo={"Relatorio Dentista"} colunas={colunaDespesa}
-					linhas={pessoa}/>}/>
+					<Route path='relatorio/dentista' element={<PaginaGenericaRelatorio titulo={"Dentista"}/>}/>
 					<Route path='relatorio/dentista/gerar-relatorio' element={<RelatorioDentista/>}/> 
-					<Route path='relatorio/convenio'element={<PaginaGenericaRelatorio titulo={"Relatorio Convênio"} colunas={colunaDespesa}
-					linhas={pessoa}/>}/>
+					<Route path='relatorio/convenio'element={<PaginaGenericaRelatorio titulo={"Convenio"}/>}/>
 					<Route path='/relatorio/convenio/gerar-relatorio' element={
 						<RelatorioConvenio/>}/>
 				</Routes>
