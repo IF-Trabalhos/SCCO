@@ -4,6 +4,7 @@ import { useParams, useNavigate } from 'react-router-dom';
 import BotãoSalvar from '../../componentes/BotãoSalvar';
 import { BASE_URL } from '../../config/axios';
 import './Procedimento.css';
+import MenuLateral from '../../componentes/MenuLateral';
 const CadastroProcedimento = ({ children }) => {
 
   const { handle } = useParams()
@@ -68,69 +69,72 @@ const CadastroProcedimento = ({ children }) => {
   }, [id]);
 
   return (
-    <div className='conteudo-principal'>
-      <div className="cabeçalho-principal">
-        <h1>Cadastro de Procedimento</h1>
-      </div>
-      <div className='corpo-cadastro'>
-        <div className="container-cadastro">
-          <h2>Novo Cadastro</h2>
-
-          <div className='nome'>
-            <label htmlFor="inputNome">Nome:</label>
-            <input
-              type="text"
-              name='inputNome'
-              className='nome'
-              value={nome}
-              onChange={(e) => setNome(e.target.value)}
-            />
-          </div>
-          <div className='especialidade'>
-            <label htmlFor='inputEspecialidade'>Especialidade: </label>
-            <select
-              name="especialidades"
-              id="especialidades"
-              className='custom-select'
-              onChange={(e) => setEspecialidadeId(e.target.value)}
-            >
-              {dadosEspecialidade.map(({ id, nome }) => (
-                <option
-                  key={id}
-                  value={id}
-                  selected={especialidadeId === id ? 'selected' : ''}
-                >{nome}
-                </option>
-              ))}
-            </select>
-          </div>
-          <div className='status'>
-            <label htmlFor="status">Status:</label>
-            <div>
-              <input
-                type="radio"
-                id="inputAtivo"
-                name='status'
-                value='true'
-                onChange={(e) => setStatus(e.target.value)}
-              />
-              <label htmlFor="inputAtivo">ATIVO</label>
-            </div>
-            <div>
-              <input
-                type="radio"
-                id="inputInativo"
-                name='status'
-                value="false"
-                onChange={(e) => setStatus(e.target.value)}
-              />
-              <label htmlFor="inputInativo">INATIVO</label>
-            </div>
-          </div>
+    <div className="container">
+      <MenuLateral />
+      <div className='conteudo-principal'>
+        <div className="cabeçalho-principal">
+          <h1>Cadastro de Procedimento</h1>
         </div>
-        <div className='botoesproc'>
+        <div className='corpo-cadastro'>
+          <div className="container-cadastro">
+            <h2>Novo Cadastro</h2>
+
+            <div className='nome'>
+              <label htmlFor="inputNome">Nome:</label>
+              <input
+                type="text"
+                name='inputNome'
+                className='nome'
+                value={nome}
+                onChange={(e) => setNome(e.target.value)}
+              />
+            </div>
+            <div className='especialidade'>
+              <label htmlFor='inputEspecialidade'>Especialidade: </label>
+              <select
+                name="especialidades"
+                id="especialidades"
+                className='custom-select'
+                onChange={(e) => setEspecialidadeId(e.target.value)}
+              >
+                {dadosEspecialidade.map(({ id, nome }) => (
+                  <option
+                    key={id}
+                    value={id}
+                    selected={especialidadeId === id ? 'selected' : ''}
+                  >{nome}
+                  </option>
+                ))}
+              </select>
+            </div>
+            <div className='status'>
+              <label htmlFor="status">Status:</label>
+              <div>
+                <input
+                  type="radio"
+                  id="inputAtivo"
+                  name='status'
+                  value='true'
+                  onChange={(e) => setStatus(e.target.value)}
+                />
+                <label htmlFor="inputAtivo">ATIVO</label>
+              </div>
+              <div>
+                <input
+                  type="radio"
+                  id="inputInativo"
+                  name='status'
+                  value="false"
+                  onChange={(e) => setStatus(e.target.value)}
+                />
+                <label htmlFor="inputInativo">INATIVO</label>
+              </div>
+            </div>
+          </div>
+          <div className='botoesproc'>
             <BotãoSalvar funct={salvar} pagina={'procedimento'} />
           </div>
+        </div>
       </div>
     </div>
   )

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom';
 import './App.css'
 import MenuLateral from './componentes/MenuLateral';
 import Agenda from './pages/agenda/Agenda'
@@ -35,6 +35,7 @@ import RelatorioClinica from './componentes/relatorios/RelatorioClinica';
 import RelatorioPaciente from './componentes/relatorios/RelatorioPaciente';
 import RelatorioDentista from './componentes/relatorios/RelatorioDentista';
 import CadastroConsulta from './pages/agenda/CadastroConsulta';
+import { Login } from './pages/Login';
 
 export const Rotas = () => {
     const [pessoa, setPessoa] = useState([]);
@@ -49,64 +50,68 @@ export const Rotas = () => {
 		buscar(); // eslint-disable-next-line
 	}, []);
 
+    const RequireAuth = ({ children }) => {
+        return children
+        //return localStorage.getItem("token") ? children : <Navigate to = "/"/> 
+    }
 	return (
-		<BrowserRouter>
-			<div className="container">
-				<MenuLateral />
+			<div>
 				<Routes>
-					<Route path='/' element={<Inicio />} />
+                    <Route path='/' element={<Login/>}/> 
 
-					<Route path='/paciente' element={<Paciente titulo="Paciente" />}/>
-          			<Route path='/cadastro-paciente/:handle?' element={<CadastroPaciente />}/>
+					<Route path='/home' element={<RequireAuth><Inicio /></RequireAuth>} />
 
-					<Route path='/dentista' element={<Dentista titulo="Dentista" />}/>
-          			<Route path='/cadastro-dentista/:handle?' element={<CadastroDentista />}/>
+					<Route path='/paciente' element={<RequireAuth><Paciente titulo="Paciente" /></RequireAuth>}/>
+          			<Route path='/cadastro-paciente/:handle?' element={<RequireAuth><CadastroPaciente /></RequireAuth>}/>
 
-					<Route path='/recepcionista' element={<Recepcionista titulo="Recepcionista" />}/>
+					<Route path='/dentista' element={<RequireAuth><Dentista titulo="Dentista" /></RequireAuth>}/>
+          			<Route path='/cadastro-dentista/:handle?' element={<RequireAuth><CadastroDentista /></RequireAuth>}/>
+
+					<Route path='/recepcionista' element={<RequireAuth><Recepcionista titulo="Recepcionista" /></RequireAuth>}/>
           			<Route path='/cadastro-recepcionista/:handle?' element={<CadastroRecepcionista/>}/>
 
-					<Route path='/procedimento' element={<Procedimento titulo="Procedimento" />}/>
-          			<Route path='/cadastro-procedimento/:handle?' element={<CadastroProcedimento/>}/>
+					<Route path='/procedimento' element={<RequireAuth><Procedimento titulo="Procedimento" /></RequireAuth>}/>
+          			<Route path='/cadastro-procedimento/:handle?' element={<RequireAuth><CadastroProcedimento/></RequireAuth>}/>
 
-					<Route path='/especialidade' element={<Especialidade titulo="Especialidade" />} />
-          			<Route path='/cadastro-especialidade/:handle?' element={<CadastroEspecialidade/>} />
+					<Route path='/especialidade' element={<RequireAuth><Especialidade titulo="Especialidade" /></RequireAuth>} />
+          			<Route path='/cadastro-especialidade/:handle?' element={<RequireAuth><CadastroEspecialidade/></RequireAuth>} />
           
-					<Route path='/convenio' element={<Convenio titulo="Convenio"/>} />
-          			<Route path='/cadastro-convenio/:handle?' element={<CadastroConvenio />}/>
+					<Route path='/convenio' element={<RequireAuth><Convenio titulo="Convenio"/></RequireAuth>} />
+          			<Route path='/cadastro-convenio/:handle?' element={<RequireAuth><CadastroConvenio /></RequireAuth>}/>
 
-          			<Route path='/agenda' element={<Agenda />} />
-					<Route path='/cadastro-consulta/:handle?' element={<CadastroConsulta />} />
+          			<Route path='/agenda' element={<RequireAuth><Agenda /></RequireAuth>} />
+					<Route path='/cadastro-consulta/:handle?' element={<RequireAuth><CadastroConsulta /></RequireAuth>} />
                 
-					<Route path='/financeiro' element={<Financeiro />} />
-					<Route path='/financeiro/paciente' element={<FinanceiroPaciente titulo="Fatura Paciente" />} />
-					<Route path='/financeiro/cadastro-paciente/:handle?' element={<CadastroFinanceiroPaciente />} />
+					<Route path='/financeiro' element={<RequireAuth><Financeiro /></RequireAuth>} />
+					<Route path='/financeiro/paciente' element={<RequireAuth><FinanceiroPaciente titulo="Fatura Paciente" /></RequireAuth>} />
+					<Route path='/financeiro/cadastro-paciente/:handle?' element={<RequireAuth><CadastroFinanceiroPaciente /></RequireAuth>} />
 
-					<Route path='/financeiro/convenio' element={<FinanceiroConvenio titulo="Fatura Convenio" />} />
-					<Route path='/financeiro/cadastro-convenio/:handle?' element={<CadastroFinanceiroConvenio />} />
+					<Route path='/financeiro/convenio' element={<RequireAuth><FinanceiroConvenio titulo="Fatura Convenio" /></RequireAuth>} />
+					<Route path='/financeiro/cadastro-convenio/:handle?' element={<RequireAuth><CadastroFinanceiroConvenio /></RequireAuth>} />
 
-					<Route path='/financeiro/mensal' element={<FinanceiroMensal titulo="Despesa Mensal" />} />
-					<Route path='/financeiro/cadastro-mensal/:handle?' element={<CadastroFinanceiroMensal />} />
-					<Route path='/financeiro/recorrente' element={<FinanceiroRecorrente titulo="Despesa Recorrente" />} />
-					<Route path='/financeiro/cadastro-recorrente/:handle?' element={<CadastroFinanceiroRecorrente />} />
+					<Route path='/financeiro/mensal' element={<RequireAuth><FinanceiroMensal titulo="Despesa Mensal" /></RequireAuth>} />
+					<Route path='/financeiro/cadastro-mensal/:handle?' element={<RequireAuth><CadastroFinanceiroMensal /></RequireAuth>} />
+					<Route path='/financeiro/recorrente' element={<RequireAuth><FinanceiroRecorrente titulo="Despesa Recorrente" /></RequireAuth>} />
+					<Route path='/financeiro/cadastro-recorrente/:handle?' element={<RequireAuth><CadastroFinanceiroRecorrente /></RequireAuth>} />
 
-					<Route path='/relatorio' element={<RelatorioInicial/>}/>
-					<Route path='relatorio/clinica' element={<PaginaGenericaRelatorio titulo={"Relatorio Clinica"} colunas={colunaDespesa}
-					linhas={pessoa}/>}/>
-					<Route path='/relatorio/clinica/gerar-relatorio' element={
-						<RelatorioClinica/>}/>
+					<Route path='/relatorio' element={<RequireAuth><RelatorioInicial/></RequireAuth>}/>
+					<Route path='relatorio/clinica' element={<RequireAuth><PaginaGenericaRelatorio titulo={"Relatorio Clinica"} colunas={colunaDespesa}
+					linhas={pessoa}/></RequireAuth>}/>
+					<Route path='/relatorio/clinica/gerar-relatorio' element={<RequireAuth>
+						<RelatorioClinica/></RequireAuth>}/>
 
-					<Route path='relatorio/paciente' element={<PaginaGenericaRelatorio titulo={"Relatorio Paciente"} colunas={colunaDespesa}
-					linhas={pessoa}/>}/>
-					<Route path='relatorio/paciente/gerar-relatorio' element={<RelatorioPaciente/>}/>
-					<Route path='relatorio/dentista' element={<PaginaGenericaRelatorio titulo={"Relatorio Dentista"} colunas={colunaDespesa}
-					linhas={pessoa}/>}/>
-					<Route path='relatorio/dentista/gerar-relatorio' element={<RelatorioDentista/>}/> 
-					<Route path='relatorio/convenio'element={<PaginaGenericaRelatorio titulo={"Relatorio Convênio"} colunas={colunaDespesa}
-					linhas={pessoa}/>}/>
+					<Route path='relatorio/paciente' element={<RequireAuth><PaginaGenericaRelatorio titulo={"Relatorio Paciente"} colunas={colunaDespesa}
+					linhas={pessoa}/></RequireAuth>}/>
+					<Route path='relatorio/paciente/gerar-relatorio' element={<RequireAuth><RelatorioPaciente/></RequireAuth>}/>
+					<Route path='relatorio/dentista' element={<RequireAuth><PaginaGenericaRelatorio titulo={"Relatorio Dentista"} colunas={colunaDespesa}
+					linhas={pessoa}/></RequireAuth>}/>
+					<Route path='relatorio/dentista/gerar-relatorio' element={<RequireAuth><RelatorioDentista/></RequireAuth>}/> 
+					<Route path='relatorio/convenio'element={<RequireAuth><PaginaGenericaRelatorio titulo={"Relatorio Convênio"} colunas={colunaDespesa}
+					linhas={pessoa}/></RequireAuth>}/>
 					<Route path='/relatorio/convenio/gerar-relatorio' element={
-						<RelatorioConvenio/>}/>
+						<RequireAuth><RelatorioConvenio/></RequireAuth>}/>
 				</Routes>
 			</div>
-		</BrowserRouter>
+		
 	);
 }
