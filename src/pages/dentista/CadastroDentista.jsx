@@ -4,6 +4,8 @@ import { useParams, useNavigate } from 'react-router-dom';
 import BotãoSalvar from '../../componentes/BotãoSalvar';
 import './CadastroDentista.css'
 import { BASE_URL2 } from '../../config/axios';
+import { mensagemSucesso, mensagemErro } from '../../componentes/toastr';
+import 'reactjs-toastr/lib/toast.css';
 import MenuLateral from '../../componentes/MenuLateral';
 
 const CadastroDentista = () => {
@@ -42,10 +44,11 @@ const CadastroDentista = () => {
           headers: { 'Content-Type': 'application/json' },
         })
         .then(function (response) {
+          mensagemSucesso(`Dentista ${nome} cadastrado com sucesso!`)
           navigate(`/dentista`);
         })
         .catch(function (error) {
-          console.log(error.response.data);
+          mensagemErro(error.response.data)
         });
     } else {
       await axios
@@ -53,10 +56,11 @@ const CadastroDentista = () => {
           headers: { 'Content-Type': 'application/json' },
         })
         .then(function (response) {
+          mensagemSucesso(`Dentista ${nome} atualizado com sucesso!`)
           navigate(`/dentista`);
         })
         .catch(function (error) {
-          console.log(error.response.data);
+          mensagemErro(error.response.data);
         });
     }
   }
@@ -93,10 +97,10 @@ const CadastroDentista = () => {
     });
   }, []);
 
-  console.log(especialidadeId)
+  console.log(dataDeNascimento)
 
   return (
-    <div className="container">
+    <div className='container'>
       <MenuLateral />
       <div className="conteudo-principal">
         <div className="cabeçalho-principal">
@@ -140,7 +144,7 @@ const CadastroDentista = () => {
                 </label>
               </div>
               <div className='identificacao'>
-                <label htmlFor="inputRg">RG:
+              <label htmlFor="inputRg">RG:
                   <input
                     type="number"
                     name='rg'
@@ -176,7 +180,7 @@ const CadastroDentista = () => {
                       </option>
                     ))}
                   </select>
-                </label>
+                </label>    
               </div>
               <h3>ENDEREÇO</h3>
               <div className='endereco'>
@@ -222,37 +226,37 @@ const CadastroDentista = () => {
                 </label>
               </div>
               <div className='endereco'>
-                <label htmlFor="inputNumero">Numero:
-                  <input
-                    type="text"
-                    name='numero'
-                    className='inputNumero'
-                    value={numero}
-                    required
-                    onChange={(e) => setNumero(e.target.value)}
-                  />
-                </label>
-                <label htmlFor="inputBairro">Bairro:
-                  <input
-                    type="text"
-                    name='bairro'
-                    className='inputBairro'
-                    value={bairro}
-                    required
-                    onChange={(e) => setBairro(e.target.value)}
-                  />
-                </label>
-                <label htmlFor="inputComplemento">Complemento:
-                  <input
-                    type="text"
-                    name='complemento'
-                    className='inputComplemento'
-                    value={complemento}
-                    required
-                    onChange={(e) => setComplemento(e.target.value)}
-                  />
-                </label>
-              </div>
+                  <label htmlFor="inputNumero">Numero:
+                    <input
+                      type="text"
+                      name='numero'
+                      className='inputNumero'
+                      value={numero}
+                      required
+                      onChange={(e) => setNumero(e.target.value)}
+                    />
+                  </label>
+                  <label htmlFor="inputBairro">Bairro:
+                    <input
+                      type="text"
+                      name='bairro'
+                      className='inputBairro'
+                      value={bairro}
+                      required
+                      onChange={(e) => setBairro(e.target.value)}
+                    />
+                  </label>
+                  <label htmlFor="inputComplemento">Complemento:
+                    <input
+                      type="text"
+                      name='complemento'
+                      className='inputComplemento'
+                      value={complemento}
+                      required
+                      onChange={(e) => setComplemento(e.target.value)}
+                    />
+                  </label>
+                </div>
             </div>
             <div className='bloco34'>
               <h3>CONTATO</h3>

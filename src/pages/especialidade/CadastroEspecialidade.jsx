@@ -4,6 +4,7 @@ import { useParams, useNavigate } from 'react-router-dom';
 import BotãoSalvar from '../../componentes/BotãoSalvar';
 import { BASE_URL } from '../../config/axios';
 import './CadastroEspecialidade.css';
+import { mensagemSucesso, mensagemErro } from '../../componentes/toastr';
 import MenuLateral from '../../componentes/MenuLateral';
 
 const CadastroProcedimento = ({ children }) => {
@@ -26,10 +27,11 @@ const CadastroProcedimento = ({ children }) => {
           headers: { 'Content-Type': 'application/json' },
         })
         .then(function (response) {
+          mensagemSucesso(`Especialidade ${nome} cadastrada com sucesso!`);
           navigate(`/especialidade`);
         })
         .catch(function (error) {
-          console.log(error.response.data);
+          mensagemErro(error.response.data);
         });
     } else {
       await axios
@@ -37,10 +39,11 @@ const CadastroProcedimento = ({ children }) => {
           headers: { 'Content-Type': 'application/json' },
         })
         .then(function (response) {
+          mensagemSucesso(`Especialidade ${nome} atualizada com sucesso!`);
           navigate(`/especialidade`);
         })
         .catch(function (error) {
-          console.log(error.response.data);
+          mensagemErro(error.response.data);
         });
     }
   }
@@ -59,7 +62,7 @@ const CadastroProcedimento = ({ children }) => {
   }, [id]);
 
   return (
-    <div className="container">
+    <div className='container'>
       <MenuLateral />
       <div className='conteudo-principal'>
         <div className="cabeçalho-principal">
@@ -96,14 +99,14 @@ const CadastroProcedimento = ({ children }) => {
                 onChange={(e) => setStatus(e.target.value)}
               />
               <label htmlFor="inputInativo">INATIVO</label>
-            </div>
-            <div className='botoesproc'>
+              </div>
+              <div className='botoesproc'>
               <BotãoSalvar funct={salvar} pagina={'especialidade'} />
+              </div>
             </div>
           </div>
         </div>
       </div>
-    </div>
   )
 }
 

@@ -4,6 +4,7 @@ import { useParams, useNavigate } from 'react-router-dom';
 import BotãoSalvar from '../../componentes/BotãoSalvar';
 import './CadastroPaciente.css'
 import { BASE_URL2 } from '../../config/axios';
+import { mensagemSucesso, mensagemErro } from '../../componentes/toastr';
 import MenuLateral from '../../componentes/MenuLateral';
 
 const CadastroPaciente = () => {
@@ -41,10 +42,11 @@ const CadastroPaciente = () => {
           headers: { 'Content-Type': 'application/json' },
         })
         .then(function (response) {
+          mensagemSucesso(`Paciente ${nome} cadastrado com sucesso!`)
           navigate(`/paciente`);
         })
         .catch(function (error) {
-          console.log(error.response.data);
+          mensagemErro(error.response.data);
         });
     } else {
       await axios
@@ -52,10 +54,11 @@ const CadastroPaciente = () => {
           headers: { 'Content-Type': 'application/json' },
         })
         .then(function (response) {
+          mensagemSucesso(`Paciente ${nome} atualizado com sucesso!`)
           navigate(`/paciente`);
         })
         .catch(function (error) {
-          console.log(error.response.data);
+          mensagemErro(error.response.data);
         });
     }
   }
@@ -86,7 +89,7 @@ const CadastroPaciente = () => {
   }, [id]);
 
   return (
-    <div className="container">
+    <div className='container'>
       <MenuLateral />
       <div className="conteudo-principal">
         <div className="cabeçalho-principal">
@@ -197,37 +200,37 @@ const CadastroPaciente = () => {
                 </label>
               </div>
               <div className='endereco'>
-                <label htmlFor="inputNumero">Numero:
-                  <input
-                    type="text"
-                    name='numero'
-                    className='inputNumero'
-                    value={numero}
-                    required
-                    onChange={(e) => setNumero(e.target.value)}
-                  />
-                </label>
-                <label htmlFor="inputBairro">Bairro:
-                  <input
-                    type="text"
-                    name='bairro'
-                    className='inputBairro'
-                    value={bairro}
-                    required
-                    onChange={(e) => setBairro(e.target.value)}
-                  />
-                </label>
-                <label htmlFor="inputComplemento">Complemento:
-                  <input
-                    type="text"
-                    name='complemento'
-                    className='inputComplemento'
-                    value={complemento}
-                    required
-                    onChange={(e) => setComplemento(e.target.value)}
-                  />
-                </label>
-              </div>
+                  <label htmlFor="inputNumero">Numero:
+                    <input
+                      type="text"
+                      name='numero'
+                      className='inputNumero'
+                      value={numero}
+                      required
+                      onChange={(e) => setNumero(e.target.value)}
+                    />
+                  </label>
+                  <label htmlFor="inputBairro">Bairro:
+                    <input
+                      type="text"
+                      name='bairro'
+                      className='inputBairro'
+                      value={bairro}
+                      required
+                      onChange={(e) => setBairro(e.target.value)}
+                    />
+                  </label>
+                  <label htmlFor="inputComplemento">Complemento:
+                    <input
+                      type="text"
+                      name='complemento'
+                      className='inputComplemento'
+                      value={complemento}
+                      required
+                      onChange={(e) => setComplemento(e.target.value)}
+                    />
+                  </label>
+                </div>
             </div>
             <div className='bloco34'>
               <h3>CONTATO</h3>

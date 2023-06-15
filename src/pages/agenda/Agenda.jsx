@@ -1,17 +1,17 @@
 import axios from "axios";
-import React, { useState, useEffect } from "react";
+import React, {useState, useEffect} from "react";
 import TelaInicialAgenda from "../../componentes/TelaInicialAgenda";
 import './Agenda.css'
 import Calendar from 'moedim';
+import MenuLateral from '../../componentes/MenuLateral'
 import { BASE_URL, BASE_URL2 } from '../../config/axios';
-import MenuLateral from "../../componentes/MenuLateral";
 
-const Agenda = () => {
+const Agenda= () => {
 
     const [agenda, setAgenda] = useState(""); // Nome do dentista da agenda
     const [data, setData] = useState(new Date()) // data do calendário
     const meses = ["Janeiro", "Fevereiro", "Março", "Abril", "Maio", "Junho", "Julho",
-        "Agosto", "Setembro", "Outubro", "Novembro", "Dezembro"];
+                   "Agosto", "Setembro", "Outubro", "Novembro", "Dezembro"];
     const dia = data.getDate() + " de " + meses[data.getMonth()]
 
     const [dados, setDados] = useState([]); // Todas as consultas
@@ -20,16 +20,16 @@ const Agenda = () => {
 
     useEffect(() => {
         axios.get(`${BASE_URL}/consultas`).then((response) => {
-            setDados(response.data);
+          setDados(response.data);
         });
         axios.get(`${BASE_URL2}/dentistas`).then((response) => {
             setDadosDentista(response.data);
             setAgenda(response.data[0].nome)
-        });
-    }, []);
+          });
+      }, []);
 
 
-    return (
+    return(
         <div className="container">
             <MenuLateral />
             <div className="conteudo-principal">
@@ -37,7 +37,7 @@ const Agenda = () => {
                     <h1>Agenda</h1>
                 </div>
                 <div className='corpo-agenda'>
-                    <TelaInicialAgenda nomes={dados} dentista={agenda} data_atual={dia} />
+                    <TelaInicialAgenda nomes={dados} setDados={setDados} dentista={agenda} data_atual={dia} />
                     <div className="container-lateral-agenda">
                         <div className="calendario">
                             <Calendar locale="pt-BR" value={data} onChange={(d) => setData(d)} />
@@ -47,12 +47,12 @@ const Agenda = () => {
                                 <h1>Agendas</h1>
                             </div>
                             <div className="agenda-config-conteudo">
-                                {dadosDentista.map(({ id, nome }) => (
-                                    <div
+                                {dadosDentista.map(({id, nome}) => (
+                                    <div 
                                         key={id}
                                         onClick={() => {
-                                            setAgenda(nome)
-                                        }}
+                                        setAgenda(nome)
+                                    }} 
                                     >{nome}</div>
                                 ))}
                             </div>

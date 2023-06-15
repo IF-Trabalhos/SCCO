@@ -4,7 +4,9 @@ import { useParams, useNavigate } from 'react-router-dom';
 import BotãoSalvar from '../../componentes/BotãoSalvar';
 import { BASE_URL } from '../../config/axios';
 import './Procedimento.css';
+import { mensagemSucesso, mensagemErro } from '../../componentes/toastr';
 import MenuLateral from '../../componentes/MenuLateral';
+
 const CadastroProcedimento = ({ children }) => {
 
   const { handle } = useParams()
@@ -28,10 +30,11 @@ const CadastroProcedimento = ({ children }) => {
           headers: { 'Content-Type': 'application/json' },
         })
         .then(function (response) {
+          mensagemSucesso(`Procedimento ${nome} cadastrado com sucesso!`);
           navigate(`/procedimento`);
         })
         .catch(function (error) {
-          console.log(error.response.data);
+          mensagemErro(error.response.data);
         });
     } else {
       await axios
@@ -39,10 +42,11 @@ const CadastroProcedimento = ({ children }) => {
           headers: { 'Content-Type': 'application/json' },
         })
         .then(function (response) {
+          mensagemSucesso(`Procedimento ${nome} atualizado com sucesso!`);
           navigate(`/procedimento`);
         })
         .catch(function (error) {
-          console.log(error.response.data);
+          mensagemErro(error.response.data);
         });
     }
   }
@@ -69,7 +73,7 @@ const CadastroProcedimento = ({ children }) => {
   }, [id]);
 
   return (
-    <div className="container">
+    <div className='container'>
       <MenuLateral />
       <div className='conteudo-principal'>
         <div className="cabeçalho-principal">
@@ -132,8 +136,8 @@ const CadastroProcedimento = ({ children }) => {
             </div>
           </div>
           <div className='botoesproc'>
-            <BotãoSalvar funct={salvar} pagina={'procedimento'} />
-          </div>
+              <BotãoSalvar funct={salvar} pagina={'procedimento'} />
+            </div>
         </div>
       </div>
     </div>
