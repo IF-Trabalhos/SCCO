@@ -95,20 +95,16 @@ export const Rotas = () => {
 					<Route path='/financeiro/cadastro-recorrente/:handle?' element={<RequireAuth><CadastroFinanceiroRecorrente /></RequireAuth>} />
 
 					<Route path='/relatorio' element={<RequireAuth><RelatorioInicial/></RequireAuth>}/>
-					<Route path='relatorio/clinica' element={<RequireAuth><PaginaGenericaRelatorio titulo={"Relatorio Clinica"} colunas={colunaDespesa}
-					linhas={pessoa}/></RequireAuth>}/>
-					<Route path='/relatorio/clinica/gerar-relatorio' element={<RequireAuth>
+					<Route path='relatorio/clinica' element={<RequireAuth><PaginaGenericaRelatorio titulo={"Clinica"}/></RequireAuth>}/>
+					<Route path='/relatorio/clinica/gerar-relatorio/:handle?' element={<RequireAuth>
 						<RelatorioClinica/></RequireAuth>}/>
 
-					<Route path='relatorio/paciente' element={<RequireAuth><PaginaGenericaRelatorio titulo={"Relatorio Paciente"} colunas={colunaDespesa}
-					linhas={pessoa}/></RequireAuth>}/>
-					<Route path='relatorio/paciente/gerar-relatorio' element={<RequireAuth><RelatorioPaciente/></RequireAuth>}/>
-					<Route path='relatorio/dentista' element={<RequireAuth><PaginaGenericaRelatorio titulo={"Relatorio Dentista"} colunas={colunaDespesa}
-					linhas={pessoa}/></RequireAuth>}/>
-					<Route path='relatorio/dentista/gerar-relatorio' element={<RequireAuth><RelatorioDentista/></RequireAuth>}/> 
-					<Route path='relatorio/convenio'element={<RequireAuth><PaginaGenericaRelatorio titulo={"Relatorio Convênio"} colunas={colunaDespesa}
-					linhas={pessoa}/></RequireAuth>}/>
-					<Route path='/relatorio/convenio/gerar-relatorio' element={
+					<Route path='relatorio/paciente' element={<RequireAuth><PaginaGenericaRelatorio titulo={"Paciente"}/></RequireAuth>}/>
+					<Route path='relatorio/paciente/gerar-relatorio/:handle?' element={<RequireAuth><RelatorioPaciente/></RequireAuth>}/>
+					<Route path='relatorio/dentista' element={<RequireAuth><PaginaGenericaRelatorio titulo={"Dentista"} /></RequireAuth>}/>
+					<Route path='relatorio/dentista/gerar-relatorio/:handle?' element={<RequireAuth><RelatorioDentista/></RequireAuth>}/> 
+					<Route path='relatorio/convenio'element={<RequireAuth><PaginaGenericaRelatorio titulo={"Convenio"}/></RequireAuth>}/>
+					<Route path='/relatorio/convenio/gerar-relatorio/:handle?' element={
 						<RequireAuth><RelatorioConvenio/></RequireAuth>}/>
 				</Routes>
 			</div>
