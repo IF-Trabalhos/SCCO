@@ -4,6 +4,7 @@ import { useParams, useNavigate } from 'react-router-dom';
 import BotãoSalvar from '../../componentes/BotãoSalvar';
 import { BASE_URL } from '../../config/axios';
 import './CadastroEspecialidade.css';
+import MenuLateral from '../../componentes/MenuLateral';
 
 const CadastroProcedimento = ({ children }) => {
 
@@ -58,49 +59,51 @@ const CadastroProcedimento = ({ children }) => {
   }, [id]);
 
   return (
-    <div className='conteudo-principal'>
-      <div className="cabeçalho-principal">
-        <h1>Cadastro de Especialidade</h1>
-      </div>
-      <div className='corpo-cadastro'>
-        <div className='container-cadastro'>
-          <h2>Novo Cadastro</h2>
-          <div className='nome'>
-            <label htmlFor="inputNome">Nome:</label>
-            <input
-              type="text"
-              name='inputNome'
-              className='nome'
-              value={nome}
-              onChange={(e) => setNome(e.target.value)}
-            />
-          </div><div className='status'>
-            {children}
-            <label htmlFor="status">STATUS:</label>
-            <input
-              type="radio"
-              className='inputAtivo'
-              name='status'
-              value="true"
-              onChange={(e) => setStatus(e.target.value)}
-            />
-            <label htmlFor="inputAtivo">ATIVO</label>
-            <input
-              type="radio"
-              className='inputInativo'
-              name='status'
-              value="false"
-              onChange={(e) => setStatus(e.target.value)}
-            />
-            <label htmlFor="inputInativo">INATIVO</label>
+    <div className="container">
+      <MenuLateral />
+      <div className='conteudo-principal'>
+        <div className="cabeçalho-principal">
+          <h1>Cadastro de Especialidade</h1>
+        </div>
+        <div className='corpo-cadastro'>
+          <div className='container-cadastro'>
+            <h2>Novo Cadastro</h2>
+            <div className='nome'>
+              <label htmlFor="inputNome">Nome:</label>
+              <input
+                type="text"
+                name='inputNome'
+                className='nome'
+                value={nome}
+                onChange={(e) => setNome(e.target.value)}
+              />
+            </div><div className='status'>
+              {children}
+              <label htmlFor="status">STATUS:</label>
+              <input
+                type="radio"
+                className='inputAtivo'
+                name='status'
+                value="true"
+                onChange={(e) => setStatus(e.target.value)}
+              />
+              <label htmlFor="inputAtivo">ATIVO</label>
+              <input
+                type="radio"
+                className='inputInativo'
+                name='status'
+                value="false"
+                onChange={(e) => setStatus(e.target.value)}
+              />
+              <label htmlFor="inputInativo">INATIVO</label>
             </div>
             <div className='botoesproc'>
-            <BotãoSalvar funct={salvar} pagina={'especialidade'} />
+              <BotãoSalvar funct={salvar} pagina={'especialidade'} />
             </div>
           </div>
         </div>
       </div>
-  
+    </div>
   )
 }
 
