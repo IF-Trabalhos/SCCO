@@ -5,6 +5,9 @@ import {colunaProcedimento}from '../../data/tabela_info';
 import axios from "axios";
 import { BASE_URL } from '../../config/axios';
 import './Procedimento.css';
+import { mensagemSucesso, mensagemErro } from '../../componentes/toastr';
+import MenuLateral from "../../componentes/MenuLateral";
+
 const Procedimento = ({titulo, setInfo}) => {
 
     const navigate = useNavigate();
@@ -29,6 +32,7 @@ const Procedimento = ({titulo, setInfo}) => {
             headers: { 'Content-Type': 'application/json' },
           })
           .then(function (response) {
+            mensagemSucesso('Procedimento deletado com sucesso')
              setDados(
               dados.filter((dado) => {
                 return dado.id !== id;
@@ -36,7 +40,7 @@ const Procedimento = ({titulo, setInfo}) => {
             );
           })
           .catch(function (error) {
-            console.log(`Erro ao excluir o paciente`);
+            mensagemErro(`Erro ao excluir o paciente`);
           });
       }
 
@@ -57,52 +61,55 @@ const Procedimento = ({titulo, setInfo}) => {
       }, []);
 
     return(
-        <div className="conteudo-principal">
-            <div className='cabeçalho-principal' >
-                <h1>{titulo}</h1>
-            </div>
-            <div className='container-principal-central'>
-            <div className='cabeçalho-central'>
-                <BarraDePesquisa />
-                <button onClick={() => cadastrar()} className="add-botão">
-                    Adicionar {titulo}
-                </button>
-            </div>
-            <div className='conteudo-principal-central'>
-                <table className="tabela-principal">
-                    <tbody>
-                        <tr>
-                            {colunaProcedimento.map(({id, nome, classe}) => (
-                                <th key={id} className={classe}>{nome}</th>
-                            ))}
-                        </tr>
-                    </tbody>
-                        {dados.map(({id, nome, especialidadeId, status}) => (
-                            <tbody key={id} >
-                            <tr className="tabela-conteudo">
-                                <td className="borda-lateral" onClick={() => editar(id)}>{nome}</td>
-                                <td className="borda-lateral" onClick={() => editar(id)}>
-                                    {dadosEspecialidade[especialidadeId - 1].nome}
-                                </td>
-                                {status === true ?  
-                                <td onClick={() => editar(id)}>Ativo</td> :
-                                <td onClick={() => editar(id)}>Inativo</td>}
-                                <td>
-                                    <img 
-                                        className="coluna-item-icone" 
-                                        src={icone} 
-                                        alt="" 
-                                        srcSet="" 
-                                        width={30}
-                                        onClick={() => excluir(id)} 
-                                        />
-                                </td>
+        <div className="container">
+            <MenuLateral />
+            <div className="conteudo-principal">
+                <div className='cabeçalho-principal' >
+                    <h1>{titulo}</h1>
+                </div>
+                <div className='container-principal-central'>
+                <div className='cabeçalho-central'>
+                    <BarraDePesquisa />
+                    <button onClick={() => cadastrar()} className="add-botão">
+                        Adicionar {titulo}
+                    </button>
+                </div>
+                <div className='conteudo-principal-central'>
+                    <table className="tabela-principal">
+                        <tbody>
+                            <tr>
+                                {colunaProcedimento.map(({id, nome, classe}) => (
+                                    <th key={id} className={classe}>{nome}</th>
+                                ))}
                             </tr>
-                            </tbody>
-                        ))}
-                </table>
+                        </tbody>
+                            {dados.map(({id, nome, especialidadeId, status}) => (
+                                <tbody key={id} >
+                                <tr className="tabela-conteudo">
+                                    <td className="borda-lateral" onClick={() => editar(id)}>{nome}</td>
+                                    <td className="borda-lateral" onClick={() => editar(id)}>
+                                        {dadosEspecialidade[especialidadeId - 1].nome}
+                                    </td>
+                                    {status === true ?  
+                                    <td onClick={() => editar(id)}>Ativo</td> :
+                                    <td onClick={() => editar(id)}>Inativo</td>}
+                                    <td>
+                                        <img 
+                                            className="coluna-item-icone" 
+                                            src={icone} 
+                                            alt="" 
+                                            srcSet="" 
+                                            width={30}
+                                            onClick={() => excluir(id)} 
+                                            />
+                                    </td>
+                                </tr>
+                                </tbody>
+                            ))}
+                    </table>
+                </div>
             </div>
-        </div>
+            </div>
         </div>
     )
 }

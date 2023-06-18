@@ -3,6 +3,7 @@ import React, {useState, useEffect} from "react";
 import TelaInicialAgenda from "../../componentes/TelaInicialAgenda";
 import './Agenda.css'
 import Calendar from 'moedim';
+import MenuLateral from '../../componentes/MenuLateral'
 import { BASE_URL, BASE_URL2 } from '../../config/axios';
 
 const Agenda= () => {
@@ -29,29 +30,32 @@ const Agenda= () => {
 
 
     return(
-        <div className="conteudo-principal">
-            <div className='cabeçalho-principal'>
-                <h1>Agenda</h1>
-            </div>
-            <div className='corpo-agenda'>
-                <TelaInicialAgenda nomes={dados} dentista={agenda} data_atual={dia} />
-                <div className="container-lateral-agenda">
-                    <div className="calendario">
-                        <Calendar locale="pt-BR" value={data} onChange={(d) => setData(d)} />
-                    </div>
-                    <div className="agenda-config">
-                        <div className="agenda-config-cabeçalho">
-                            <h1>Agendas</h1>
+        <div className="container">
+            <MenuLateral />
+            <div className="conteudo-principal">
+                <div className='cabeçalho-principal'>
+                    <h1>Agenda</h1>
+                </div>
+                <div className='corpo-agenda'>
+                    <TelaInicialAgenda nomes={dados} setDados={setDados} dentista={agenda} data_atual={dia} />
+                    <div className="container-lateral-agenda">
+                        <div className="calendario">
+                            <Calendar locale="pt-BR" value={data} onChange={(d) => setData(d)} />
                         </div>
-                        <div className="agenda-config-conteudo">
-                            {dadosDentista.map(({id, nome}) => (
-                                <div 
-                                    key={id}
-                                    onClick={() => {
-                                    setAgenda(nome)
-                                }} 
-                                >{nome}</div>
-                            ))}
+                        <div className="agenda-config">
+                            <div className="agenda-config-cabeçalho">
+                                <h1>Agendas</h1>
+                            </div>
+                            <div className="agenda-config-conteudo">
+                                {dadosDentista.map(({id, nome}) => (
+                                    <div 
+                                        key={id}
+                                        onClick={() => {
+                                        setAgenda(nome)
+                                    }} 
+                                    >{nome}</div>
+                                ))}
+                            </div>
                         </div>
                     </div>
                 </div>

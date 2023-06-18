@@ -4,6 +4,9 @@ import { useParams, useNavigate } from 'react-router-dom';
 import BotãoSalvar from '../../componentes/BotãoSalvar';
 import { BASE_URL } from '../../config/axios';
 import './CadastroConvenio.css';
+import MenuLateral from '../../componentes/MenuLateral'
+import { mensagemSucesso, mensagemErro } from '../../componentes/toastr';
+
 const CadastroConvenio = () => {
 
   const {handle} = useParams() 
@@ -27,10 +30,11 @@ const CadastroConvenio = () => {
           headers: { 'Content-Type': 'application/json' },
         })
         .then(function (response) {
+          mensagemSucesso(`Convenio ${nome} cadastrado com sucesso!`)
           navigate(`/convenio`);
         })
         .catch(function (error) {
-          console.log(error.response.data);
+          mensagemErro(error.response.data);
         });
     } else {
       await axios
@@ -38,10 +42,11 @@ const CadastroConvenio = () => {
           headers: { 'Content-Type': 'application/json' },
         })
         .then(function (response) {
+          mensagemSucesso(`Convenio ${nome} atualizado com sucesso!`)
           navigate(`/convenio`);
         })
         .catch(function (error) {
-          console.log(error.response.data);
+          mensagemErro(error.response.data);
         });
     }
   }
@@ -63,47 +68,48 @@ const CadastroConvenio = () => {
   }, [id]);
 
   return (
-    <div className='conteudo-principal'>
-        <div className="cabeçalho-principal">
-          <h1>Cadastro de Convênio</h1>
-        </div>
-        <div className='corpo-cadastro'>
-            <h2>Novo Cadastro</h2>
-            <div className='conven'>
-                <label htmlFor="inputNome">Nome:
-                    <input 
-                    type="text" 
-                    className='inputNome' 
-                    value={nome}
-                    required name='nome' 
-                    onChange={(e) => setNome(e.target.value)}
-                    />
-                </label>
-                <br />
-                <label htmlFor='inputEmail'>Email: 
-                  <input 
+    <div className='container'>
+      <MenuLateral />
+      <div className='conteudo-principal'>
+          <div className="cabeçalho-principal">
+            <h1>Cadastro de Convênio</h1>
+          </div>
+          <div className='corpo-cadastro'>
+              <h2>Novo Cadastro</h2>
+              <div>
+                  <label htmlFor="inputNome">Nome:
+                      <input 
                       type="text" 
-                      className='inputEmail' 
-                      required name='inputEmail'
-                      value={email}
-                      onChange={(e) => setEmail(e.target.value)}
+                      className='inputNome' 
+                      value={nome}
+                      required name='nome' 
+                      onChange={(e) => setNome(e.target.value)}
                       />
-                 </label>
-                <br />
-                <label htmlFor="inputANS">Registro ANS:
+                  </label>
+                  <br />
+                  <label htmlFor='inputEmail'>Email: 
                     <input 
-                    type="text" 
-                    className='inputANS' 
-                    required name='registroANS'
-                    value={registroAns}
-                    onChange={(e) => setRegistroAns(e.target.value)}
-                    />
-                </label>
-                <div className='botoes'>
-                <BotãoSalvar funct={salvar} pagina={'convenio'} />
-                </div>
-            </div>
-        </div>
+                        type="email" 
+                        className='inputEmail' 
+                        required name='inputEmail'
+                        value={email}
+                        onChange={(e) => setEmail(e.target.value)}
+                        />
+                  </label>
+                  <br />
+                  <label htmlFor="inputANS">Registro ANS:
+                      <input 
+                      type="text" 
+                      className='inputANS' 
+                      required name='registroANS'
+                      value={registroAns}
+                      onChange={(e) => setRegistroAns(e.target.value)}
+                      />
+                  </label>
+                  <BotãoSalvar funct={salvar} pagina={'convenio'} />
+              </div>
+          </div>
+      </div>
     </div>
   )
 }
