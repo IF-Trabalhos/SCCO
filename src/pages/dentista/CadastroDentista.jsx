@@ -97,8 +97,6 @@ const CadastroDentista = () => {
     });
   }, []);
 
-  console.log(dataDeNascimento)
-
   return (
     <div className='container'>
       <MenuLateral />
@@ -137,7 +135,6 @@ const CadastroDentista = () => {
                     type="date"
                     className='inputDt-nascimento'
                     name='dt-nascimento'
-                    value={dataDeNascimento}
                     required
                     onChange={(e) => setDataDeNascimento(e.target.value)}
                   />
