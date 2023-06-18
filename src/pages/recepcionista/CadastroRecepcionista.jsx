@@ -8,7 +8,7 @@ import { mensagemSucesso, mensagemErro } from '../../componentes/toastr';
 import MenuLateral from '../../componentes/MenuLateral';
 
 const CadastroDentista = () => {
-  const {handle} = useParams() 
+  const { handle } = useParams()
   const navigate = useNavigate();
 
   const [id, setId] = useState('');
@@ -30,8 +30,10 @@ const CadastroDentista = () => {
   const [dados, setDados] = useState([]);
 
   async function salvar() {
-    let data = { nome, pis, dataDeNascimento, cpf, email, telefone, 
-                 rg, logradouro, bairro, uf, cidade, complemento, cep, numero};
+    let data = {
+      nome, pis, dataDeNascimento, cpf, email, telefone,
+      rg, logradouro, bairro, uf, cidade, complemento, cep, numero
+    };
     data = JSON.stringify(data);
     if (handle == null) {
       await axios

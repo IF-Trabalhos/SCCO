@@ -1,0 +1,9 @@
+.conven {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+  }
+  
+  .conven label {
+    margin-bottom: 10px;
+  }

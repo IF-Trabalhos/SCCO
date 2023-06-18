@@ -201,3 +201,48 @@ label {
   input[type="date"]:hover + label {
     color: #58dc79;
   } 
+  input[type="time"] {
+    padding: 10px;
+    border: 1px solid gray;
+    border-radius: 5px;
+    font-family: Arial, sans-serif;
+    font-size: 14px;
+    color: #333;
+    background-color: white;
+    transition: border-color 0.3s ease;
+  }
+  
+  /* Estilo quando o input do tipo time está em foco */
+  input[type="time"]:focus {
+    outline: none;
+    border-color: #58b2dc;
+    box-shadow: 0 0 5px rgba(88, 178, 220, 0.5);
+  }
+  
+  /* Estilo quando o input do tipo time está em hover */
+  input[type="time"]:hover {
+    border-color: #58dc79;
+  }
+  
+  /* Estilo para rótulos associados ao input do tipo time */
+  input[type="time"] + label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+    color: #333;
+  }
+  
+  /* Estilo para rótulos associados ao input do tipo time quando o input está em foco */
+  input[type="time"]:focus + label {
+    color: #58b2dc;
+  }
+  
+  /* Estilo para rótulos associados ao input do tipo time quando o input está preenchido */
+  input[type="time"]:valid + label {
+    color: #58dc79;
+  }
+  
+  /* Estilo para rótulos associados ao input do tipo time quando o input está em hover */
+  input[type="time"]:hover + label {
+    color: #58dc79;
+  }

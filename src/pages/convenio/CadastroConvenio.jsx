@@ -3,6 +3,7 @@ import React, { useState, useEffect } from "react";
 import { useParams, useNavigate } from 'react-router-dom';
 import BotãoSalvar from '../../componentes/BotãoSalvar';
 import { BASE_URL } from '../../config/axios';
+import './CadastroConvenio.css';
 import MenuLateral from '../../componentes/MenuLateral'
 import { mensagemSucesso, mensagemErro } from '../../componentes/toastr';
 

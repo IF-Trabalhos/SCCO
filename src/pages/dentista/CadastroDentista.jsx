@@ -2,7 +2,7 @@ import axios from 'axios';
 import React, { useState, useEffect } from 'react'
 import { useParams, useNavigate } from 'react-router-dom';
 import BotãoSalvar from '../../componentes/BotãoSalvar';
-import './CadastroDentista.css'
+import './CadastroDentista.css';
 import { BASE_URL2 } from '../../config/axios';
 import { mensagemSucesso, mensagemErro } from '../../componentes/toastr';
 import 'reactjs-toastr/lib/toast.css';
