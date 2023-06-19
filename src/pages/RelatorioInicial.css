@@ -1,39 +1,73 @@
-.corpo-relatorio{
-    margin-top: 1vh;
-    margin-left: 5%;
-    border: 2px solid;
-    border-radius: 10px;
+.corporelatorio {
+  margin-top: 1vh;
+  margin-left: 5%;
+  border: 2px solid;
+  border-radius: 10px;
+  width: 90%;
+  height: 80vh;
+  display: grid;
+  grid-template-rows: repeat(2, 1fr);
+  grid-template-columns: repeat(2, 1fr);
+  align-items: center;
+  justify-items: center;
+  background-color: #fefefe;
+}
+
+.caixarelatoriocss {
+  height: 14vh;
+  width: 80%;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  font-size: 1.8em;
+  border: 1px solid rgb(0, 188, 41);
+  border-radius: 30px;
+  cursor: pointer;
+  transition: all 0.5s;
+  background-color: #018b12;
+  background-image: linear-gradient(43deg, #058314 0%, #7eff2d 46%, #13cc70 100%);
+  font-family: 'Poppins', sans-serif;
+  padding: 10px;
+  box-sizing: border-box;
+}
+
+label {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-size: 1.2em;
+  margin-right: 1em;
+}
+
+.caixarelatoriocss:hover {
+  -webkit-transform: scale(1.2);
+  transform: scale(1.1);
+  background-color: #057a0f;
+  background-image: linear-gradient(43deg, #04640f 0%, #66e64e 46%, #0fa832 100%);
+}
+
+.caixarelatoriocss img {
+  max-width: 50%;
+  max-height: 50%;
+  width: auto;
+  height: auto;
+  margin-bottom: 10px;
+  position: relative;
+  z-index: 1;
+}
+
+.caixarelatoriocss span {
+  position: relative;
+  z-index: 2;
+}
+
+@media (max-width: 768px) {
+  .caixarelatoriocss {
     width: 90%;
-    height: 80vh;
-    display: grid;
-    align-items: center;
-    justify-items: center;
-    background-color: #fefefe;
+    font-size: 1.5em;
+  }
 }
-
 .caixa-relatorio{
-    height: 12vh;
-    width: 30%;
-    text-align: center;
-    display: grid;
-    align-items: center;
-    font-size: 1.8em;
-    border: 1px solid rgb(0, 188, 41);
-    border-radius: 30px;
-    cursor: pointer;
-    transition: all 0.5s;
-    background-color: #018b12;
-    background-image: linear-gradient(43deg, #058314 0%, #7eff2d 46%, #13cc70 100%);
-    font-family: 'Poppins', sans-serif;
-
-
-}
-label{
-    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    font-size: 1.2em;
-    margin-right: 1em;
-}
-.caixa-relatorio:hover{
-    -webkit-transform: scale(1.2);
-    transform: scale(1.1);
+padding-left: 30vh;
+padding-right: 30vh;
 }
