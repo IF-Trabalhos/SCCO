@@ -161,6 +161,8 @@ const CadastroDentista = () => {
                     onChange={(e) => setCpf(e.target.value)}
                   />
                 </label>
+                </div>
+                <div className='identificacao'>
                 <label htmlFor='inputEspecialidade'>Especialidade:
                   <select
                     name="especialidades"

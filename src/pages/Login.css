@@ -67,7 +67,7 @@ body {
     align-items: center;
   }
   
-  button {
+  .button-container button {
     display: inline-block;
     background: #58dc79;
     color: #fff;
@@ -79,7 +79,7 @@ body {
     color: black;
   }
   
-  button:hover {
+  .button-container button:hover {
     background: #3fb55a;
     cursor: pointer;
   }

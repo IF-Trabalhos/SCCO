@@ -1,10 +1,22 @@
-.pesquisa-input{
+.pesquisa-input {
     margin-top: 3vh;
     width: 50%;
     height: 7vh;
-    border: 2px solid;
+    border: 2px solid #ccc;
     border-radius: 10px;
     font-size: 1em;
-    background-color: rgba(251, 255, 251, 0.647);
-    
-}
+    background-color: #f8f8f8;
+    padding: 10px;
+    outline: none;
+    transition: border-color 0.3s ease;
+  }
+  
+  .pesquisa-input:focus {
+    border-color: #5dffc3;
+  }
+  
+  @media (max-width: 768px) {
+    .pesquisa-input {
+      width: 100%;
+    }
+  }

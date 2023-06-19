@@ -1,9 +1,21 @@
-.conven {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-end;
-  }
-  
-  .conven label {
-    margin-bottom: 10px;
-  }
+.input-container {
+  margin-bottom: 1em;
+}
+
+.input-container label {
+  display: block;
+  margin-bottom: 0.5em;
+  font-weight: bold;
+}
+
+.input-container input {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+.botaoconv{
+
+  width: 50vh;
+
+}

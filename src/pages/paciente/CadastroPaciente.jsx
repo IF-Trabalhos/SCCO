@@ -132,6 +132,7 @@ const CadastroPaciente = () => {
                     onChange={(e) => setDataDeNascimento(e.target.value)}
                   />
                 </label>
+                </div>
                 <div className='identificacao'>
                   <label htmlFor="inputRg">RG:
                     <input
@@ -155,7 +156,7 @@ const CadastroPaciente = () => {
                     />
                   </label>
                 </div>
-              </div>
+              
               <h3>ENDEREÇO</h3>
               <div className='endereco'>
                 <label htmlFor="inputCep">CEP:

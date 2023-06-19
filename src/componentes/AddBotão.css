@@ -1,4 +1,4 @@
-.add-botão{
+.add-botão {
     border-radius: 10px;
     margin-right: 2.5%;
     margin-left: 1.5%;
@@ -9,7 +9,14 @@
     margin-top: 1.5%;
     background-color: #9cff8b;
     background-image: linear-gradient(45deg, #9cff8b 0%, #28a200 52%, #5dffc3 90%);
-        border: 2px solid;
-        border-radius: 10px;
-        font-family: 'Poppins', sans-serif;
-}
+    border: 2px solid;
+    border-radius: 10px;
+    font-family: 'Poppins', sans-serif;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+  }
+  
+  .add-botão:hover {
+    background-color: #3fb55a;
+    background-image: linear-gradient(45deg, #3fb55a 0%, #146b17 52%, #5dffc3 90%);
+    transform: translateY(-2px);
+  }

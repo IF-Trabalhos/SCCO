@@ -9,7 +9,7 @@ import { mensagemSucesso, mensagemErro } from '../../componentes/toastr';
 
 const CadastroConvenio = () => {
 
-  const {handle} = useParams() 
+  const { handle } = useParams()
   const navigate = useNavigate();
 
   const [id, setId] = useState('');
@@ -22,7 +22,7 @@ const CadastroConvenio = () => {
   const [dados, setDados] = useState([]);
 
   async function salvar() {
-    let data = { nome, registroAns, email, telefone, desconto};
+    let data = { nome, registroAns, email, telefone, desconto };
     data = JSON.stringify(data);
     if (handle == null) {
       await axios
@@ -71,44 +71,53 @@ const CadastroConvenio = () => {
     <div className='container'>
       <MenuLateral />
       <div className='conteudo-principal'>
-          <div className="cabeçalho-principal">
-            <h1>Cadastro de Convênio</h1>
+        <div className="cabeçalho-principal">
+          <h1>Cadastro de Convênio</h1>
+        </div>
+        <div className='corpo-cadastro'>
+          <h2>Novo Cadastro</h2>
+          <div>
+            <div class="input-container">
+              <label htmlFor="inputNome">Nome:</label>
+              <input
+                type="text"
+                className='inputNome'
+                value={nome}
+                required
+                name='nome'
+                onChange={(e) => setNome(e.target.value)}
+              />
+            </div>
+
+            <div class="input-container">
+              <label htmlFor='inputEmail'>Email:</label>
+              <input
+                type="text"
+                className='inputEmail'
+                required
+                name='inputEmail'
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+              />
+            </div>
+
+            <div class="input-container">
+              <label htmlFor="inputANS">Registro ANS:</label>
+              <input
+                type="text"
+                className='inputANS'
+                required
+                name='registroANS'
+                value={registroAns}
+                onChange={(e) => setRegistroAns(e.target.value)}
+              />
+            </div>
+
+            <div className='botaoconv'>
+              <BotãoSalvar funct={salvar} pagina={'convenio'} />
+            </div>
           </div>
-          <div className='corpo-cadastro'>
-              <h2>Novo Cadastro</h2>
-              <div>
-                  <label htmlFor="inputNome">Nome:
-                      <input 
-                      type="text" 
-                      className='inputNome' 
-                      value={nome}
-                      required name='nome' 
-                      onChange={(e) => setNome(e.target.value)}
-                      />
-                  </label>
-                  <br />
-                  <label htmlFor='inputEmail'>Email: 
-                    <input 
-                        type="email" 
-                        className='inputEmail' 
-                        required name='inputEmail'
-                        value={email}
-                        onChange={(e) => setEmail(e.target.value)}
-                        />
-                  </label>
-                  <br />
-                  <label htmlFor="inputANS">Registro ANS:
-                      <input 
-                      type="text" 
-                      className='inputANS' 
-                      required name='registroANS'
-                      value={registroAns}
-                      onChange={(e) => setRegistroAns(e.target.value)}
-                      />
-                  </label>
-                  <BotãoSalvar funct={salvar} pagina={'convenio'} />
-              </div>
-          </div>
+        </div>
       </div>
     </div>
   )
