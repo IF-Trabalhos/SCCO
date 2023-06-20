@@ -60,12 +60,6 @@ const MenuLateral = () => {
 		},
 		{
 			id: "9",
-			texto: "FINANCEIRO",
-			icone: "icones/financeiro.svg",
-			link: "/financeiro"
-		},
-		{
-			id: "10",
 			texto: "RELATÓRIOS",
 			icone: "icones/relatorio.svg",
 			link: "/relatorio"

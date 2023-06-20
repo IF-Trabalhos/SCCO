@@ -10,20 +10,33 @@ const RelatorioInicial = () => {
                 <div className='cabeçalho-principal'>
                     <h1>Relatórios</h1>
                 </div>
-                <div className='corpo-relatorio'>
-                    <Link className="caixa-relatorio" id="caixa-paciente"
-                        to={"clinica"}>
-                        Clinica
-                    </Link>
-                    <Link className="caixa-relatorio" id="caixa-convenio"
-                        to={"paciente"}>
-                        Paciente</Link>
-                    <Link className="caixa-relatorio" id="caixa-mensal"
-                        to={"dentista"}>
-                        Dentista</Link>
-                    <Link className="caixa-relatorio" id="caixa-recorrente"
-                        to={"convenio"}>
-                        Convênio</Link>
+                <div class="corporelatorio">
+                    <div id="caixa-clinica" className='caixarelatoriocss' >
+                        <Link className="caixa-relatorio" to={"clinica"}>
+                            <img src="icones/inicio.svg" class="imgrelatorio" />
+                            <span>Clinica</span>
+                        </Link>
+                    </div>
+                    <div id="caixa-paciente" className='caixarelatoriocss'>
+                        <Link className="caixa-relatorio" to={"paciente"}>
+                            <img src="icones/paciente.svg" class="imgrelatorio" />
+                            <span>Paciente</span>
+                        </Link>
+                    </div>
+                    <div id="caixa-dentista" className='caixarelatoriocss'>
+                        <Link className="caixa-relatorio" to={"dentista"}>
+                            <img src="icones/dentista.svg" class="imgrelatorio" />
+                            <span>Dentista</span>
+                        </Link>
+                    </div>
+                    <div id="caixa-convenio" className='caixarelatoriocss'>
+                        <Link className="caixa-relatorio" to={"convenio"}>
+                        <div class="caixa-imagem">
+                            <img src="icones/convenio.svg" class="imgrelatorio" />
+                            </div>
+                            <span>Convênio</span>
+                        </Link>
+                    </div>
                 </div>
             </div>
         </div>

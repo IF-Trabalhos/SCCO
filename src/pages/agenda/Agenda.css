@@ -16,32 +16,44 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    
 }
 
-.agenda-config{
+.agenda-config {
     background-color: white;
     height: 46vh;
     margin-top: 2vh;
     display: grid;
     text-align: center; 
-}
-
-.agenda-config-cabeçalho{
+  }
+  
+  .agenda-config-cabecalho {
     height: 10vh;
-    border-bottom: 0.2em solid gray;
+    border-bottom: 0.5em solid gray;
     font-size: 1em;
-}
-
-.agenda-config-conteudo{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+  }
+  
+  .agenda-config-cabecalho h1 {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  
+  .agenda-config-conteudo {
     height: 36vh;
-}
-
-.agenda-config-conteudo div{
+    border-top: 0.1em solid gray;
+  }
+  
+  .agenda-config-conteudo div {
     padding: 1%;
     font-size: 1.25em;
-}
-
-.agenda-config-conteudo div:hover{
+  }
+  
+  .agenda-config-conteudo div:hover {
     background-color: rgba(19, 152, 7, 0.68);
     cursor: pointer;
-}
+  }

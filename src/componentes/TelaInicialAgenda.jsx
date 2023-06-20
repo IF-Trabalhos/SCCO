@@ -6,7 +6,7 @@ import BarraDePesquisa from "./BarraDePesquisa";
 import { BASE_URL2 } from '../config/axios';
 import { mensagemSucesso, mensagemErro } from '../componentes/toastr';
 
-const TelaInicialAgenda = ({nomes, setDados, dentista, data_atual}) => {
+const TelaInicialAgenda = ({ nomes, setDados, dentista, data_atual }) => {
 
     const navigate = useNavigate();
     const icone = 'icones/lixeira.svg'
@@ -14,7 +14,7 @@ const TelaInicialAgenda = ({nomes, setDados, dentista, data_atual}) => {
 
     async function buscarPaciente() {
         await axios.get(`${BASE_URL2}/pacientes/`).then((response) => {
-          setPaciente(response.data)
+            setPaciente(response.data)
         });
     }
 
@@ -26,21 +26,21 @@ const TelaInicialAgenda = ({nomes, setDados, dentista, data_atual}) => {
         let data = JSON.stringify({ id });
         let url = `${BASE_URL2}/consultas/${id}`;
         await axios
-          .delete(url, data, {
-            headers: { 'Content-Type': 'application/json' },
-          })
-          .then(function (response) {
-            mensagemSucesso('Consulta deletada com sucesso')
-             setDados(
-              nomes.filter((dado) => {
-                return dado.id !== id;
-              })
-            );
-          })
-          .catch(function (error) {
-            mensagemErro(`Erro ao excluir consulta`);
-          });
-      }
+            .delete(url, data, {
+                headers: { 'Content-Type': 'application/json' },
+            })
+            .then(function (response) {
+                mensagemSucesso('Consulta deletada com sucesso')
+                setDados(
+                    nomes.filter((dado) => {
+                        return dado.id !== id;
+                    })
+                );
+            })
+            .catch(function (error) {
+                mensagemErro(`Erro ao excluir consulta`);
+            });
+    }
 
     const cadastrar = () => {
         navigate(`/cadastro-consulta/`);
@@ -50,38 +50,38 @@ const TelaInicialAgenda = ({nomes, setDados, dentista, data_atual}) => {
         buscarPaciente(); // eslint-disable-next-line
     }, []);
 
-    return(
+    return (
         <div className='container-principal-agenda'>
             <div className="container-principal-agenda-cabeçalho">
                 <p>{dentista}</p>
                 <p>{data_atual}</p>
             </div>
             <div className="container-principal-agenda-conteudo">
-                <div className="agenda-barra-de-pesquisa">
+            <div className='cabeçalho-central'>
                     <BarraDePesquisa />
                     <button onClick={() => cadastrar()} className="add-botão">
                         Adicionar Consulta
                     </button>
                 </div>
-                {nomes.map(({id, horaInicial, horaFinal, pacienteId}) => (
+                {nomes.map(({ id, horaInicial, horaFinal, pacienteId }) => (
                     <div key={id} className="agenda-horarios-info" >
-                        <div className="agenda-horarios-info-hora" 
-                            onClick={() => {editar(id)}}>
-                                {horaInicial} - {horaFinal}
+                        <div className="agenda-horarios-info-hora"
+                            onClick={() => { editar(id) }}>
+                            {horaInicial} - {horaFinal}
                         </div>
                         <div className="agenda-horarios-info-nome"
-                            onClick={() => {editar(id)}}>
-                                 {paciente[pacienteId - 1].nome} 
+                            onClick={() => { editar(id) }}>
+                            {paciente[pacienteId - 1].nome}
                         </div>
                         <td>
-                            <img 
-                                className="coluna-item-icone" 
-                                src={icone} 
-                                alt="" 
-                                srcSet="" 
+                            <img
+                                className="coluna-item-icone"
+                                src={icone}
+                                alt=""
+                                srcSet=""
                                 width={30}
-                                onClick={() => excluir(id)} 
-                                />
+                                onClick={() => excluir(id)}
+                            />
                         </td>
                     </div>
                 ))}

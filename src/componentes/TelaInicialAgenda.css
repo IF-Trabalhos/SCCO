@@ -1,4 +1,4 @@
-.container-principal-agenda{
+.container-principal-agenda {
     background-color: white;
     margin-top: 1vh;
     margin-left: 3%;
@@ -7,48 +7,62 @@
     width: 50%;
     height: 80vh;
     display: grid;
-}
-
-.container-principal-agenda-cabeçalho{
+  }
+  
+  .container-principal-agenda-cabeçalho {
+    margin-top: 1em;
     border-bottom: 2px solid gray;
-    height: 15vh;
+    height: 18vh;
     text-align: center;
     font-size: 1.25em;
-}
-
-.container-principal-agenda-conteudo{
+  }
+  
+  .container-principal-agenda-conteudo {
     height: 65vh;
-}
-
-.agenda-barra-de-pesquisa{
+  }
+  
+  .agenda-barra-de-pesquisa {
     width: 100%;
     padding-left: 8%;
     padding-bottom: 2%;
-}
-
-.agenda-horarios-info{
+  }
+  
+  .agenda-horarios-info {
     display: flex;
     font-size: 1.25em;
     padding-left: 5%;
-}
-
-.agenda-horarios-info-hora {
+    margin-top: 0.5em;
+  }
+  
+  .agenda-horarios-info-hora {
     width: 30%;
     text-align: center;
     border-right: 1px solid gray;
-}
-
-.agenda-horarios-info-nome{
+  }
+  
+  .agenda-horarios-info-nome {
     width: 50%;
     padding-left: 3%;
-}
-
-.agenda-horarios-info:hover{
-    background-color: rgb(179, 179, 179);
+  }
+  
+  .agenda-horarios-info:hover {
+    background-color: rgb(130, 196, 100);
     cursor: pointer;
-}
-
-
-
-
-
+  }
+  
+  /* Media Query para ajustar o tamanho em diferentes tamanhos de tela */
+  @media (max-width: 768px) {
+    .container-principal-agenda {
+      width: 90%;
+      height: 60vh;
+      margin-left: 5%;
+    }
+  
+    .container-principal-agenda-cabecalho {
+      font-size: 1em;
+    }
+  
+    .agenda-horarios-info {
+      font-size: 1em;
+    }
+  }
