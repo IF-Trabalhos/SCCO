@@ -1,16 +1,33 @@
 import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom';
+import { BASE_URL } from '../config/axios';
+import { mensagemSucesso, mensagemErro } from '../componentes/toastr';
 import './Login.css'
+import axios from 'axios';
 
 export const Login = () => {
-  const[email, setEmail] = useState("");
+  const[login, setLogin] = useState("");
   const[senha,setSenha] = useState("");
 
   const navigate = useNavigate();
 
-  const logar = () =>{
-    navigate("/home")
-    
+  async function logar () {
+    // const loginUrl = `${BASE)URL}/login`;
+    // const response = await axios.post(loginUrl, { email, password });
+    // return response.data;
+    let data = {login, senha};
+    data = JSON.stringify(data);
+    await axios
+    .post(`${BASE_URL}/usuarios/auth`, data, {
+      headers: { 'Content-Type': 'application/json' },
+    })
+    .then(function (response) {
+        mensagemSucesso(`Usuário ${response.data.login} logado com sucesso!`)
+        navigate(`/home`);
+    })
+    .catch(function (error) {
+      mensagemErro(`Usuário ou senha errados`);
+    });
   }
 
   return (
@@ -22,9 +39,9 @@ export const Login = () => {
           <input 
             type="text" 
             name="email" 
-            value={email}
+            value={login}
             required
-            onChange={(e) => setEmail(e.target.value)}
+            onChange={(e) => setLogin(e.target.value)}
             />
           <label>Email</label>
         </div>
@@ -38,10 +55,12 @@ export const Login = () => {
           <label>Senha</label>
         </div>
         <div class="button-container">
-          <button onClick={logar} type="submit">Entrar</button>
+          <button onClick={() => {
+                    logar()
+                  }}  type="button">Entrar</button>
         </div>
       </form>
     </div>
-  </div> 
+    </div>
   )
 }
