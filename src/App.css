@@ -64,3 +64,9 @@ a{
 .coluna-item-icone:hover{
     width: 35px;
 }
+
+.required::before {
+    content: "*";
+    color: red
+}
+  

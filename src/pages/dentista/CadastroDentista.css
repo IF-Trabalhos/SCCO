@@ -33,6 +33,11 @@
     width: 100%; /* Definir a largura para ocupar todo o espaço disponível */
     max-width: 50%; /* Definir uma largura máxima para evitar que ocupe mais de 50% */
   }
+
+  .bloco12 h3, .bloco34 h3 {
+    border-bottom: 1px solid black;
+    width: 100%;
+  }
   
   .bloco34 {
     display: flex;
