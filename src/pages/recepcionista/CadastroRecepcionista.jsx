@@ -6,6 +6,7 @@ import './CadastroRecepcionista.css'
 import { BASE_URL2 } from '../../config/axios';
 import { mensagemSucesso, mensagemErro } from '../../componentes/toastr';
 import MenuLateral from '../../componentes/MenuLateral';
+import { formatarCPF, formatarCEP, formatarTelefone } from '../../data/utils';
 
 const CadastroDentista = () => {
   const { handle } = useParams()
@@ -99,118 +100,129 @@ const CadastroDentista = () => {
             <div className='bloco12'>
               <h3>IDENTIFICAÇÃO</h3>
               <div className='identificacao'>
-                <label htmlFor='inputNome'>Nome:
+                <label htmlFor='inputNome' className='required'>Nome:
                   <input
                     type="text"
                     name='inputNome'
                     value={nome}
+                    required
+                    maxLength={255}
                     onChange={(e) => setNome(e.target.value)}
                   />
                 </label>
-                <label htmlFor="numPIS">N. PIS:
+                <label htmlFor="numPIS" className='required'>N. PIS:
                   <input
-                    type="number"
+                    type="text"
                     className="numPIS"
                     name="numPIS"
                     value={pis}
                     required
+                    maxLength={11}
                     onChange={(e) => setPis(e.target.value)}
                   />
                 </label>
-                <label htmlFor="innputDt-nascimento">Dt.Nasc:
+                <label htmlFor="innputDt-nascimento" className='required'>Dt.Nasc:
                   <input
                     type="date"
                     className='inputDt-nascimento'
                     name='dt-nascimento'
                     value={dataDeNascimento}
-                    required
+                    requiredS
                     onChange={(e) => setDataDeNascimento(e.target.value)}
                   />
                 </label>
               </div>
               <div className='identificacao'>
-                <label htmlFor="inputRg">RG:
+                <label htmlFor="inputRg" className='required'>RG:
                   <input
-                    type="number"
+                    type="text"
                     name='rg'
                     className='inputRg'
                     value={rg}
                     required
+                    maxLength={10}
                     onChange={(e) => setRg(e.target.value)}
                   />
                 </label>
-                <label htmlFor="inputCpf">CPF:
+                <label htmlFor="inputCpf" className='required'>CPF:
                   <input
-                    type="number"
+                    type="text"
                     name='cpf'
                     value={cpf}
                     className='inputCpf'
                     required
-                    onChange={(e) => setCpf(e.target.value)}
+                    maxLength={14}
+                    onChange={(e) => setCpf(formatarCPF(e.target.value))}
                   />
                 </label>
               </div>
               <h3>ENDEREÇO</h3>
               <div className='endereco'>
-                <label htmlFor="inputCep">CEP:
+                <label htmlFor="inputCep" className='required'>CEP:
                   <input
-                    type="number"
+                    type="text"
                     name='cep'
                     className='inputCep'
                     value={cep}
                     required
-                    onChange={(e) => setCep(e.target.value)}
+                    maxLength={9}
+                    onChange={(e) => setCep(formatarCEP(e.target.value))}
                   />
                 </label>
-                <label htmlFor="inputUf">UF:
+                <label htmlFor="inputUf" className='required'>UF:
                   <input
                     type="text"
                     name='uf'
                     className='inputUf'
                     value={uf}
                     required
+                    maxLength={2}
                     onChange={(e) => setUf(e.target.value)}
                   />
                 </label>
-                <label htmlFor="inputCidade">Cidade:
+                <label htmlFor="inputCidade" className='required'>Cidade:
                   <input
                     type="text"
                     name='cidade'
                     className='inputCidade'
                     value={cidade}
                     required
+                    maxLength={255}
                     onChange={(e) => setCidade(e.target.value)}
                   />
                 </label>
               </div>
               <div className='endereco'>
-                <label htmlFor="inputLogradouro">Logradouro:
+                <label htmlFor="inputLogradouro" className='required'>Logradouro:
                   <input
                     type="text"
                     name='logradouro'
                     className='inputLogradouro'
                     value={logradouro}
                     required
+                    maxLength={255}
                     onChange={(e) => setLogradouro(e.target.value)}
                   />
                 </label>
-                <label htmlFor="inputNumero">Numero:
+                <label htmlFor="inputNumero" className='required'>Numero:
                   <input
                     type="text"
                     name='numero'
                     className='inputNumero'
                     value={numero}
                     required
+                    maxLength={255}
                     onChange={(e) => setNumero(e.target.value)}
                   />
                 </label>
-                <label htmlFor="inputBairro"> Bairro:
+                <label htmlFor="inputBairro" className='required'> Bairro:
                   <input
                     type="text"
                     name='bairro'
                     className='inputBairro'
                     value={bairro}
                     required
+                    maxLength={255}
                     onChange={(e) => setBairro(e.target.value)}
                   />
                 </label>
@@ -221,6 +233,7 @@ const CadastroDentista = () => {
                     className='inputComplemento'
                     value={complemento}
                     required
+                    maxLength={255}
                     onChange={(e) => setComplemento(e.target.value)}
                   />
                 </label>
@@ -236,16 +249,19 @@ const CadastroDentista = () => {
                     className='inputEmail'
                     value={email}
                     name='email'
+                    maxLength={255}
                     onChange={(e) => setEmail(e.target.value)}
                   />
                 </label>
-                <label htmlFor="inputTelefone">Telefone:
+                <label htmlFor="inputTelefone" className='required'>Telefone:
                   <input
                     type="text"
                     value={telefone}
                     className='inputTelefone'
                     name='telefone'
-                    onChange={(e) => setTelefone(e.target.value)}
+                    required
+                    maxLength={15}
+                    onChange={(e) => setTelefone(formatarTelefone(e.target.value))}
                   />
                 </label>
               </div>
