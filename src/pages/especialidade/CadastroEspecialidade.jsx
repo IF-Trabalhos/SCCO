@@ -72,17 +72,19 @@ const CadastroProcedimento = ({ children }) => {
           <div className='container-cadastro'>
             <h2>Novo Cadastro</h2>
             <div className='nome'>
-              <label htmlFor="inputNome">Nome:</label>
+              <label htmlFor="inputNome" className='required'>Nome:</label>
               <input
                 type="text"
                 name='inputNome'
                 className='nome'
                 value={nome}
+                required
+                maxLength= {255}
                 onChange={(e) => setNome(e.target.value)}
               />
             </div><div className='status'>
               {children}
-              <label htmlFor="status">STATUS:</label>
+              <label htmlFor="status" className='required'>Status:</label>
               <input
                 type="radio"
                 className='inputAtivo'

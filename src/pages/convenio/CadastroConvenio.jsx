@@ -6,6 +6,7 @@ import { BASE_URL } from '../../config/axios';
 import './CadastroConvenio.css';
 import MenuLateral from '../../componentes/MenuLateral'
 import { mensagemSucesso, mensagemErro } from '../../componentes/toastr';
+import { formatarTelefone } from '../../data/utils';
 
 const CadastroConvenio = () => {
 
@@ -78,12 +79,13 @@ const CadastroConvenio = () => {
           <h2>Novo Cadastro</h2>
           <div>
             <div class="input-container">
-              <label htmlFor="inputNome">Nome:</label>
+              <label htmlFor="inputNome" className='required'>Nome:</label>
               <input
                 type="text"
                 className='inputNome'
                 value={nome}
                 required
+                maxLength= {255}
                 name='nome'
                 onChange={(e) => setNome(e.target.value)}
               />
@@ -97,18 +99,33 @@ const CadastroConvenio = () => {
                 required
                 name='inputEmail'
                 value={email}
+                maxLength={255}
                 onChange={(e) => setEmail(e.target.value)}
               />
             </div>
 
             <div class="input-container">
-              <label htmlFor="inputANS">Registro ANS:</label>
+              <label htmlFor='inputTelefone' className='required'>Telefone:</label>
+              <input
+                type="text"
+                value={telefone}
+                className='inputTelefone'
+                name='telefone'
+                required
+                maxLength={15}
+                onChange={(e) => setTelefone(formatarTelefone(e.target.value))}
+                />
+            </div>
+
+            <div class="input-container">
+              <label htmlFor="inputANS" className='required'>Registro ANS:</label>
               <input
                 type="text"
                 className='inputANS'
                 required
                 name='registroANS'
                 value={registroAns}
+                maxLength={8}
                 onChange={(e) => setRegistroAns(e.target.value)}
               />
             </div>

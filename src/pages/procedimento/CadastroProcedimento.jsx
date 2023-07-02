@@ -82,23 +82,25 @@ const CadastroProcedimento = ({ children }) => {
         <div className='corpo-cadastro'>
           <div className="container-cadastro">
             <h2>Novo Cadastro</h2>
-
             <div className='nome'>
-              <label htmlFor="inputNome">Nome:</label>
+              <label htmlFor="inputNome" className='required'>Nome:</label>
               <input
                 type="text"
                 name='inputNome'
                 className='nome'
                 value={nome}
+                required
+                maxLength= {255}
                 onChange={(e) => setNome(e.target.value)}
               />
             </div>
             <div className='especialidade'>
-              <label htmlFor='inputEspecialidade'>Especialidade: </label>
+              <label htmlFor='inputEspecialidade' className='required'>Especialidade: </label>
               <select
                 name="especialidades"
                 id="especialidades"
                 className='custom-select'
+                required
                 onChange={(e) => setEspecialidadeId(e.target.value)}
               >
                 {dadosEspecialidade.map(({ id, nome }) => (
@@ -112,7 +114,7 @@ const CadastroProcedimento = ({ children }) => {
               </select>
             </div>
             <div className='status'>
-              <label htmlFor="status">Status:</label>
+              <label htmlFor="status" className='required'>Status:</label>
               <div>
                 <input
                   type="radio"
