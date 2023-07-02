@@ -114,7 +114,7 @@ const CadastroPaciente = () => {
                 </label>
                 <label htmlFor="numProntuario">N. Prontuário:
                   <input
-                    type="number"
+                    type="text"
                     className="numProntuario"
                     name="numProntuario"
                     value={numProntuario}
@@ -178,6 +178,7 @@ const CadastroPaciente = () => {
                     className='inputUf'
                     value={uf}
                     required
+                    maxLength={2}
                     onChange={(e) => setUf(e.target.value)}
                   />
                 </label>
