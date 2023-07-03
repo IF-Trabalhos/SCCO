@@ -103,6 +103,7 @@ const CadastroPaciente = () => {
               <h3>IDENTIFICAÇÃO</h3>
               <div className='identificacao'>
                 <label htmlFor='inputNome' className='required'>Nome:
+                <br/>
                   <input
                     type="text"
                     name='inputNome'
@@ -113,6 +114,7 @@ const CadastroPaciente = () => {
                   />
                 </label>
                 <label htmlFor="numProntuario">N. Prontuário:
+                <br/>
                   <input
                     type="text"
                     className="numProntuario"
@@ -123,6 +125,7 @@ const CadastroPaciente = () => {
                   />
                 </label>
                 <label htmlFor="innputDt-nascimento" className='required'>Dt. Nasc:
+                <br/>
                   <input
                     type="date"
                     className='inputDt-nascimento'
@@ -137,6 +140,7 @@ const CadastroPaciente = () => {
                 </div>
                 <div className='identificacao'>
                   <label htmlFor="inputRg" className='required'>RG:
+                  <br/>
                     <input
                       type="text"
                       name='rg'
@@ -148,6 +152,7 @@ const CadastroPaciente = () => {
                     />
                   </label>
                   <label htmlFor="inputCpf" className='required'>CPF:
+                  <br/>
                     <input
                       type="text"
                       name='cpf'
@@ -163,6 +168,7 @@ const CadastroPaciente = () => {
               <h3>ENDEREÇO</h3>
               <div className='endereco'>
                 <label htmlFor="inputCep" className='required'>CEP:
+                <br/>
                   <input
                     type="text"
                     name='cep'
@@ -174,6 +180,7 @@ const CadastroPaciente = () => {
                   />
                 </label>
                 <label htmlFor="inputUf" className='required'>UF:
+                <br/>
                   <input
                     type="text"
                     name='uf'
@@ -185,6 +192,7 @@ const CadastroPaciente = () => {
                   />
                 </label>
                 <label htmlFor="inputCidade" className='required'>Cidade:
+                <br/>
                   <input
                     type="text"
                     name='cidade'
@@ -196,6 +204,7 @@ const CadastroPaciente = () => {
                   />
                 </label>
                 <label htmlFor="inputLogradouro" className='required'>Logradouro:
+                <br/>
                   <input
                     type="text"
                     name='logradouro'
@@ -209,6 +218,7 @@ const CadastroPaciente = () => {
               </div>
               <div className='endereco'>
                   <label htmlFor="inputNumero" className='required'>Numero:
+                  <br/>
                     <input
                       type="text"
                       name='numero'
@@ -220,6 +230,7 @@ const CadastroPaciente = () => {
                     />
                   </label>
                   <label htmlFor="inputBairro" className='required'>Bairro:
+                  <br/>
                     <input
                       type="text"
                       name='bairro'
@@ -231,6 +242,7 @@ const CadastroPaciente = () => {
                     />
                   </label>
                   <label htmlFor="inputComplemento">Complemento:
+                  <br/>
                     <input
                       type="text"
                       name='complemento'
@@ -247,6 +259,7 @@ const CadastroPaciente = () => {
               <h3>CONTATO</h3>
               <div className='contato'>
                 <label htmlFor="inputEmail">E-mail:
+                <br/>
                   <input
                     type="text"
                     required className='inputEmail'
@@ -257,6 +270,7 @@ const CadastroPaciente = () => {
                   />
                 </label>
                 <label htmlFor="inputTelefone" className='required'>Telefone:
+                <br/>
                   <input
                     type="text"
                     value={telefone}

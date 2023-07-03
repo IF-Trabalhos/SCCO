@@ -1,4 +1,4 @@
-.informacoes{
+.informacoes {
     height: 7vh;
     width: 30%;
     text-align: center;
@@ -9,9 +9,15 @@
     margin-bottom: 0.5em;
     margin-left: 0.3em;
     margin-right: 0.3em;
-   background-image: radial-gradient( circle 993px at 0.5% 50.5%,  rgba(94, 126, 112, 0.37) 0%, rgb(134, 134, 134) 100.2% );
+    background-image: radial-gradient(circle 993px at 0.5% 50.5%, rgba(94, 126, 112, 0.37) 0%, rgb(134, 134, 134) 100.2%);
     font-family: 'Poppins', sans-serif;
-}
+    background-color: rgb(34, 190, 53);
+    transition: box-shadow 0.2s ease-in-out;
+  }
+  
+  .informacoes:hover {
+    box-shadow: 0 0 7px rgba(0, 0, 0, 0.5);
+  }
 .informacoes-completa{
     display: flex;
     align-items: center;
