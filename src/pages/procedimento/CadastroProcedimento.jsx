@@ -115,6 +115,40 @@ const CadastroProcedimento = ({ children }) => {
             </div>
             <div className='status'>
               <label htmlFor="status" className='required'>Status:</label>
+              <label htmlFor="inputNome">Nome:
+                <br />
+                <input
+                  type="text"
+                  name='inputNome'
+                  className='nome'
+                  value={nome}
+                  onChange={(e) => setNome(e.target.value)}
+                />
+              </label>
+            </div>
+            <div className='especialidade'>
+              <label htmlFor='inputEspecialidade'>Especialidade:
+                <br />
+                <select
+                  name="especialidades"
+                  id="especialidades"
+                  className='custom-select'
+                  onChange={(e) => setEspecialidadeId(e.target.value)}
+                >
+                  {dadosEspecialidade.map(({ id, nome }) => (
+                    <option
+                      key={id}
+                      value={id}
+                      selected={especialidadeId === id ? 'selected' : ''}
+                    >{nome}
+                    </option>
+                  ))}
+                </select>
+              </label>
+            </div>
+            <div className='status'>
+              <label htmlFor="status">Status:</label>
+              <br />
               <div>
                 <input
                   type="radio"
@@ -138,8 +172,8 @@ const CadastroProcedimento = ({ children }) => {
             </div>
           </div>
           <div className='botoesproc'>
-              <BotãoSalvar funct={salvar} pagina={'procedimento'} />
-            </div>
+            <BotãoSalvar funct={salvar} pagina={'procedimento'} />
+          </div>
         </div>
       </div>
     </div>
