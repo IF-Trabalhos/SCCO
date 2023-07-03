@@ -1,0 +1,9 @@
+.container-dados-clinica{
+    display: grid;
+}
+
+.visao-geral{
+    text-align: center;
+    border-bottom: 1px solid black;
+    height: 5vh;
+}
