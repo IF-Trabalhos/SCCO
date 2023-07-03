@@ -1,26 +1,38 @@
 export const formatarCPF = (value) => {
-    value = value.replace(/\D/g, ''); // Remove todos os caracteres não numéricos
-    value = value.replace(/(\d{3})(\d)/, '$1.$2'); // Adiciona o primeiro ponto
-    value = value.replace(/(\d{3})(\d)/, '$1.$2'); // Adiciona o segundo ponto
-    value = value.replace(/(\d{3})(\d{1,2})$/, '$1-$2'); // Adiciona o traço
+    value = value.replace(/\D/g, ''); 
+    value = value.replace(/(\d{3})(\d)/, '$1.$2');
+    value = value.replace(/(\d{3})(\d)/, '$1.$2'); 
+    value = value.replace(/(\d{3})(\d{1,2})$/, '$1-$2'); 
 
     return value;
   };
 
   export const formatarCEP = (value) => {
-    value = value.replace(/\D/g, ''); // Remove todos os caracteres não numéricos
-    value = value.replace(/(\d{5})(\d)/, '$1-$2'); // Adiciona o traço no final
+    value = value.replace(/\D/g, ''); 
+    value = value.replace(/(\d{5})(\d)/, '$1-$2'); 
 
     return value;
   };
 
+  export const formataNumero = (value) =>{
+    value = value.replace(/\D/g, '');
+
+    return value;
+  }
+
+  export const formataUf = (value) => {
+    value = value.replace(/[^A-Za-z]/g, '').toUpperCase();
+
+    return value
+  }
+
   export const formatarTelefone = (value) => {
-    value = value.replace(/\D/g, ''); // Remove todos os caracteres não numéricos
+    value = value.replace(/\D/g, '');
 
     if (value.length <= 10) {
-      value = value.replace(/(\d{2})(\d)/, '($1) $2'); // Adiciona os parênteses para o DDD
+      value = value.replace(/(\d{2})(\d)/, '($1) $2'); 
     } else {
-      value = value.replace(/(\d{2})(\d{5})(\d{4})/, '($1) $2-$3'); // Adiciona os parênteses para o DDD e o traço
+      value = value.replace(/(\d{2})(\d{5})(\d{4})/, '($1) $2-$3');
     }
 
     return value;

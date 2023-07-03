@@ -6,7 +6,7 @@ import './CadastroPaciente.css';
 import { BASE_URL2 } from '../../config/axios';
 import { mensagemSucesso, mensagemErro } from '../../componentes/toastr';
 import MenuLateral from '../../componentes/MenuLateral';
-import { formatarCPF, formatarCEP, formatarTelefone } from '../../data/utils';
+import { formatarCPF, formatarCEP, formatarTelefone, formataNumero, formataUf } from '../../data/utils';
 
 const CadastroPaciente = () => {
 
@@ -119,7 +119,7 @@ const CadastroPaciente = () => {
                     name="numProntuario"
                     value={numProntuario}
                     maxLength={8}
-                    onChange={(e) => setNumProntuario(e.target.value)}
+                    onChange={(e) => setNumProntuario(formataNumero(e.target.value))}
                   />
                 </label>
                 <label htmlFor="innputDt-nascimento" className='required'>Dt. Nasc:
@@ -128,6 +128,8 @@ const CadastroPaciente = () => {
                     className='inputDt-nascimento'
                     name='dt-nascimento'
                     value={dataDeNascimento}
+                    min="1923-07-03"
+                    max="2023-01-03"
                     required
                     onChange={(e) => setDataDeNascimento(e.target.value)}
                   />
@@ -142,7 +144,7 @@ const CadastroPaciente = () => {
                       value={rg}
                       required
                       maxLength={10}
-                      onChange={(e) => setRg(e.target.value)}
+                      onChange={(e) => setRg(formataNumero(e.target.value))}
                     />
                   </label>
                   <label htmlFor="inputCpf" className='required'>CPF:
@@ -179,7 +181,7 @@ const CadastroPaciente = () => {
                     value={uf}
                     required
                     maxLength={2}
-                    onChange={(e) => setUf(e.target.value)}
+                    onChange={(e) => setUf(formataUf(e.target.value))}
                   />
                 </label>
                 <label htmlFor="inputCidade" className='required'>Cidade:
@@ -213,8 +215,8 @@ const CadastroPaciente = () => {
                       className='inputNumero'
                       value={numero}
                       required
-                      maxLength={255}
-                      onChange={(e) => setNumero(e.target.value)}
+                      maxLength={10}
+                      onChange={(e) => setNumero(formataNumero(e.target.value))}
                     />
                   </label>
                   <label htmlFor="inputBairro" className='required'>Bairro:
@@ -228,7 +230,7 @@ const CadastroPaciente = () => {
                       onChange={(e) => setBairro(e.target.value)}
                     />
                   </label>
-                  <label htmlFor="inputComplemento" className='required'>Complemento:
+                  <label htmlFor="inputComplemento">Complemento:
                     <input
                       type="text"
                       name='complemento'

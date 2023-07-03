@@ -6,7 +6,7 @@ import './CadastroRecepcionista.css'
 import { BASE_URL2 } from '../../config/axios';
 import { mensagemSucesso, mensagemErro } from '../../componentes/toastr';
 import MenuLateral from '../../componentes/MenuLateral';
-import { formatarCPF, formatarCEP, formatarTelefone } from '../../data/utils';
+import { formatarCPF, formatarCEP, formatarTelefone, formataNumero, formataUf } from '../../data/utils';
 
 const CadastroDentista = () => {
   const { handle } = useParams()
@@ -118,7 +118,7 @@ const CadastroDentista = () => {
                     value={pis}
                     required
                     maxLength={11}
-                    onChange={(e) => setPis(e.target.value)}
+                    onChange={(e) => setPis(formataNumero(e.target.value))}
                   />
                 </label>
                 <label htmlFor="innputDt-nascimento" className='required'>Dt.Nasc:
@@ -141,7 +141,7 @@ const CadastroDentista = () => {
                     value={rg}
                     required
                     maxLength={10}
-                    onChange={(e) => setRg(e.target.value)}
+                    onChange={(e) => setRg(formataNumero(e.target.value))}
                   />
                 </label>
                 <label htmlFor="inputCpf" className='required'>CPF:
@@ -177,7 +177,7 @@ const CadastroDentista = () => {
                     value={uf}
                     required
                     maxLength={2}
-                    onChange={(e) => setUf(e.target.value)}
+                    onChange={(e) => setUf(formataUf(e.target.value))}
                   />
                 </label>
                 <label htmlFor="inputCidade" className='required'>Cidade:
@@ -212,7 +212,7 @@ const CadastroDentista = () => {
                     value={numero}
                     required
                     maxLength={255}
-                    onChange={(e) => setNumero(e.target.value)}
+                    onChange={(e) => setNumero(formataNumero(e.target.value))}
                   />
                 </label>
                 <label htmlFor="inputBairro" className='required'> Bairro:
