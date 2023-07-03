@@ -7,14 +7,15 @@
     font-size: 1.2em;
     border-radius: 10px;
     margin-bottom: 0.5em;
+    margin-left: 0.3em;
+    margin-right: 0.3em;
    background-image: radial-gradient( circle 993px at 0.5% 50.5%,  rgba(94, 126, 112, 0.37) 0%, rgb(134, 134, 134) 100.2% );
     font-family: 'Poppins', sans-serif;
 }
 .informacoes-completa{
-    display: grid;
+    display: flex;
     align-items: center;
     justify-items: center;
-
 }
 .botoes{
     margin-left: 43%;

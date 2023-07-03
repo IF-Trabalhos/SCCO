@@ -58,12 +58,6 @@ const MenuLateral = () => {
 			icone: "icones/recepcionista.svg",
 			link: "/recepcionista"
 		},
-		{
-			id: "9",
-			texto: "RELATÓRIOS",
-			icone: "icones/relatorio.svg",
-			link: "/relatorio"
-		},
 	];
 	return (
 		<div className="menu-lateral-container">
