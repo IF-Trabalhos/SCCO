@@ -101,6 +101,7 @@ const CadastroDentista = () => {
               <h3>IDENTIFICAÇÃO</h3>
               <div className='identificacao'>
                 <label htmlFor='inputNome' className='required'>Nome:
+                <br/>
                   <input
                     type="text"
                     name='inputNome'
@@ -111,6 +112,7 @@ const CadastroDentista = () => {
                   />
                 </label>
                 <label htmlFor="numPIS" className='required'>N. PIS:
+                <br/>
                   <input
                     type="text"
                     className="numPIS"
@@ -122,6 +124,7 @@ const CadastroDentista = () => {
                   />
                 </label>
                 <label htmlFor="innputDt-nascimento" className='required'>Dt.Nasc:
+                <br/>
                   <input
                     type="date"
                     className='inputDt-nascimento'
@@ -134,6 +137,7 @@ const CadastroDentista = () => {
               </div>
               <div className='identificacao'>
                 <label htmlFor="inputRg" className='required'>RG:
+                <br/>
                   <input
                     type="text"
                     name='rg'
@@ -145,6 +149,7 @@ const CadastroDentista = () => {
                   />
                 </label>
                 <label htmlFor="inputCpf" className='required'>CPF:
+                <br/>
                   <input
                     type="text"
                     name='cpf'
@@ -159,6 +164,7 @@ const CadastroDentista = () => {
               <h3>ENDEREÇO</h3>
               <div className='endereco'>
                 <label htmlFor="inputCep" className='required'>CEP:
+                <br/>
                   <input
                     type="text"
                     name='cep'
@@ -170,6 +176,7 @@ const CadastroDentista = () => {
                   />
                 </label>
                 <label htmlFor="inputUf" className='required'>UF:
+                <br/>
                   <input
                     type="text"
                     name='uf'
@@ -181,6 +188,7 @@ const CadastroDentista = () => {
                   />
                 </label>
                 <label htmlFor="inputCidade" className='required'>Cidade:
+                <br/>
                   <input
                     type="text"
                     name='cidade'
@@ -194,6 +202,7 @@ const CadastroDentista = () => {
               </div>
               <div className='endereco'>
                 <label htmlFor="inputLogradouro" className='required'>Logradouro:
+                <br/>
                   <input
                     type="text"
                     name='logradouro'
@@ -205,6 +214,7 @@ const CadastroDentista = () => {
                   />
                 </label>
                 <label htmlFor="inputNumero" className='required'>Numero:
+                <br/>
                   <input
                     type="text"
                     name='numero'
@@ -216,6 +226,7 @@ const CadastroDentista = () => {
                   />
                 </label>
                 <label htmlFor="inputBairro" className='required'> Bairro:
+                <br/>
                   <input
                     type="text"
                     name='bairro'
@@ -227,6 +238,7 @@ const CadastroDentista = () => {
                   />
                 </label>
                 <label htmlFor="inputComplemento">Complemento:
+                <br/>
                   <input
                     type="text"
                     name='complemento'
@@ -243,6 +255,7 @@ const CadastroDentista = () => {
               <h3>CONTATO</h3>
               <div className='contato'>
                 <label htmlFor="inputEmail">E-mail:
+                <br/>
                   <input
                     type="text"
                     required
@@ -254,6 +267,7 @@ const CadastroDentista = () => {
                   />
                 </label>
                 <label htmlFor="inputTelefone" className='required'>Telefone:
+                <br/>
                   <input
                     type="text"
                     value={telefone}

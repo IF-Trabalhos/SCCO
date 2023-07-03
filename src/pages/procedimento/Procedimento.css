@@ -1,25 +1,39 @@
-.status {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    margin-top: 10px;
-  }
-  
-  .inputAtivo,
-  .inputInativo {
-    margin-right: 5px;
-  }
-  .especialidade{
-    margin: 0;
-    width: 5%;
-    height: 20%;
-  }
-.botoesproc{
-    display: flex;
-    flex-direction: column;
-    margin-top: 20px;
-    width: 50%;
+.container-cadastro {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 20px;
 }
+
+.nome,
+.especialidade,
+.status {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.required::after {
+  content: "*";
+  color: red;
+}
+
+label {
+  font-weight: bold;
+}
+
+input[type="text"],
 select {
-  padding: 0;
+  padding: 10px;
+  border: 1px solid gray;
+  border-radius: 4px;
+}
+
+.botoesproc {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 20px;
+}
+.status label {
+  color: black;
 }

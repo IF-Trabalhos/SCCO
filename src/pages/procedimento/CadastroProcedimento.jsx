@@ -82,24 +82,28 @@ const CadastroProcedimento = ({ children }) => {
         <div className='corpo-cadastro'>
           <div className="container-cadastro">
             <h2>Novo Cadastro</h2>
-            <div className='nome'>
-              <label htmlFor="inputNome" className='required'>Nome:</label>
+            <div className="nome">
+              <label htmlFor="inputNome" className="required">
+                Nome:
+              </label>
               <input
                 type="text"
-                name='inputNome'
-                className='nome'
+                name="inputNome"
+                className="nome"
                 value={nome}
                 required
-                maxLength= {255}
+                maxLength={255}
                 onChange={(e) => setNome(e.target.value)}
               />
             </div>
-            <div className='especialidade'>
-              <label htmlFor='inputEspecialidade' className='required'>Especialidade: </label>
+            <div className="especialidade">
+              <label htmlFor="inputEspecialidade" className="required">
+                Especialidade:
+              </label>
               <select
                 name="especialidades"
                 id="especialidades"
-                className='custom-select'
+                className="custom-select"
                 required
                 onChange={(e) => setEspecialidadeId(e.target.value)}
               >
@@ -107,54 +111,21 @@ const CadastroProcedimento = ({ children }) => {
                   <option
                     key={id}
                     value={id}
-                    selected={especialidadeId === id ? 'selected' : ''}
-                  >{nome}
+                    selected={especialidadeId === id ? "selected" : ""}
+                  >
+                    {nome}
                   </option>
                 ))}
               </select>
             </div>
-            <div className='status'>
-              <label htmlFor="status" className='required'>Status:</label>
-              <label htmlFor="inputNome">Nome:
-                <br />
-                <input
-                  type="text"
-                  name='inputNome'
-                  className='nome'
-                  value={nome}
-                  onChange={(e) => setNome(e.target.value)}
-                />
-              </label>
-            </div>
-            <div className='especialidade'>
-              <label htmlFor='inputEspecialidade'>Especialidade:
-                <br />
-                <select
-                  name="especialidades"
-                  id="especialidades"
-                  className='custom-select'
-                  onChange={(e) => setEspecialidadeId(e.target.value)}
-                >
-                  {dadosEspecialidade.map(({ id, nome }) => (
-                    <option
-                      key={id}
-                      value={id}
-                      selected={especialidadeId === id ? 'selected' : ''}
-                    >{nome}
-                    </option>
-                  ))}
-                </select>
-              </label>
-            </div>
-            <div className='status'>
+            <div className="status">
               <label htmlFor="status">Status:</label>
-              <br />
               <div>
                 <input
                   type="radio"
                   id="inputAtivo"
-                  name='status'
-                  value='true'
+                  name="status"
+                  value="true"
                   onChange={(e) => setStatus(e.target.value)}
                 />
                 <label htmlFor="inputAtivo">ATIVO</label>
@@ -163,7 +134,7 @@ const CadastroProcedimento = ({ children }) => {
                 <input
                   type="radio"
                   id="inputInativo"
-                  name='status'
+                  name="status"
                   value="false"
                   onChange={(e) => setStatus(e.target.value)}
                 />
@@ -171,8 +142,8 @@ const CadastroProcedimento = ({ children }) => {
               </div>
             </div>
           </div>
-          <div className='botoesproc'>
-            <BotãoSalvar funct={salvar} pagina={'procedimento'} />
+          <div className="botoesproc">
+            <BotãoSalvar funct={salvar} pagina={"procedimento"} />
           </div>
         </div>
       </div>

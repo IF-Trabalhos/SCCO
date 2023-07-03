@@ -69,4 +69,29 @@ a{
     content: "*";
     color: red
 }
+.corpo-cadastro {
+    background-color: white;
+    margin-left: 2.5%;
+    height: 95%;
+    width: 95%;
+    border: 1px solid black;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 1vh;
+    overflow: auto; 
+    margin-bottom: 20%;
+  }
+  
+  .container-cadastro {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    flex-shrink: 1;
+    min-width: 0;
+    width: 100%; /* Definir a largura para evitar estourar fora do corpo-cadastro */
+  }
+  
   
