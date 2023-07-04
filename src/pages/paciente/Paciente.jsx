@@ -13,6 +13,24 @@ const Paciente = ({titulo}) => {
     const icone = 'icones/lixeira.svg'
 
     const [dados, setDados] = useState([]);
+    const [dadosTemp, setDadosTemp] = useState([]);
+
+    const [id, setId] = useState('');
+    const [nome, setNome] = useState('');
+    const [numProntuario, setNumProntuario] = useState('');
+    const [cpf, setCpf] = useState('');
+    const [email, setEmail] = useState('');
+    const [telefone, setTelefone] = useState('');
+    const [dataDeNascimento, setDataDeNascimento] = useState(new Date());
+    const [rg, setRg] = useState('');
+    const [logradouro, setLogradouro] = useState('');
+    const [bairro, setBairro] = useState('');
+    const [uf, setUf] = useState('');
+    const [cidade, setCidade] = useState('');
+    const [complemento, setComplemento] = useState('');
+    const [cep, setCep] = useState('');
+    const [numero, setNumero] = useState('');
+    const [ativo, setAtivo] = useState(false);
 
     const cadastrar = () => {
         navigate(`/cadastro-paciente`);
@@ -23,31 +41,53 @@ const Paciente = ({titulo}) => {
     };
 
     async function excluir(id) {
-        let data = JSON.stringify({ id });
-        let url = `${BASE_URL2}/pacientes/${id}`;
+        await buscar(id);
+        let data = {
+            nome, ativo, numProntuario, dataDeNascimento, cpf, email, telefone,
+            rg, logradouro, bairro, uf, cidade, complemento, cep, numero
+          };
+        data = JSON.stringify(data);
         await axios
-          .delete(url, data, {
-            headers: { 'Content-Type': 'application/json' 
-        },
-          })
-          .then(function (response) {
-            mensagemSucesso('Paciente deletado com sucesso')
-             setDados(
-              dados.filter((dado) => {
-                return dado.id !== id;
-              })
-            );
-          })
-          .catch(function (error) {
-            mensagemErro(`Erro ao excluir o paciente`);
-          });
+        .put(`${BASE_URL2}/pacientes/${id}`, data, {
+          headers: { 'Content-Type': 'application/json' },
+        })
+        .then(function (response) {
+          mensagemSucesso(`Paciente ${nome} deletado com sucesso!`)
+          setDados(
+            dados.filter((dado) => {
+              return dado.id !== id;
+            })
+          );
+        })
+        .catch(function (error) {
+          mensagemErro(error.response.data);
+        });
+      }
+
+      async function buscar(id) {
+        await axios.get(`${BASE_URL2}/pacientes/${id}`).then((response) => {
+          setDadosTemp(response.data);
+          console.log(response.data)
+        });
+        setId(dadosTemp.id);
+        setNumProntuario(dadosTemp.numProntuario)
+        setRg(dadosTemp.rg);
+        setNome(dadosTemp.nome);
+        setCpf(dadosTemp.cpf);
+        setDataDeNascimento(dadosTemp.dataDeNascimento)
+        setEmail(dadosTemp.email);
+        setTelefone(dadosTemp.telefone);
+        setLogradouro(dadosTemp.logradouro)
+        setCep(dadosTemp.cep)
+        setCidade(dadosTemp.cidade)
+        setBairro(dadosTemp.bairro)
+        setComplemento(dadosTemp.complemento)
+        setNumero(dadosTemp.numero)
+        setUf(dadosTemp.uf)
       }
 
     useEffect(() => {
-        axios.get(`${BASE_URL2}/pacientes`, {
-            headers: {'Authorization': "Bearer " + localStorage.getItem('token')
-        },
-        })
+        axios.get(`${BASE_URL2}/pacientes/ativos`)
         .then((response) => {
           setDados(response.data);
         });

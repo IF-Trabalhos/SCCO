@@ -13,6 +13,25 @@ const Dentista = ({titulo, setInfo}) => {
     const icone = 'icones/lixeira.svg'
 
     const [dados, setDados] = useState([]);
+    const [dadosTemp, setDadosTemp] = useState([]);
+
+    const [id, setId] = useState('');
+    const [nome, setNome] = useState('');
+    const [cro, setCro] = useState('');
+    const [cpf, setCpf] = useState('');
+    const [especialidadeId, setEspecialidadeId] = useState(1);
+    const [email, setEmail] = useState('');
+    const [dataDeNascimento, setDataDeNascimento] = useState(new Date());
+    const [telefone, setTelefone] = useState('');
+    const [rg, setRg] = useState('');
+    const [logradouro, setLogradouro] = useState('');
+    const [bairro, setBairro] = useState('');
+    const [uf, setUf] = useState('');
+    const [cidade, setCidade] = useState('');
+    const [complemento, setComplemento] = useState('');
+    const [cep, setCep] = useState('');
+    const [numero, setNumero] = useState('');
+    const [ativo, setAtivo] = useState(false);
 
     const cadastrar = () => {
         navigate(`/cadastro-dentista`);
@@ -23,27 +42,55 @@ const Dentista = ({titulo, setInfo}) => {
     };
 
     async function excluir(id) {
-        let data = JSON.stringify({ id });
-        let url = `${BASE_URL2}/dentistas/${id}`;
+        await buscar(id)
+        console.log(especialidadeId)
+        let data = {
+            nome, ativo, cro, dataDeNascimento, cpf, email, telefone, especialidadeId,
+            rg, logradouro, bairro, uf, cidade, complemento, cep, numero
+          };
+        data = JSON.stringify(data);
         await axios
-          .delete(url, data, {
-            headers: { 'Content-Type': 'application/json' },
-          })
-          .then(function (response) {
-            mensagemSucesso('Dentista deletado com sucesso')
-             setDados(
-              dados.filter((dado) => {
-                return dado.id !== id;
-              })
-            );
-          })
-          .catch(function (error) {
-            mensagemErro(`Erro ao excluir o dentista`);
-          });
+        .put(`${BASE_URL2}/dentistas/${id}`, data, {
+          headers: { 'Content-Type': 'application/json' },
+        })
+        .then(function (response) {
+          mensagemSucesso(`Dentista ${nome} deletado com sucesso!`)
+          setDados(
+            dados.filter((dado) => {
+              return dado.id !== id;
+            })
+          );
+        })
+        .catch(function (error) {
+          mensagemErro(error.response.data);
+        });
+      }
+
+      async function buscar(id) {
+        await axios.get(`${BASE_URL2}/dentistas/${id}`).then((response) => {
+          setDadosTemp(response.data);
+          console.log(response.data)
+        });
+        setId(dadosTemp.id);
+        setCro(dadosTemp.cro)
+        setRg(dadosTemp.rg);
+        setNome(dadosTemp.nome);
+        setCpf(dadosTemp.cpf);
+        setDataDeNascimento(dadosTemp.dataDeNascimento)
+        setEspecialidadeId(dadosTemp.especialidadeId);
+        setEmail(dadosTemp.email);
+        setTelefone(dadosTemp.telefone);
+        setLogradouro(dadosTemp.logradouro)
+        setCep(dadosTemp.cep)
+        setCidade(dadosTemp.cidade)
+        setBairro(dadosTemp.bairro)
+        setComplemento(dadosTemp.complemento)
+        setNumero(dadosTemp.numero)
+        setUf(dadosTemp.uf)
       }
 
     useEffect(() => {
-        axios.get(`${BASE_URL2}/dentistas`).then((response) => {
+        axios.get(`${BASE_URL2}/dentistas/ativos`).then((response) => {
           setDados(response.data);
         });
       }, []);

@@ -29,13 +29,14 @@ const CadastroDentista = () => {
   const [complemento, setComplemento] = useState('');
   const [cep, setCep] = useState('');
   const [numero, setNumero] = useState('');
+  const [ativo, setAtivo] = useState(true);
 
   const [dados, setDados] = useState([]);
   const [dadosEspecialidade, setDadosEspecialidade] = useState([]);
 
   async function salvar() {
     let data = {
-      nome, cro, dataDeNascimento, cpf, email, especialidadeId, telefone,
+      nome, ativo, cro, dataDeNascimento, cpf, email, especialidadeId, telefone,
       rg, logradouro, bairro, uf, cidade, complemento, cep, numero
     };
     data = JSON.stringify(data);
