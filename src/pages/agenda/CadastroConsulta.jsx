@@ -5,7 +5,7 @@ import BotãoSalvar from '../../componentes/BotãoSalvar';
 import { BASE_URL } from '../../config/axios';
 import MenuLateral from '../../componentes/MenuLateral'
 import { mensagemSucesso, mensagemErro } from '../../componentes/toastr';
-
+import './Agendamento.css'
 
 const CadastroConsulta = () => {
 
@@ -25,8 +25,9 @@ const CadastroConsulta = () => {
   const [dadosPaciente, setDadosPaciente] = useState([]);
   const [dadosProcedimento, setDadosProcedimento] = useState([]);
 
+  const minDate = new Date().toLocaleDateString('en-CA'); // Obtém a data atual no formato 'YYYY-MM-DD'
+
   async function salvar() {
-    console.log(horaInicial)
     let data_ = { data, horaInicial, horaFinal, pacienteId, dentistaId, procedimentoId };
     data_ = JSON.stringify(data_);
     if (handle == null) {
@@ -97,83 +98,106 @@ const CadastroConsulta = () => {
             <h2>Novo Cadastro</h2>
             <div className="corpo-consulta-conteudo">
               <div className="corpo-consulta-linha">
-                <label htmlFor="data">Data: </label>
-                <input
-                  type="date"
-                  onChange={(e) => setData(e.target.value)}
-                />
+                <label htmlFor="data">Data:
+                <br/>
+                  <input
+                    type="date"
+                    value={data}
+                    min={minDate}
+                    onChange={(e) => setData(e.target.value)}
+                  />
+                </label>
               </div>
               <div className="corpo-consulta-linha">
-                <label htmlFor="horaInicial">Horário Inicial:</label>
-                <label>
-                <input
-                  type="time"
-                  onChange={(e) => setHoraInicial(e.target.value + ":00")}
-                />
-                 </label>
-                <label htmlFor="horaFinal">Horário Final:</label>
-                <label>
-                <input
-                  type="time"
-                  onChange={(e) => setHoraFinal(e.target.value + ":00")}
-                />
+                <label htmlFor="horaInicial">Horário Inicial:
+                <br/>
+                  <input
+                    type="time"
+                    id="hora" 
+                    name="hora"
+                    min="06:00" 
+                    max="22:00" 
+                    step="1800"
+                    value={horaInicial}
+                    onChange={(e) => setHoraInicial(e.target.value + ":00")}
+                  />
+                </label>
+
+                <label htmlFor="horaFinal">Horário Final:
+                <br/>
+                  <input
+                    type="time"
+                    id="hora" 
+                    name="hora"
+                    min="06:00" 
+                    max="22:00" 
+                    step="1800"
+                    value={horaFinal}
+                    onChange={(e) => setHoraFinal(e.target.value + ":00")}
+                  />
                 </label>
               </div>
               <div className="corpo-consulta-linha-nome">
-                <label htmlFor="pacientes">Nome do Paciente: </label>
-                <select
-                  name="pacientes"
-                  id="pacientes"
-                  onChange={(e) => setPacienteId(e.target.value)}
-                >
-                  {dadosPaciente.map(({ id, nome }) => (
-                    <option
-                      key={id}
-                      value={id}
-                      selected={pacienteId === id ? 'selected' : ''}
-                    >
-                      {nome}
-                    </option>
-                  ))}
-                </select>
+                <label htmlFor="pacientes">Nome do Paciente:
+                <br/>
+                  <select
+                    name="pacientes"
+                    id="pacientes"
+                    onChange={(e) => setPacienteId(e.target.value)}
+                  >
+                    {dadosPaciente.map(({ id, nome }) => (
+                      <option
+                        key={id}
+                        value={id}
+                        selected={pacienteId === id ? 'selected' : ''}
+                      >
+                        {nome}
+                      </option>
+                    ))}
+                  </select>
+                </label>
               </div>
               <div className="corpo-consulta-linha-nome">
-                <label htmlFor="dentistas">Nome do Dentista: </label>
-                <select
-                  name="dentistas"
-                  id="dentistas"
-                  onChange={(e) => setDentistaId(e.target.value)}
-                >
-                  {dadosDentista.map(({ id, nome }) => (
-                    <option
-                      key={id}
-                      value={id}
-                      selected={dentistaId === id ? 'selected' : ''}
-                    >
-                      {nome}
-                    </option>
-                  ))}
-                </select>
+                <label htmlFor="dentistas">Nome do Dentista:
+                <br/>
+                  <select
+                    name="dentistas"
+                    id="dentistas"
+                    onChange={(e) => setDentistaId(e.target.value)}
+                  >
+                    {dadosDentista.map(({ id, nome }) => (
+                      <option
+                        key={id}
+                        value={id}
+                        selected={dentistaId === id ? 'selected' : ''}
+                      >
+                        {nome}
+                      </option>
+                    ))}
+                  </select>
+                </label>
               </div>
               <div className="corpo-consulta-linha-nome">
-                <label htmlFor="procedimentos">Procedimento: </label>
-                <select
-                  name="procedimentos"
-                  id="procedimentos"
-                  onChange={(e) => setProcedimentoId(e.target.value)}
-                >
-                  {dadosProcedimento.map(({ id, nome }) => (
-                    <option
-                      key={id}
-                      value={id}
-                      selected={procedimentoId === id ? 'selected' : ''}
-                    >
-                      {nome}
-                    </option>
-                  ))}
-                </select>
+                <label htmlFor="procedimentos">Procedimento:
+                <br/>
+                  <select
+                    name="procedimentos"
+                    id="procedimentos"
+                    onChange={(e) => setProcedimentoId(e.target.value)}
+                  >
+                    {dadosProcedimento.map(({ id, nome }) => (
+                      <option
+                        key={id}
+                        value={id}
+                        selected={procedimentoId === id ? 'selected' : ''}
+                      >
+                        {nome}
+                      </option>
+                    ))}
+                  </select>
+                </label>
               </div>
-              <div className="corpo-consulta-linha-botoes">
+              <div className='botaoagenda'>
                 <BotãoSalvar funct={salvar} pagina={'agenda'} />
               </div>
             </div>

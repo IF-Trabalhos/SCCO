@@ -1,25 +1,40 @@
-.status {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    margin-top: 10px;
-  }
-  
-  .inputAtivo,
-  .inputInativo {
-    margin-right: 5px;
-  }
-  .especialidade{
-    margin: 0;
-    width: 5%;
-    height: 20%;
-  }
-.botoesproc{
-    display: flex;
-    flex-direction: column;
-    margin-top: 20px;
-    width: 50%;
+.container-cadastro {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
 }
-select {
-  padding: 0;
+
+.required::after {
+  content: "*";
+  color: red;
+}
+
+label {
+  font-weight: bold;
+}
+
+.status {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.status-options {
+  display: flex;
+  flex-direction: row;
+}
+
+.status-option {
+  display: flex;
+  align-items: center;
+}
+
+.botaoproc {
+  display: flex;
+  justify-content: flex-end;
+  width: 100vh;
+}
+
+.radio-buttons {
+  display: flex;
 }

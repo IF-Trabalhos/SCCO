@@ -51,8 +51,7 @@ export const Rotas = () => {
 	}, []);
 
     const RequireAuth = ({ children }) => {
-        return children
-        //return localStorage.getItem("token") ? children : <Navigate to = "/"/> 
+        return localStorage.getItem("token") ? children : <Navigate to = "/"/> 
     }
 	return (
 			<div>

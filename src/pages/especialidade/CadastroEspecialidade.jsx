@@ -71,42 +71,47 @@ const CadastroProcedimento = ({ children }) => {
         <div className='corpo-cadastro'>
           <div className='container-cadastro'>
             <h2>Novo Cadastro</h2>
-            <div className='nome'>
-              <label htmlFor="inputNome">Nome:</label>
+            <label htmlFor='inputNome' className='required'>Nome:
+              <br />
               <input
                 type="text"
                 name='inputNome'
-                className='nome'
                 value={nome}
+                required
+                maxLength={255}
                 onChange={(e) => setNome(e.target.value)}
               />
-            </div><div className='status'>
-              {children}
-              <label htmlFor="status">STATUS:</label>
-              <input
-                type="radio"
-                className='inputAtivo'
-                name='status'
-                value="true"
-                onChange={(e) => setStatus(e.target.value)}
-              />
-              <label htmlFor="inputAtivo">ATIVO</label>
-              <input
-                type="radio"
-                className='inputInativo'
-                name='status'
-                value="false"
-                onChange={(e) => setStatus(e.target.value)}
-              />
-              <label htmlFor="inputInativo">INATIVO</label>
+            </label>
+            <label htmlFor="status">Status:</label>
+            <div className="status-options">
+              <div className="status-option">
+                <input
+                  type="radio"
+                  id="inputAtivo"
+                  name="status"
+                  value="true"
+                  onChange={(e) => setStatus(e.target.value)}
+                />
+                <label htmlFor="inputAtivo">ATIVO</label>
               </div>
-              <div className='botoesproc'>
+              <div className="status-option">
+                <input
+                  type="radio"
+                  id="inputInativo"
+                  name="status"
+                  value="false"
+                  onChange={(e) => setStatus(e.target.value)}
+                />
+                <label htmlFor="inputInativo">INATIVO</label>
+              </div>
+            </div>
+            <div className='botoesproc'>
               <BotãoSalvar funct={salvar} pagina={'especialidade'} />
-              </div>
             </div>
           </div>
         </div>
       </div>
+    </div>
   )
 }
 
