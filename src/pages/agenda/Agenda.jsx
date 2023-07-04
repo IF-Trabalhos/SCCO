@@ -22,7 +22,7 @@ const Agenda= () => {
         axios.get(`${BASE_URL}/consultas`).then((response) => {
           setDados(response.data);
         });
-        axios.get(`${BASE_URL2}/dentistas/ativos`).then((response) => {
+        axios.get(`${BASE_URL2}/dentistas`).then((response) => {
             setDadosDentista(response.data);
             setAgenda(response.data[0].nome)
           });
