@@ -1,6 +1,6 @@
 .informacoes {
     height: 7vh;
-    width: 30%;
+    width: fit-content; /* Alterado para ajustar ao conteúdo */
     text-align: center;
     display: grid;
     align-items: center;
@@ -13,6 +13,7 @@
     font-family: 'Poppins', sans-serif;
     background-color: rgb(34, 190, 53);
     transition: box-shadow 0.2s ease-in-out;
+    white-space: nowrap; /* Adicionado para evitar que o texto quebre em várias linhas */
   }
   
   .informacoes:hover {
