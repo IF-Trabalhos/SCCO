@@ -1,9 +1,22 @@
-.container-dados-clinica{
-    display: grid;
-}
-
-.visao-geral{
+.container-dados-clinica {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+  }
+  
+  .visao-geral {
     text-align: center;
     border-bottom: 1px solid black;
     height: 5vh;
-}
+  }
+  
+  .chart-container {
+    max-width: 100%;
+  }
+  
+  .chart-container .canvasjs-chart {
+    max-width: 100%;
+    height: auto;
+  }
