@@ -27,7 +27,8 @@ const Paciente = ({titulo}) => {
         let url = `${BASE_URL2}/pacientes/${id}`;
         await axios
           .delete(url, data, {
-            headers: { 'Content-Type': 'application/json' },
+            headers: { 'Content-Type': 'application/json' 
+        },
           })
           .then(function (response) {
             mensagemSucesso('Paciente deletado com sucesso')
@@ -43,7 +44,11 @@ const Paciente = ({titulo}) => {
       }
 
     useEffect(() => {
-        axios.get(`${BASE_URL2}/pacientes`).then((response) => {
+        axios.get(`${BASE_URL2}/pacientes`, {
+            headers: {'Authorization': "Bearer " + localStorage.getItem('token')
+        },
+        })
+        .then((response) => {
           setDados(response.data);
         });
       }, []);

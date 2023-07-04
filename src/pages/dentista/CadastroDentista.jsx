@@ -119,7 +119,7 @@ const CadastroDentista = () => {
                     type="text"
                     name='inputNome'
                     value={nome}
-                    required
+                    required            
                     maxLength={255}
                     onChange={(e) => setNome(e.target.value)}
                   />
@@ -143,6 +143,8 @@ const CadastroDentista = () => {
                     className='inputDt-nascimento'
                     name='dt-nascimento'
                     required
+                    min="1923-07-03"
+                    max="2005-07-03"
                     onChange={(e) => setDataDeNascimento(e.target.value)}
                   />
                 </label>

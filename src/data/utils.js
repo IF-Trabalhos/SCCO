@@ -37,3 +37,16 @@ export const formatarCPF = (value) => {
 
     return value;
   };
+
+  export const getListaMeses = () => {
+    const lista = [];
+    const dataAtual = new Date();
+    const mesAtual = dataAtual.getMonth();
+  
+    for (let i = 0; i < 6; i++) {
+      const mes = (mesAtual - i + 12) % 12;
+      lista.unshift(mes);
+    }
+  
+    return lista;
+  }

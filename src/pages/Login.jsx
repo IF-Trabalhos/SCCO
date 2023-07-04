@@ -23,6 +23,7 @@ export const Login = () => {
     })
     .then(function (response) {
         mensagemSucesso(`Usuário ${response.data.login} logado com sucesso!`)
+        localStorage.setItem('token', response.data.token);
         navigate(`/home`);
     })
     .catch(function (error) {

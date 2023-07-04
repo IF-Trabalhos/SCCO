@@ -25,8 +25,9 @@ const CadastroConsulta = () => {
   const [dadosPaciente, setDadosPaciente] = useState([]);
   const [dadosProcedimento, setDadosProcedimento] = useState([]);
 
+  const minDate = new Date().toLocaleDateString('en-CA'); // Obtém a data atual no formato 'YYYY-MM-DD'
+
   async function salvar() {
-    console.log(horaInicial)
     let data_ = { data, horaInicial, horaFinal, pacienteId, dentistaId, procedimentoId };
     data_ = JSON.stringify(data_);
     if (handle == null) {
@@ -101,6 +102,8 @@ const CadastroConsulta = () => {
                 <br/>
                   <input
                     type="date"
+                    value={data}
+                    min={minDate}
                     onChange={(e) => setData(e.target.value)}
                   />
                 </label>
@@ -108,9 +111,14 @@ const CadastroConsulta = () => {
               <div className="corpo-consulta-linha">
                 <label htmlFor="horaInicial">Horário Inicial:
                 <br/>
-
                   <input
                     type="time"
+                    id="hora" 
+                    name="hora"
+                    min="06:00" 
+                    max="22:00" 
+                    step="1800"
+                    value={horaInicial}
                     onChange={(e) => setHoraInicial(e.target.value + ":00")}
                   />
                 </label>
@@ -119,6 +127,12 @@ const CadastroConsulta = () => {
                 <br/>
                   <input
                     type="time"
+                    id="hora" 
+                    name="hora"
+                    min="06:00" 
+                    max="22:00" 
+                    step="1800"
+                    value={horaFinal}
                     onChange={(e) => setHoraFinal(e.target.value + ":00")}
                   />
                 </label>
