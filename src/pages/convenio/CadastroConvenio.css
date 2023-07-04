@@ -13,11 +13,6 @@ container-cadastro {
   gap: 20px;
 }
 
-.required::after {
-  content: "*";
-  color: red;
-}
-
 label {
   font-weight: bold;
 }

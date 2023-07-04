@@ -42,51 +42,64 @@ const Dentista = ({titulo, setInfo}) => {
     };
 
     async function excluir(id) {
-        await buscar(id)
-        console.log(especialidadeId)
-        let data = {
-            nome, ativo, cro, dataDeNascimento, cpf, email, telefone, especialidadeId,
-            rg, logradouro, bairro, uf, cidade, complemento, cep, numero
+        try {
+          const response = await buscar(id); // Espera a função buscar(id) ser concluída e obtém a resposta da requisição
+          const { nome, cro, dataDeNascimento, cpf, email, telefone, especialidadeId, rg, logradouro, bairro, uf, cidade, complemento, cep, numero } = response.data;
+          let data = {
+            nome,
+            ativo,
+            cro,
+            dataDeNascimento,
+            cpf,
+            email,
+            telefone,
+            especialidadeId,
+            rg,
+            logradouro,
+            bairro,
+            uf,
+            cidade,
+            complemento,
+            cep,
+            numero,
           };
-        data = JSON.stringify(data);
-        await axios
-        .put(`${BASE_URL2}/dentistas/${id}`, data, {
-          headers: { 'Content-Type': 'application/json' },
-        })
-        .then(function (response) {
-          mensagemSucesso(`Dentista ${nome} deletado com sucesso!`)
+          data = JSON.stringify(data);
+      
+          await axios.put(`${BASE_URL2}/dentistas/${id}`, data, {
+            headers: { 'Content-Type': 'application/json' },
+          });
+      
+          mensagemSucesso(`Dentista ${nome} deletado com sucesso!`);
           setDados(
-            dados.filter((dado) => {
-              return dado.id !== id;
-            })
+            dados.filter((dado) => dado.id !== id)
           );
-        })
-        .catch(function (error) {
+        } catch (error) {
           mensagemErro(error.response.data);
-        });
+        }
       }
-
+      
       async function buscar(id) {
-        await axios.get(`${BASE_URL2}/dentistas/${id}`).then((response) => {
-          setDadosTemp(response.data);
-          console.log(response.data)
-        });
-        setId(dadosTemp.id);
-        setCro(dadosTemp.cro)
-        setRg(dadosTemp.rg);
-        setNome(dadosTemp.nome);
-        setCpf(dadosTemp.cpf);
-        setDataDeNascimento(dadosTemp.dataDeNascimento)
-        setEspecialidadeId(dadosTemp.especialidadeId);
-        setEmail(dadosTemp.email);
-        setTelefone(dadosTemp.telefone);
-        setLogradouro(dadosTemp.logradouro)
-        setCep(dadosTemp.cep)
-        setCidade(dadosTemp.cidade)
-        setBairro(dadosTemp.bairro)
-        setComplemento(dadosTemp.complemento)
-        setNumero(dadosTemp.numero)
-        setUf(dadosTemp.uf)
+        const response = await axios.get(`${BASE_URL2}/dentistas/${id}`);
+        setDadosTemp(response.data);
+        console.log(response.data);
+        setId(response.data.id);
+        setCro(response.data.cro);
+        setRg(response.data.rg);
+        setNome(response.data.nome);
+        setCpf(response.data.cpf);
+        setDataDeNascimento(response.data.dataDeNascimento);
+        setEspecialidadeId(response.data.especialidadeId);
+        setEmail(response.data.email);
+        setTelefone(response.data.telefone);
+        setLogradouro(response.data.logradouro);
+        setCep(response.data.cep);
+        setCidade(response.data.cidade);
+        setBairro(response.data.bairro);
+        setComplemento(response.data.complemento);
+        setNumero(response.data.numero);
+        setUf(response.data.uf);
+      
+        return response; // Retorna a resposta da requisição
       }
 
     useEffect(() => {

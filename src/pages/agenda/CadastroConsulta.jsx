@@ -75,10 +75,10 @@ const CadastroConsulta = () => {
   }, [id]);
 
   useEffect(() => {
-    axios.get(`${BASE_URL}/pacientes`).then((response) => {
+    axios.get(`${BASE_URL}/pacientes/ativos`).then((response) => {
       setDadosPaciente(response.data);
     });
-    axios.get(`${BASE_URL}/dentistas`).then((response) => {
+    axios.get(`${BASE_URL}/dentistas/ativos`).then((response) => {
       setDadosDentista(response.data);
     });
     axios.get(`${BASE_URL}/procedimentos`).then((response) => {

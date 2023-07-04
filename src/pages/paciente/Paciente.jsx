@@ -13,7 +13,6 @@ const Paciente = ({titulo}) => {
     const icone = 'icones/lixeira.svg'
 
     const [dados, setDados] = useState([]);
-    const [dadosTemp, setDadosTemp] = useState([]);
 
     const [id, setId] = useState('');
     const [nome, setNome] = useState('');
@@ -41,49 +40,59 @@ const Paciente = ({titulo}) => {
     };
 
     async function excluir(id) {
-        await buscar(id);
-        let data = {
-            nome, ativo, numProntuario, dataDeNascimento, cpf, email, telefone,
-            rg, logradouro, bairro, uf, cidade, complemento, cep, numero
-          };
-        data = JSON.stringify(data);
-        await axios
-        .put(`${BASE_URL2}/pacientes/${id}`, data, {
-          headers: { 'Content-Type': 'application/json' },
-        })
-        .then(function (response) {
-          mensagemSucesso(`Paciente ${nome} deletado com sucesso!`)
+        try {
+          const response = await buscar(id); // Espera a função buscar(id) ser concluída e obtém a resposta da requisição
+          const { nome, numProntuario, dataDeNascimento, cpf, email, telefone, rg, logradouro, bairro, uf, cidade, complemento, cep, numero } = response.data;
+          const data = JSON.stringify({
+            nome,
+            ativo,
+            numProntuario,
+            dataDeNascimento,
+            cpf,
+            email,
+            telefone,
+            rg,
+            logradouro,
+            bairro,
+            uf,
+            cidade,
+            complemento,
+            cep,
+            numero,
+          });
+      
+          await axios.put(`${BASE_URL2}/pacientes/${id}`, data, {
+            headers: { 'Content-Type': 'application/json' },
+          });
+      
+          mensagemSucesso(`Paciente ${nome} deletado com sucesso!`);
           setDados(
-            dados.filter((dado) => {
-              return dado.id !== id;
-            })
+            dados.filter((dado) => dado.id !== id)
           );
-        })
-        .catch(function (error) {
+        } catch (error) {
           mensagemErro(error.response.data);
-        });
+        }
       }
-
+      
       async function buscar(id) {
-        await axios.get(`${BASE_URL2}/pacientes/${id}`).then((response) => {
-          setDadosTemp(response.data);
-          console.log(response.data)
-        });
-        setId(dadosTemp.id);
-        setNumProntuario(dadosTemp.numProntuario)
-        setRg(dadosTemp.rg);
-        setNome(dadosTemp.nome);
-        setCpf(dadosTemp.cpf);
-        setDataDeNascimento(dadosTemp.dataDeNascimento)
-        setEmail(dadosTemp.email);
-        setTelefone(dadosTemp.telefone);
-        setLogradouro(dadosTemp.logradouro)
-        setCep(dadosTemp.cep)
-        setCidade(dadosTemp.cidade)
-        setBairro(dadosTemp.bairro)
-        setComplemento(dadosTemp.complemento)
-        setNumero(dadosTemp.numero)
-        setUf(dadosTemp.uf)
+        const response = await axios.get(`${BASE_URL2}/pacientes/${id}`);
+        setId(response.data.id);
+        setNumProntuario(response.data.numProntuario);
+        setRg(response.data.rg);
+        setNome(response.data.nome);
+        setCpf(response.data.cpf);
+        setDataDeNascimento(response.data.dataDeNascimento);
+        setEmail(response.data.email);
+        setTelefone(response.data.telefone);
+        setLogradouro(response.data.logradouro);
+        setCep(response.data.cep);
+        setCidade(response.data.cidade);
+        setBairro(response.data.bairro);
+        setComplemento(response.data.complemento);
+        setNumero(response.data.numero);
+        setUf(response.data.uf);
+      
+        return response; // Retorna a resposta da requisição
       }
 
     useEffect(() => {

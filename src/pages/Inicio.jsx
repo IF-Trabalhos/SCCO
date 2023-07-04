@@ -28,6 +28,8 @@ const Inicio = () => {
 
     const [qtdConsulta, setQtdConsultas] = useState('');    
     const [qtdPacientes, setQtdPacientes] = useState('');
+    const [qtdDentistasAtivo, setQtdDentistasAtivo] = useState('');    
+    const [qtdPacientesAtivo, setQtdPacientesAtivo] = useState('');
     const listaMeses = getListaMeses()
     const [qtdConsultaMes, setQtdConsultaMes] = useState([])
 
@@ -56,6 +58,12 @@ const Inicio = () => {
         });
         await axios.get(`${BASE_URL2}/consultas/quantidade/2022-01-01/2023-12-30`).then((response) => {
             setQtdConsultas(response.data)
+        });
+        await axios.get(`${BASE_URL2}/pacientes/ativos/quantidade`).then((response) => {
+            setQtdPacientesAtivo(response.data)
+        });
+        await axios.get(`${BASE_URL2}/dentistas/ativos/quantidade`).then((response) => {
+            setQtdDentistasAtivo(response.data)
         });
         setQtdConsultaMes(lista)
     }
@@ -98,10 +106,10 @@ const Inicio = () => {
                         <CanvasJSChart options = {options} />
                         <div className='informacoes-completa'>
                             <div className='informacoes'>
-                                    Pacientes Ativos: 23
+                                    Pacientes Ativos: {qtdPacientesAtivo}
                             </div>
                             <div className='informacoes'>
-                                    Dentistas Ativos: 5
+                                    Dentistas Ativos: {qtdDentistasAtivo}
                             </div>
                             <div className='informacoes'>
                                     Pacientes Atendidos: {qtdPacientes}

@@ -4,11 +4,6 @@
   align-items: flex-start;
 }
 
-.required::after {
-  content: "*";
-  color: red;
-}
-
 label {
   font-weight: bold;
 }
