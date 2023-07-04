@@ -43,7 +43,7 @@ const TelaInicialAgenda = ({ nomes, setDados, dentista, data_atual }) => {
     }
 
     const cadastrar = () => {
-        navigate(`/cadastro-consulta/`);
+        navigate(`/cadastro-consulta`);
     };
 
     useEffect(() => {
