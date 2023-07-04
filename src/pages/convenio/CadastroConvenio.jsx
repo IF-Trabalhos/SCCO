@@ -76,23 +76,39 @@ const CadastroConvenio = () => {
           <h1>Cadastro de Convênio</h1>
         </div>
         <div className='corpo-cadastro'>
-          <h2>Novo Cadastro</h2>
-          <div>
-            <div class="input-container">
-              <label htmlFor="inputNome" className='required'>Nome:</label>
+          <div className="container-cadastro">
+            <div className='nome'>
+              <h2>Novo Cadastro</h2>
+              <label htmlFor='inputNome' className='required'>Nome:
+                <br />
+                <input
+                  type="text"
+                  name='inputNome'
+                  value={nome}
+                  required
+                  maxLength={255}
+                  onChange={(e) => setNome(e.target.value)}
+                />
+              </label>
+            </div>
+            <div className='desconto'>
+              <label htmlFor="inputDesconto" className='required'>Desconto:
+              <br/>
               <input
-                type="text"
-                className='inputNome'
-                value={nome}
+                type="number"
+                className='inputDesconto'
+                value={desconto}
                 required
-                maxLength= {255}
-                name='nome'
-                onChange={(e) => setNome(e.target.value)}
+
+                name='desconto'
+                onChange={(e) => setDesconto(e.target.value)}
               />
+              </label>
             </div>
 
-            <div class="input-container">
-              <label htmlFor='inputEmail'>Email:</label>
+            <div className='email'>
+              <label htmlFor='inputEmail'>Email:
+              <br/>
               <input
                 type="text"
                 className='inputEmail'
@@ -102,10 +118,12 @@ const CadastroConvenio = () => {
                 maxLength={255}
                 onChange={(e) => setEmail(e.target.value)}
               />
+              </label>
             </div>
 
-            <div class="input-container">
-              <label htmlFor='inputTelefone' className='required'>Telefone:</label>
+            <div className='telefone'>
+              <label htmlFor='inputTelefone' className='required'>Telefone:
+              <br/>
               <input
                 type="text"
                 value={telefone}
@@ -114,11 +132,13 @@ const CadastroConvenio = () => {
                 required
                 maxLength={15}
                 onChange={(e) => setTelefone(formatarTelefone(e.target.value))}
-                />
+              />
+              </label>
             </div>
 
-            <div class="input-container">
-              <label htmlFor="inputANS" className='required'>Registro ANS:</label>
+            <div className='ans'>
+              <label htmlFor="inputANS" className='required'>Registro ANS:
+              <br/>
               <input
                 type="text"
                 className='inputANS'
@@ -128,9 +148,9 @@ const CadastroConvenio = () => {
                 maxLength={8}
                 onChange={(e) => setRegistroAns(e.target.value)}
               />
+              </label>
             </div>
-
-            <div className='botaoconv'>
+            <div className='botaoproc'>
               <BotãoSalvar funct={salvar} pagina={'convenio'} />
             </div>
           </div>

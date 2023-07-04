@@ -2,15 +2,6 @@
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  gap: 20px;
-}
-
-.nome,
-.especialidade,
-.status {
-  display: flex;
-  flex-direction: column;
-  gap: 5px;
 }
 
 .required::after {
@@ -22,18 +13,28 @@ label {
   font-weight: bold;
 }
 
-input[type="text"],
-select {
-  padding: 10px;
-  border: 1px solid gray;
-  border-radius: 4px;
+.status {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
 }
 
-.botoesproc {
+.status-options {
+  display: flex;
+  flex-direction: row;
+}
+
+.status-option {
+  display: flex;
+  align-items: center;
+}
+
+.botaoproc {
   display: flex;
   justify-content: flex-end;
-  margin-top: 20px;
+  width: 100vh;
 }
-.status label {
-  color: black;
+
+.radio-buttons {
+  display: flex;
 }

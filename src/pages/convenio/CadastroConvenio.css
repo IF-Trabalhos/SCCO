@@ -1,21 +1,35 @@
-.input-container {
-  margin-bottom: 1em;
+container-cadastro {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 10px;
 }
 
-.input-container label {
-  display: block;
-  margin-bottom: 0.5em;
+.nome,
+.especialidade,
+.status {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.required::after {
+  content: "*";
+  color: red;
+}
+
+label {
   font-weight: bold;
 }
 
-.input-container input {
-  width: 100%;
-  padding: 8px;
-  border: 1px solid #ccc;
+input[type="text"],
+select {
+  padding: 10px;
+  border: 1px solid gray;
   border-radius: 4px;
 }
-.botaoconv{
 
-  width: 50vh;
-
+.botoesconv {
+  display: flex;
+  justify-content: flex-end;
 }

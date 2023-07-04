@@ -82,45 +82,55 @@ const CadastroProcedimento = ({ children }) => {
         <div className='corpo-cadastro'>
           <div className="container-cadastro">
             <h2>Novo Cadastro</h2>
-            <div className="nome">
-              <label htmlFor="inputNome" className="required">
-                Nome:
-              </label>
+            <label htmlFor='inputNome' className='required'>Nome:
+              <br />
               <input
                 type="text"
-                name="inputNome"
-                className="nome"
+                name='inputNome'
                 value={nome}
                 required
                 maxLength={255}
                 onChange={(e) => setNome(e.target.value)}
               />
-            </div>
-            <div className="especialidade">
-              <label htmlFor="inputEspecialidade" className="required">
-                Especialidade:
-              </label>
+            </label>
+
+
+            <label htmlFor="inputValor" className="required">
+              Valor:
+              <br />
+              <input
+                type="number"
+                name="inputValor"
+                className="valor"
+                value={valor}
+                required
+                onChange={(e) => setValor(e.target.value)}
+              />
+            </label>
+
+            <label htmlFor='inputEspecialidade'>Especialidade:
               <select
                 name="especialidades"
                 id="especialidades"
-                className="custom-select"
                 required
+                className='custom-select'
                 onChange={(e) => setEspecialidadeId(e.target.value)}
               >
                 {dadosEspecialidade.map(({ id, nome }) => (
                   <option
                     key={id}
                     value={id}
-                    selected={especialidadeId === id ? "selected" : ""}
-                  >
-                    {nome}
+                    selected={especialidadeId === id ? 'selected' : ''}
+                  >{nome}
                   </option>
                 ))}
               </select>
-            </div>
-            <div className="status">
-              <label htmlFor="status">Status:</label>
-              <div>
+            </label>
+
+
+            <label htmlFor="status">Status:</label>
+            <div className="status-options">
+              <div className="status-option">
                 <input
                   type="radio"
                   id="inputAtivo"
@@ -130,7 +140,7 @@ const CadastroProcedimento = ({ children }) => {
                 />
                 <label htmlFor="inputAtivo">ATIVO</label>
               </div>
-              <div>
+              <div className="status-option">
                 <input
                   type="radio"
                   id="inputInativo"
@@ -142,10 +152,11 @@ const CadastroProcedimento = ({ children }) => {
               </div>
             </div>
           </div>
-          <div className="botoesproc">
-            <BotãoSalvar funct={salvar} pagina={"procedimento"} />
+          <div className='botaoproc'>
+            <BotãoSalvar funct={salvar} pagina={'procedimento'} />
           </div>
         </div>
+                  
       </div>
     </div>
   )
